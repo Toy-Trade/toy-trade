@@ -4,6 +4,10 @@ body, html {
     background-repeat: no-repeat;
 }
 
+.navbar {
+    background-color:#f7f7f7;
+}
+
 #navbar-logo {
     margin-left: 10px;
 }
@@ -17,6 +21,13 @@ body, html {
     margin-right: 8px;
 }
 
+.icon {
+    position: relative;
+    top: 4px;
+    font-size: 20px;
+    padding-right: 5px;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: black;
 }
@@ -28,9 +39,10 @@ body, html {
     margin-top: 8%;
 }
 
-.icon {
-    position: relative;
-    top: 4px;
-    font-size: 20px;
-    padding-right: 5px;
+.g-signin2 {
+    width: 100%;
+}
+  
+.g-signin2 > div{
+    margin: 0 auto;
 }
