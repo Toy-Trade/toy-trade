@@ -1,7 +1,12 @@
 body, html {
+    
+}
+
+#home-page {
     background-image: url('assets/img/landingPage.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 
 .navbar {
