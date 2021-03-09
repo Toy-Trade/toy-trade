@@ -86,3 +86,28 @@ body, html {
     color: #169cc6;
     text-decoration: none;
 }
+
+/* Add Toy Page */
+
+#addtoy-page .container {
+    margin-top: 5%;
+}
+
+#addtoy-page .header {
+    font-size: 24px;
+    margin-bottom: 2%;
+}
+
+#addtoy-page .button {
+    border-radius: 25px;
+    width: 100%;
+}
+
+#addtoy-page .button-content {
+    position: relative;
+    bottom: 4px;
+}
+
+#addtoy-page .form-group {
+    padding: 0 10px;
+}
