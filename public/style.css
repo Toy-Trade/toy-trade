@@ -2,6 +2,8 @@ body, html {
     
 }
 
+/* Home Page */
+
 #home-page {
     background-image: url('assets/img/landingPage.jpg');
     background-size: cover;
@@ -50,4 +52,37 @@ body, html {
   
 .g-signin2 > div{
     margin: 0 auto;
+}
+
+/* Notifications Page */
+
+#notifications-page .container {
+    margin-top: 5%;
+    text-align: center;
+}
+
+#notifications-page .header {
+    font-size: 24px;
+    margin-bottom: 2%;
+}
+
+#notifications-page .card {
+    width: 50%;
+    border: 2px solid #aaaaaa;
+    border-radius: 12px;
+}
+
+#notifications-page .row {
+    text-align: left;
+    margin: 2% 0;
+}
+
+#notifications-page .button {
+    float: right;
+    border-radius: 10px;
+}
+
+#notifications-page .link {
+    color: #169cc6;
+    text-decoration: none;
 }
