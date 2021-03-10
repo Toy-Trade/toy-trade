@@ -13,3 +13,17 @@ function signOut() {
     console.log('User signed out.');
   });
 }
+
+function addToy() {
+  var title = document.getElementById("title").value;
+  var estimatedValue = document.getElementById("estimated-value").value;
+  var brand = document.getElementById("brand").value;
+  var ageRange = document.getElementById("age-range").value;
+  var description = document.getElementById("description").value;
+
+  console.log("Title: " + title);
+  console.log("Estimated value: " + estimatedValue);
+  console.log("Brand: " + brand);
+  console.log("Age range: " + ageRange);
+  console.log("Description: " + description);
+}
