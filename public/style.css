@@ -65,6 +65,10 @@ body, html {
     margin-bottom: 2%;
 }
 
+#home-page .search-col {
+    padding: 0px;
+}
+
 #home-page .search-form {
     margin-left: 15px;
 }
@@ -76,6 +80,16 @@ body, html {
 #home-page #search-icon {
     position: relative;
     top: 2px;
+}
+
+#home-page .profile-icon {
+    width: 30px;
+    margin-right: 10px;
+}
+
+#home-page .user-link {
+    position: relative;
+    top: 1px;
 }
 
 #home-page .card {
