@@ -150,6 +150,34 @@ body, html {
     margin-top: 55%;
 }
 
+#home-page .modal-toy-image {
+    width: 100%;
+    height: 100%;
+}
+
+#home-page .modal-body {
+    padding: 0px;
+}
+
+#home-page .modal-toy-description {
+    margin: 20px;
+    margin-left: 50px;
+}
+
+#home-page .modal-icon {
+    font-size: 33px;
+}
+
+#home-page .modal-icon-text {
+    position: relative;
+    top: 12px;
+    padding-left: 10px;
+}
+
+#home-page .modal-col {
+    padding: 0px;
+}
+
 /* Notifications Page (notifications.html) */
 
 #notifications-page .container{
