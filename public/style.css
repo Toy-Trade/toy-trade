@@ -97,6 +97,10 @@ body, html {
     border-radius: 12px;
 }
 
+#home-page .card-header {
+    border-bottom: 2px solid #aaaaaa;
+}
+
 #home-page .row {
     text-align: left;
     margin: 2% 0;
