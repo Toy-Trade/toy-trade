@@ -17,8 +17,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
+  <!-- Google Sign In -->
   <meta name="google-signin-client_id" content="852854016957-7t2ceglibsbbo90pae2q21cd0p6fnc9v.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
 
   <title>Toy Trade</title>
 </head>
@@ -35,7 +39,8 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="#"><i class="ri-information-line icon"></i>About</a>
-          <a class="nav-item nav-link" href="#"><i class="ri-login-box-line icon"></i>Login</a>
+          <a class="nav-item nav-link" href="addtoy.html"><i class="ri-login-box-line icon"></i>Login</a>
+          <a class="nav-item nav-link" href="index.html" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a>
         </div>
       </div>
     </nav>

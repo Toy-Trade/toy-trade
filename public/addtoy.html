@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Remix Icon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- Google Sign In -->
+    <meta name="google-signin-client_id" content="852854016957-7t2ceglibsbbo90pae2q21cd0p6fnc9v.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+
+    <title>Toy Trade</title>
+</head>
+<body>
+  <main id="addtoy-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+            <img id="navbar-logo" src="assets/img/logo.png" height="50" alt="Toy Trade Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="#"><i class="ri-information-line icon"></i>About</a>
+            <a class="nav-item nav-link" href="addtoy.html"><i class="ri-login-box-line icon"></i>Login</a>
+            <a class="nav-item nav-link" href="index.html" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="header">+ Add Toy</h1>
+        <form action="javascript:void(0)">
+            <div class="form-row form">
+                <div class="form-group col-sm-6 col-12">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Title of your listing">
+                </div>
+                <div class="form-group col-sm-6 col-12">
+                    <label for="estimated-value">Estimated Value</label>
+                    <input type="text" class="form-control" id="estimated-value" placeholder="Estimated value">
+                </div>
+                <div class="form-group col-sm-6 col-12">
+                    <label for="brand">Brand</label>
+                    <input type="text" class="form-control" id="brand" placeholder="Brand of toy">
+                </div>
+                <div class="form-group col-sm-6 col-12">
+                    <label for="age-range">Age Range</label>
+                    <input type="text" class="form-control" id="age-range" placeholder="Age range">
+                </div>
+                <div class="form-group col-sm-6 col-12">
+                    <label for="description">Describe the toy</label>
+                    <input type="text" class="form-control" id="description" placeholder="Describe the toy">
+                </div>
+                <div class="form-group col-sm-6 col-12">
+                    <button class="btn btn-light button"><span class="button-content"><i class="ri-upload-2-line icon"></i>Upload Image</span></button>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <button type="submit" class="btn btn-primary button" onclick="addToy()">Submit</button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+  </main>
+</body>
+</html>
