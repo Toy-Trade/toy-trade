@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Remix Icon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <meta name="google-signin-client_id" content="852854016957-7t2ceglibsbbo90pae2q21cd0p6fnc9v.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script src="script.js"></script>
+    
+    <title>Toy Trade</title>
+</head>
+<body>
+  <main id="home-page">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="home.html">
+            <img id="navbar-logo" src="assets/img/logo.png" height="50" alt="Toy Trade Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="home.html"><i class="ri-home-2-line icon"></i>Home</a>
+            <a class="nav-item nav-link" href="messages.html"><i class="ri-message-line icon"></i>Messages</a>
+            <a class="nav-item nav-link" href="notifications.html"><i class="ri-notification-2-line icon"></i>Notifications</a>
+            <a class="nav-item nav-link" href="profile.html"><i class="ri-profile-line icon"></i>Profile</a>
+            <a class="nav-item nav-link" href="index.html"><i class="ri-logout-box-line icon"></i>Logout</a>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="header">Home Page</h1>
+
+      <div class="row">
+        <div class="col-6 search-col">
+            <form class="form-inline my-2 my-lg-0 search-form">
+                <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search Toy Trade" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i id="search-icon" class="ri-search-line"></i> Search</button>
+            </form>
+        </div>
+        
+        <div class="col-6">
+            <button class="btn btn-primary my-2 my-sm-0 float-right" onclick="handleAddToyClick()">+ Add Toy</button>
+        </div>
+      </div>
+
+
+      <!-- Temporary card 1 -->
+      <div class="row justify-content">
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <img class="profile-icon" src="assets/svg/profileIcon.svg" alt="Profile Icon">
+                    <a class="link user-link" href="">@toycollector123</a>
+                </div>
+                <div class="card-body">
+                    <div class="card-row row container">
+                        <div class="card-col col-8">
+                            <img class="toy-image" src="assets/img/placeholders/legoStarWars.jpg" alt="Lego Star Wars Mini Figures">
+                        </div>
+                        <div class="card-col col-4">
+                            <h5 class="card-title">Lego Star Wars Mini Figures</h5>
+                            <button type="button" class="btn btn-primary button request-button">Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <img class="profile-icon" src="assets/svg/profileIcon.svg" alt="Profile Icon">
+                    <a class="link user-link" href="">@boardgames44</a>
+                </div>
+                <div class="card-body">
+                    <div class="card-row row container">
+                        <div class="card-col col-8">
+                            <img class="toy-image" src="assets/img/placeholders/candyLand.jpg" alt="Hasbro Candy Land Game">
+                        </div>
+                        <div class="card-col col-4">
+                            <h5 class="card-title">Hasbro Candy Land Game</h5>
+                            <button type="button" class="btn btn-primary button request-button">Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <img class="profile-icon" src="assets/svg/profileIcon.svg" alt="Profile Icon">
+                    <a class="link user-link" href="">@toystorytoys</a>
+                </div>
+                <div class="card-body">
+                    <div class="card-row row container">
+                        <div class="card-col col-8">
+                            <img class="toy-image" src="assets/img/placeholders/woody.png" alt="Woody from Toy Story">
+                        </div>
+                        <div class="card-col col-4">
+                            <h5 class="card-title">Woody from Toy Story</h5>
+                            <button type="button" class="btn btn-primary button request-button">Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <img class="profile-icon" src="assets/svg/profileIcon.svg" alt="Profile Icon">
+                    <a class="link user-link" href="">@toystorytoys</a>
+                </div>
+                <div class="card-body">
+                    <div class="card-row row container">
+                        <div class="card-col col-8">
+                            <img class="toy-image" src="assets/img/placeholders/buzz.png" alt="Buzz Lightyear from Toy Story">
+                        </div>
+                        <div class="card-col col-4">
+                            <h5 class="card-title">Buzz Lightyear from Toy Story</h5>
+                            <button type="button" class="btn btn-primary button request-button">Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
