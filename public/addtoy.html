@@ -68,13 +68,23 @@
                     <input type="text" class="form-control" id="age-range" placeholder="Age range">
                 </div>
                 <div class="form-group col-sm-6 col-12">
+                    <label for="condition">Condition</label>
+                        <select class="form-control" id="cars" name="cars">
+                            <option value="holder" selected disabled>Select a condition</option>
+                            <option value="new">New</option>
+                            <option value="like-new">Used: Like New</option>
+                            <option value="very-good">Used: Very Good</option>
+                            <option value="good">Used: Good</option>
+                        </select>
+                </div>
+                <div class="form-group col-sm-6 col-12">
                     <label for="description">Describe the toy</label>
                     <input type="text" class="form-control" id="description" placeholder="Describe the toy">
                 </div>
                 <div class="form-group col-sm-6 col-12">
                     <button class="btn btn-light button"><span class="button-content"><i class="ri-upload-2-line icon"></i>Upload Image</span></button>
                 </div>
-                <div class="col-sm-6 col-12">
+                <div class="col-sm-6 col-12" style="margin-top: 12%;">
                     <button type="submit" class="btn btn-primary button" onclick="addToy()">Submit</button>
                 </div>
             </div>
