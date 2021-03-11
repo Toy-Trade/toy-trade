@@ -90,19 +90,92 @@
         <div class="card">
           <div class="card-body">
             <p class="card-text"><a class="link" href="">@joyce</a> has selected your <a class="link" href="">Hasbro Connect 4</a>. Confirm your transaction.</p>
-            <button type="button" class="btn btn-primary button">See Transaction</button>
+            <button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#confirmTransactionModal">Confirm Transaction</button>
           </div>
         </div>
       </div>
+
+      <!-- CONFIRM TRANSACTION MODAL -->
+      <div class="modal fade" id="confirmTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Confirm your Transaction with <a class="link" href="">@joyce</a></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-5 modal-col">
+                  <h5><a class="link" href="">@joyce</a>'s Offer</h5>
+                  <p>Jigsaw Puzzle</p>
+                </div>
+                <div class="col-2 modal-col">
+                  <i class="ri-arrow-left-right-line modal-icon"></i>
+                </div>
+                <div class="col-5 modal-col">
+                  <h5>My Offer</h5>
+                  <p>Hasbro Connect 4</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-success">Confirm</button>
+            <button type="button" class="btn btn-danger">Deny</button>
+            </div>
+        </div>
+        </div>
+      </div>
+
       <!-- Temporary card 6 -->
       <div class="row justify-content-center">
         <div class="card">
           <div class="card-body">
             <p class="card-text">Your trade with <a class="link" href="">@boardgames44</a> is completed.</p>
-            <button type="button" class="btn btn-primary button">See Transaction</button>
+            <button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#seeTransactionModal">See Transaction</button>
           </div>
         </div>
       </div>
+
+      <!-- SEE TRANSACTION MODAL -->
+      <div class="modal fade" id="seeTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Transaction Receipt</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-5 modal-col">
+                  <h5><a class="link" href="">@boardgames44</a></h5>
+                  <p>Hasbro Candy Land Game</p>
+                </div>
+                <div class="col-2 modal-col">
+                  <i class="ri-arrow-left-right-line modal-icon"></i>
+                </div>
+                <div class="col-5 modal-col">
+                  <h5>Me</h5>
+                  <p>Catan Board Game</p>
+                </div>
+              </div>
+              
+              <div class="row modal-transaction-completed">
+                <div class="col-12">
+                  <i class="ri-checkbox-circle-line modal-checkmark-icon"></i><h5 class="modal-transaction-completed-text">Transaction completed.</h5>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+      </div>
+
     </div>
   </main>
 </body>

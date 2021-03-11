@@ -208,6 +208,31 @@ body, html {
     text-decoration: none;
 }
 
+#notifications-page .modal-icon {
+    font-size: 35px;
+}
+
+#notifications-page .modal-col {
+    text-align: center;
+}
+
+#notifications-page .modal-checkmark-icon {
+    font-size: 35px;
+    color: #5cb85c;
+}
+
+#notifications-page .modal-transaction-completed {
+    text-align: center;
+}
+
+#notifications-page .modal-transaction-completed-text {
+    position: relative;
+    /* top: 12px; */
+    bottom: 10px;
+    padding-left: 5px;
+    display: inline;
+}
+
 /* Add Toy Page */
 
 #addtoy-page .container {
