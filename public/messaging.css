@@ -1,14 +1,52 @@
-.container{max-width:1170px; margin:auto;}
+.navbar {
+  background-color:#00000000;
+}
+
+#navbar-logo {
+  margin-left: 10px;
+}
+
+.navbar-collapse {
+  margin-right: 20px;
+}
+
+.nav-item {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.icon {
+  position: relative;
+  top: 4px;
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+}
+
+.container{
+  margin-top: 5%;
+}
+
+.text-center{
+  font-size: 24px;
+  margin-bottom: 2%;
+}
+
 img{ max-width:100%;}
+
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
   float: left;
   overflow: hidden;
-  width: 40%; border-right:1px solid #c4c4c4;
+  width: 40%; border-right:1px solid #aaaaaa;
 }
 
 .inbox_msg {
-  border: 1px solid #c4c4c4;
+  border: 2px solid #aaaaaa;
+  border-radius: 12px;
   clear: both;
   overflow: hidden;
 }
@@ -21,7 +59,7 @@ img{ max-width:100%;}
   width: 60%; padding: 0
 }
 
-.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
+.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #aaaaaa;}
 
 .recent_heading h4 {
   color: #05728f;
@@ -60,7 +98,7 @@ img{ max-width:100%;}
 }
 .inbox_chat { height: 550px; overflow-y: scroll;}
 
-.active_chat{ background:#ebebeb;}
+.active_chat{ background:lightblue;}
 
 .incoming_msg_img {
   display: inline-block;
@@ -88,6 +126,7 @@ img{ max-width:100%;}
   margin: 8px 0 0;
 }
 .received_withd_msg { width: 57%;}
+
 .mesgs {
   float: left;
   padding: 30px 15px 0 25px;
@@ -98,7 +137,7 @@ img{ max-width:100%;}
   background: #05728f none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
-  margin: 0; color:#fff;
+  margin: 0; color:black;
   padding: 5px 10px 5px 12px;
   width:100%;
 }
@@ -132,32 +171,4 @@ img{ max-width:100%;}
 .msg_history {
   height: 516px;
   overflow-y: auto;
-}
-
-.navbar {
-  background-color:#f7f7f7;
-}
-
-#navbar-logo {
-  margin-left: 10px;
-}
-
-.navbar-collapse {
-  margin-right: 20px;
-}
-
-.nav-item {
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
-.icon {
-  position: relative;
-  top: 4px;
-  font-size: 20px;
-  padding-right: 5px;
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color: black;
 }
