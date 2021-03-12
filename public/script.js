@@ -31,3 +31,16 @@ function addToy() {
   console.log("Age range: " + ageRange);
   console.log("Description: " + description);
 }
+
+
+$(".chat_list").click(function() {
+  $(".chat_list").css("background-color","");
+  $(this).css("background-color","lightblue");
+
+});
+
+function highlightFirst(){
+  $(".first").css("background-color", "lightblue");
+}
+
+window.onload = highlightFirst();

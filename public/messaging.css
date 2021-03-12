@@ -1,5 +1,5 @@
 .navbar {
-  background-color:#00000000;
+  background-color:#f7f7f7;
 }
 
 #navbar-logo {
@@ -34,8 +34,6 @@
   font-size: 24px;
   margin-bottom: 2%;
 }
-
-img{ max-width:100%;}
 
 .inbox_people {
   background: #f8f8f8 none repeat scroll 0 0;
@@ -82,7 +80,7 @@ img{ max-width:100%;}
 .chat_ib p{ font-size:14px; color:black; margin:auto}
 .chat_img {
   float: left;
-  width: 11%;
+  width: 30px;
 }
 .chat_ib {
   float: left;
@@ -97,8 +95,6 @@ img{ max-width:100%;}
   padding: 18px 16px 10px;
 }
 .inbox_chat { height: 550px; overflow-y: scroll;}
-
-.active_chat{ background:lightblue;}
 
 .incoming_msg_img {
   display: inline-block;
