@@ -13,9 +13,30 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 
 
 @NgModule({
-  declarations: [HeaderLandingComponent, HeaderComponent, FooterComponent, LandingPageComponent, AboutPageComponent, HomePageComponent, ChatPageComponent, NotificationsPageComponent, ProfilePageComponent],
+  declarations: [
+    HeaderLandingComponent,
+    HeaderComponent,
+    FooterComponent,
+    LandingPageComponent,
+    AboutPageComponent,
+    HomePageComponent,
+    ChatPageComponent,
+    NotificationsPageComponent,
+    ProfilePageComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    CommonModule,
+    HeaderLandingComponent,
+    HeaderComponent,
+    FooterComponent,
+    LandingPageComponent,
+    AboutPageComponent,
+    HomePageComponent,
+    ChatPageComponent,
+    NotificationsPageComponent,
+    ProfilePageComponent
   ]
 })
 export class CoreModule { }

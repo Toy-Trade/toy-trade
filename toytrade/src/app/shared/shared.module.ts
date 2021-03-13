@@ -16,6 +16,18 @@ import { LoginButtonComponent } from './login-button/login-button.component';
   declarations: [AddToyButtonComponent, DashboardComponent, ToyCardComponent, ToyInfoModalComponent, SearchBarComponent, NotificationsCardComponent, ConfirmTransactionModalComponent, ViewTransactionModalComponent, LoginButtonComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    CommonModule,
+    AddToyButtonComponent,
+    DashboardComponent,
+    ToyCardComponent,
+    ToyInfoModalComponent,
+    SearchBarComponent,
+    NotificationsCardComponent,
+    ConfirmTransactionModalComponent,
+    ViewTransactionModalComponent,
+    LoginButtonComponent
   ]
 })
 export class SharedModule { }
