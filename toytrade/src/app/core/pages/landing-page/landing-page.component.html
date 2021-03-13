@@ -1,1 +1,26 @@
-<p>landing-page works!</p>
+<main id="index-page">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">
+      <img id="navbar-logo" src="assets/img/logo.png" height="50" alt="Toy Trade Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="#"><i class="ri-information-line icon"></i>About</a>
+        <a class="nav-item nav-link" href="addtoy.html"><i class="ri-login-box-line icon"></i>Login</a>
+        <!-- <a class="nav-item nav-link" href="index.html" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a> -->
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Logo in Middle of Landing Page -->
+    <img id="landing-page-logo" src="../../../../assets/img/logo.png" alt="Toy Trade Logo">
+
+    <!-- Google Sign In -->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  </div>
+</main>

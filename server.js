@@ -4,7 +4,7 @@ const port = 3000;
 const path = require('path');
 app.use(express.static(path.join(__dirname, './toytrade/dist/toytrade')));
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 app.get('/', (req, res) => {
   res.send();
