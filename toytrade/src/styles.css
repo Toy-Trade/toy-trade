@@ -27,6 +27,125 @@
   color: black;
 }
 
+/* HOMEPAGE */
+
+#home-page .container {
+  margin-top: 5%;
+  text-align: center;
+}
+
+#home-page .header {
+  font-size: 24px;
+  margin-bottom: 2%;
+}
+
+#home-page .search-col {
+  padding: 0px;
+}
+
+#home-page .search-form {
+  margin-left: 15px;
+}
+
+#home-page #search-icon {
+  position: relative;
+  top: 2px;
+}
+
+#home-page .profile-icon {
+  width: 30px;
+  margin-right: 10px;
+}
+
+#home-page .user-link {
+  position: relative;
+  top: 1px;
+}
+
+#home-page .card {
+  border: 2px solid #aaaaaa;
+  border-radius: 12px;
+}
+
+#home-page .card-header {
+  border-bottom: 2px solid #aaaaaa;
+}
+
+#home-page .row {
+  text-align: left;
+  margin: 2% 0;
+}
+
+#home-page .link {
+  color: #169cc6;
+  text-decoration: none;
+}
+
+#home-page .toy-image {
+  width: 100%;
+  /* height: 100%; */
+  height: 300px;
+  border-radius: 0px 0px 0px 10px;
+}
+
+#home-page .card {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#home-page .card-col {
+  padding: 0px;
+  text-align: center;
+}
+
+#home-page .card-row {
+  margin: 0px;
+  padding: 0px;
+}
+
+#home-page .card-title {
+  margin: 20px;
+  text-align: left;
+}
+
+#home-page .card-body {
+  padding: 0px;
+}
+
+#home-page .request-button {
+  border-radius: 10px;
+  margin-top: 55%;
+}
+
+#home-page .modal-toy-image {
+  width: 100%;
+  height: 100%;
+}
+
+#home-page .modal-body {
+  padding: 0px;
+}
+
+#home-page .modal-toy-description {
+  margin: 20px;
+  margin-left: 50px;
+}
+
+#home-page .modal-icon {
+  font-size: 33px;
+}
+
+#home-page .modal-icon-text {
+  position: relative;
+  top: 12px;
+  padding-left: 10px;
+}
+
+#home-page .modal-col {
+  padding: 0px;
+}
+
+
 /* Profile Page (profile.html) */
 
 #profile-page .container {

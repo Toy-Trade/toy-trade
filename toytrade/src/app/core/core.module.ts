@@ -11,6 +11,7 @@ import { NotificationsPageComponent } from './pages/notifications-page/notificat
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AddToyPageComponent } from './pages/add-toy-page/add-toy-page.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AppRoutingModule } from '../app-routing.module';
     AddToyPageComponent],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   exports: [
     CommonModule,
