@@ -9,6 +9,7 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/addtoy"><i class="ri-login-box-line icon"></i>Add Toy</a>
         <a class="nav-item nav-link" href="#"><i class="ri-information-line icon"></i>About</a>
         <a class="nav-item nav-link" href="addtoy.html"><i class="ri-login-box-line icon"></i>Login</a>
         <!-- <a class="nav-item nav-link" href="index.html" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a> -->
@@ -24,3 +25,5 @@
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
   </div>
 </main>
+
+<router-outlet></router-outlet>

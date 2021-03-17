@@ -10,7 +10,7 @@ import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 import { NotificationsPageComponent } from './pages/notifications-page/notifications-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { AddToyPageComponent } from './pages/add-toy-page/add-toy-page.component';
-
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { AddToyPageComponent } from './pages/add-toy-page/add-toy-page.component
     ProfilePageComponent,
     AddToyPageComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   exports: [
     CommonModule,
