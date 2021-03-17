@@ -9,13 +9,15 @@ import { NotificationsCardComponent } from './notifications-card/notifications-c
 import { ConfirmTransactionModalComponent } from './confirm-transaction-modal/confirm-transaction-modal.component';
 import { ViewTransactionModalComponent } from './view-transaction-modal/view-transaction-modal.component';
 import { LoginButtonComponent } from './login-button/login-button.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
 @NgModule({
   declarations: [AddToyButtonComponent, DashboardComponent, ToyCardComponent, ToyInfoModalComponent, SearchBarComponent, NotificationsCardComponent, ConfirmTransactionModalComponent, ViewTransactionModalComponent, LoginButtonComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   exports: [
     CommonModule,
