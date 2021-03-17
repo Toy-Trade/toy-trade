@@ -14,5 +14,8 @@
     "start": "node server.js"
   },
   "main": "server.js",
-  "author": "Colleen Corrigan, Joyce Fang, Tyler Green, Jody Sunray"
+  "author": "Colleen Corrigan, Joyce Fang, Tyler Green, Jody Sunray",
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.1102.4"
+  }
 }

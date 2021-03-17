@@ -1,1 +1,150 @@
-<p>notifications-page works!</p>
+<main id="notifications-page">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="home.html">
+      <img id="navbar-logo" src="assets/img/logo.png" height="50" alt="Toy Trade Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="home.html"><i class="ri-home-2-line icon"></i>Home</a>
+        <a class="nav-item nav-link" href="messaging.html"><i class="ri-message-line icon"></i>Messages</a>
+        <a class="nav-item nav-link" href="notifications.html"><i class="ri-notification-2-line icon"></i>Notifications</a>
+        <a class="nav-item nav-link" href="profile.html"><i class="ri-user-3-line icon"></i>Profile</a>
+        <a class="nav-item nav-link" href="index.html" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="header">Notifications</h1>
+    <!-- Temporary card 1 -->
+    <div class="row justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
+          <button type="button" class="btn btn-primary button">See Profile</button>
+        </div>
+      </div>
+    </div>
+    <!-- Temporary card 2 -->
+    <div class="row justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@boardgames44</a>.</p>
+          <button type="button" class="btn btn-primary button">See Profile</button>
+        </div>
+      </div>
+    </div>
+    <!-- Temporary card 3 -->
+    <div class="row justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text"><a class="link" href="">@boardgames44</a> has accepted your request for their <a class="link" href="">Connect 4</a>.</p>
+          <button type="button" class="btn btn-primary button">See Chat</button>
+        </div>
+      </div>
+    </div>
+    <!-- Temporary card 4 -->
+    <div class="row justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text"><a class="link" href="">@boardgames44</a> has selected your <a class="link" href="">Monopoly Board Game</a>. Confirm your selection.</p>
+          <button type="button" class="btn btn-primary button">See Profile</button>
+        </div>
+      </div>
+    </div>
+    <!-- Temporary card 5 -->
+    <div class="row justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text"><a class="link" href="">@toytrade123</a> has selected your <a class="link" href="">Monopoly Board Game</a>. Confirm your transaction.</p>
+          <button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#confirmTransactionModal">Confirm Transaction</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFIRM TRANSACTION MODAL -->
+    <div class="modal fade" id="confirmTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm your Transaction with <a class="link" href="">@toytrade123</a></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-5 modal-col">
+                <h5><a class="link" href="">@toytrade123</a>'s Offer</h5>
+                <p>Jigsaw Puzzle</p>
+              </div>
+              <div class="col-2 modal-col">
+                <i class="ri-arrow-left-right-line modal-icon"></i>
+              </div>
+              <div class="col-5 modal-col">
+                <h5>My Offer</h5>
+                <p>Hasbro Connect 4</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-success">Confirm</button>
+          <button type="button" class="btn btn-danger">Deny</button>
+          </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Temporary card 6 -->
+    <div class="row justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text">Your trade with <a class="link" href="">@boardgames44</a> is completed.</p>
+          <button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#seeTransactionModal">See Transaction</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEE TRANSACTION MODAL -->
+    <div class="modal fade" id="seeTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Transaction Receipt</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-5 modal-col">
+                <h5><a class="link" href="">@boardgames44</a></h5>
+                <p>Hasbro Candy Land Game</p>
+              </div>
+              <div class="col-2 modal-col">
+                <i class="ri-arrow-left-right-line modal-icon"></i>
+              </div>
+              <div class="col-5 modal-col">
+                <h5>Me</h5>
+                <p>Catan Board Game</p>
+              </div>
+            </div>
+            
+            <div class="row modal-transaction-completed">
+              <div class="col-12">
+                <i class="ri-checkbox-circle-line modal-checkmark-icon"></i><h5 class="modal-transaction-completed-text">Transaction completed.</h5>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</main>
