@@ -9,6 +9,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 import { NotificationsPageComponent } from './pages/notifications-page/notifications-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { AddToyPageComponent } from './pages/add-toy-page/add-toy-page.component';
 
 
 
@@ -22,7 +23,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     HomePageComponent,
     ChatPageComponent,
     NotificationsPageComponent,
-    ProfilePageComponent],
+    ProfilePageComponent,
+    AddToyPageComponent],
   imports: [
     CommonModule
   ],
