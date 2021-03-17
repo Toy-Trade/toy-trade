@@ -5,34 +5,6 @@
   height: 100vh;
 }
 
-.navbar {
-  background-color:#f7f7f7;
-}
-
-#navbar-logo {
-  margin-left: 10px;
-}
-
-.navbar-collapse {
-  margin-right: 20px;
-}
-
-.nav-item {
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
-.icon {
-  position: relative;
-  top: 4px;
-  font-size: 20px;
-  padding-right: 5px;
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color: black;
-}
-
 #landing-page-logo {
   width: 60%;
   display: block;
