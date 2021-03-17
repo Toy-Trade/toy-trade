@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" routerLink="/">
     <img id="navbar-logo" src="assets/img/logo.png" height="50" alt="Toy Trade Logo">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,9 +9,9 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/addtoy"><i class="ri-login-box-line icon"></i>Add Toy</a>
       <a class="nav-item nav-link" routerLink="/home"><i class="ri-login-box-line icon"></i>Home</a>
-      <a class="nav-item nav-link" href="#"><i class="ri-information-line icon"></i>About</a>
-      <a class="nav-item nav-link" href="addtoy.html"><i class="ri-login-box-line icon"></i>Login</a>
-      <a class="nav-item nav-link" href="index.html" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a>
+      <a class="nav-item nav-link" routerLink="/about"><i class="ri-information-line icon"></i>About</a>
+      <a class="nav-item nav-link" routerLink="/login"><i class="ri-login-box-line icon"></i>Login</a>
+      <a class="nav-item nav-link" routerLink="/" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a>
     </div>
   </div>
 </nav>
