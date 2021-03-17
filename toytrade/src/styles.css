@@ -146,7 +146,7 @@
 }
 
 
-/* Profile Page (profile.html) */
+/* PROFILE PAGE */
 
 #profile-page .container {
     margin-top: 5%;
@@ -256,4 +256,62 @@
 
 #profile-page .profile-description {
     padding-left: 50px;
+}
+
+/* NOTIFICATIONS PAGE */
+
+#notifications-page .container{
+  margin-top: 5%;
+  text-align: center;
+}
+
+#notifications-page .header {
+  font-size: 24px;
+  margin-bottom: 2%;
+}
+
+#notifications-page .card {
+  width: 50%;
+  border: 2px solid #aaaaaa;
+  border-radius: 12px;
+}
+
+#notifications-page .row {
+  text-align: left;
+  margin: 2% 0;
+}
+
+#notifications-page .button {
+  float: right;
+  border-radius: 10px;
+}
+
+#notifications-page .link {
+  color: #169cc6;
+  text-decoration: none;
+}
+
+#notifications-page .modal-icon {
+  font-size: 35px;
+}
+
+#notifications-page .modal-col {
+  text-align: center;
+}
+
+#notifications-page .modal-checkmark-icon {
+  font-size: 35px;
+  color: #5cb85c;
+}
+
+#notifications-page .modal-transaction-completed {
+  text-align: center;
+}
+
+#notifications-page .modal-transaction-completed-text {
+  position: relative;
+  /* top: 12px; */
+  bottom: 10px;
+  padding-left: 5px;
+  display: inline;
 }
