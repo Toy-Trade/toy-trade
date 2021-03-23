@@ -14,6 +14,7 @@
 .nav-item {
   margin-left: 8px;
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .icon {
@@ -25,6 +26,17 @@
 
 .navbar-light .navbar-nav .nav-link {
   color: black;
+}
+
+/* LANDING PAGE */
+#index-page .container {
+  text-align: center;
+}
+
+#index-page .google-icon {
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
 }
 
 /* HOMEPAGE */

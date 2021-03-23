@@ -7,11 +7,12 @@
   </button>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/addtoy"><i class="ri-login-box-line icon"></i>Add Toy</a>
-      <a class="nav-item nav-link" routerLink="/home"><i class="ri-login-box-line icon"></i>Home</a>
+      <!-- <a class="nav-item nav-link" routerLink="/addtoy"><i class="ri-login-box-line icon"></i>Add Toy</a> -->
+      <!-- <a class="nav-item nav-link" routerLink="/home"><i class="ri-login-box-line icon"></i>Home</a> -->
       <a class="nav-item nav-link" routerLink="/about"><i class="ri-information-line icon"></i>About</a>
-      <a class="nav-item nav-link" routerLink="/login"><i class="ri-login-box-line icon"></i>Login</a>
-      <a class="nav-item nav-link" routerLink="/" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a>
+      <!-- <a class="nav-item nav-link" routerLink="/login"><i class="ri-login-box-line icon"></i>Login</a> -->
+      <app-login-button [blueButton]="false"></app-login-button>
+      <!-- <a class="nav-item nav-link" routerLink="/" onclick="signOut()"><i class="ri-logout-box-line icon"></i>Logout</a> -->
     </div>
   </div>
 </nav>
