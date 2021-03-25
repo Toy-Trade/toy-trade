@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginButtonComponent implements OnInit {
   @Input() blueButton: boolean = false;
-  buttonText: String = "Login";
+  // buttonText: String = "Login";
 
   constructor(public auth: AngularFireAuth, private router: Router) {
   }
@@ -20,14 +20,14 @@ export class LoginButtonComponent implements OnInit {
     .then((result) => {
       console.log(result.user.displayName + " has successfully logged in!");
       this.router.navigateByUrl("/home");
-      this.buttonText = "Logout";
+      // this.buttonText = "Logout";
     }).catch((error) => {
       console.log(error);
     });
   }
 
   logout() {
-    this.buttonText = "Login";
+    // this.buttonText = "Login";
     this.auth.signOut();
     this.router.navigateByUrl("/");
   }

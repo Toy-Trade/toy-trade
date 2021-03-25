@@ -1,7 +1,6 @@
 <div *ngIf="blueButton; else navButton">
     <div *ngIf="auth.user | async as user; else showLogin">
-        <h1>Hello {{ user.displayName }}!</h1>
-        <button (click)="logout()">Logout</button>
+        <button (click)="logout()" class="btn btn-primary"><i class="google-icon ri-google-fill"></i>Logout</button>
     </div>
     <ng-template #showLogin>
         <button (click)="login()" class="btn btn-primary"><i class="google-icon ri-google-fill"></i>Login with Google</button>
@@ -9,10 +8,9 @@
 </div>
 <ng-template #navButton>
     <div *ngIf="auth.user | async as user; else showLogin">
-        <h1>Hello {{ user.displayName }}!</h1>
-        <button (click)="logout()">Logout</button>
+        <a class="nav-item nav-link" routerLink="/" (click)="logout()"><i class="ri-logout-box-line icon"></i>Logout {{ user.displayName }}</a>
     </div>
     <ng-template #showLogin>
-        <a (click)="login()" class="nav-item nav-link"><i class="ri-login-box-line icon"></i>{{buttonText}}</a>
+        <a (click)="login()" class="nav-item nav-link"><i class="ri-login-box-line icon"></i>Login</a>
     </ng-template>
 </ng-template>
