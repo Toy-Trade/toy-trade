@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 
 import { HttpService } from '../../core/services/http.service';
 
+import { first } from 'rxjs/operators';
+
 interface User {
   uid: String;
   email: String;
@@ -33,7 +35,6 @@ export class LoginButtonComponent implements OnInit {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then((result) => {
       console.log(result.user.displayName + " has successfully logged in!");
-      console.log(result.user);
       this.user = {
         uid: result.user.uid,
         email: result.user.email,
@@ -49,12 +50,25 @@ export class LoginButtonComponent implements OnInit {
     });
   }
 
+  isLoggedIn() {
+    return this.auth.authState.pipe(first()).toPromise();
+  }
+
+  async checkLoggedIn() {
+    const loggedIn = await this.isLoggedIn();
+
+    if (loggedIn) {
+      this.router.navigateByUrl("/home");
+    }
+  }
+
   logout() {
     this.auth.signOut();
     this.router.navigateByUrl("/");
   }
 
   ngOnInit(): void {
+    this.checkLoggedIn();
   }
 
 }

@@ -1,6 +1,6 @@
 <div *ngIf="blueButton; else navButton">
     <div *ngIf="auth.user | async as user; else showLogin">
-        <button (click)="logout()" class="btn btn-primary"><i class="google-icon ri-google-fill"></i>Logout</button>
+        <!-- <button (click)="logout()" class="btn btn-primary"><i class="google-icon ri-google-fill"></i>Logout</button> -->
     </div>
     <ng-template #showLogin>
         <button (click)="login()" class="btn btn-primary"><i class="google-icon ri-google-fill"></i>Login with Google</button>
