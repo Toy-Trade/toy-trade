@@ -3,6 +3,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import {Router} from '@angular/router';
 
+import { HttpService } from '../../core/services/http.service';
+
+interface User {
+  uid: String;
+  email: String;
+  displayName: String;
+  photoURL: String;
+}
+
 @Component({
   selector: 'app-login-button',
   templateUrl: './login-button.component.html',
@@ -10,24 +19,37 @@ import {Router} from '@angular/router';
 })
 export class LoginButtonComponent implements OnInit {
   @Input() blueButton: boolean = false;
-  // buttonText: String = "Login";
+  user: User = {
+    uid: "",
+    email: "",
+    displayName: "",
+    photoURL: ""
+  };
 
-  constructor(public auth: AngularFireAuth, private router: Router) {
+  constructor(public auth: AngularFireAuth, private router: Router, private httpService: HttpService) {
   }
   
   login() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then((result) => {
       console.log(result.user.displayName + " has successfully logged in!");
+      console.log(result.user);
+      this.user = {
+        uid: result.user.uid,
+        email: result.user.email,
+        displayName: result.user.displayName,
+        photoURL: result.user.photoURL
+      }
+      this.httpService.addUser(this.user).subscribe((data) => {
+        console.log(data);
+      });
       this.router.navigateByUrl("/home");
-      // this.buttonText = "Logout";
     }).catch((error) => {
       console.log(error);
     });
   }
 
   logout() {
-    // this.buttonText = "Login";
     this.auth.signOut();
     this.router.navigateByUrl("/");
   }
