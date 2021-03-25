@@ -14,23 +14,18 @@ export class LoginButtonComponent implements OnInit {
 
   constructor(public auth: AngularFireAuth, private router: Router) {
   }
+  
   login() {
-    // this.buttonText = "Logout";
-    // this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    // //TODO: Check for successful login
-    // this.router.navigateByUrl("/home");
-    return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
-  }
-  AuthLogin(provider) {
-    return this.auth.signInWithPopup(provider)
+    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then((result) => {
-        console.log('You have been successfully logged in!')
-        this.router.navigateByUrl("/home");
-        this.buttonText = "Logout";
+      console.log(result.user.displayName + " has successfully logged in!");
+      this.router.navigateByUrl("/home");
+      this.buttonText = "Logout";
     }).catch((error) => {
-        console.log(error)
-    })
+      console.log(error);
+    });
   }
+
   logout() {
     this.buttonText = "Login";
     this.auth.signOut();
