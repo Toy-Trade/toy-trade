@@ -1,6 +1,9 @@
 <div *ngIf="blueButton; else navButton">
     <div *ngIf="auth.user | async as user; else showLogin">
         <h1>Hello {{ user.displayName }}!</h1>
+        <!-- <p>Your user id is: {{user.uid}}</p>
+        <p>Your email is: {{user.email}}</p>
+        <img src="{{user.photoURL}}" alt=""> -->
         <button (click)="logout()">Logout</button>
     </div>
     <ng-template #showLogin>
@@ -10,6 +13,9 @@
 <ng-template #navButton>
     <div *ngIf="auth.user | async as user; else showLogin">
         <h1>Hello {{ user.displayName }}!</h1>
+        <!-- <p>Your user id is: {{user.uid}}</p>
+        <p>Your email is: {{user.email}}</p>
+        <img src="{{user.photoURL}}" alt=""> -->
         <button (click)="logout()">Logout</button>
     </div>
     <ng-template #showLogin>
