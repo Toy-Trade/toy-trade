@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 
 import { HttpService } from '../../core/services/http.service';
 
-import { first } from 'rxjs/operators';
+// import { first } from 'rxjs/operators';
 
 interface User {
   uid: String;
@@ -50,17 +50,17 @@ export class LoginButtonComponent implements OnInit {
     });
   }
 
-  isLoggedIn() {
-    return this.auth.authState.pipe(first()).toPromise();
-  }
+  // isLoggedIn() {
+  //   return this.auth.authState.pipe(first()).toPromise();
+  // }
 
-  async checkLoggedIn() {
-    const loggedIn = await this.isLoggedIn();
+  // async checkLoggedIn() {
+  //   const loggedIn = await this.isLoggedIn();
 
-    if (loggedIn) {
-      this.router.navigateByUrl("/home");
-    }
-  }
+  //   if (loggedIn) {
+  //     this.router.navigateByUrl("/home");
+  //   }
+  // }
 
   logout() {
     this.auth.signOut();
@@ -68,7 +68,7 @@ export class LoginButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checkLoggedIn();
+    // this.checkLoggedIn();
   }
 
 }
