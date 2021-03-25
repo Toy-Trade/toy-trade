@@ -4,6 +4,7 @@ import firebase from 'firebase/app';
 import {Router} from '@angular/router';
 
 import { HttpService } from '../../core/services/http.service';
+import { AuthService } from '../../core/services/auth.service';
 
 // import { first } from 'rxjs/operators';
 
@@ -28,7 +29,7 @@ export class LoginButtonComponent implements OnInit {
     photoURL: ""
   };
 
-  constructor(public auth: AngularFireAuth, private router: Router, private httpService: HttpService) {
+  constructor(public auth: AngularFireAuth, private router: Router, private httpService: HttpService, public uauth: AuthService) {
   }
   
   login() {
@@ -44,31 +45,19 @@ export class LoginButtonComponent implements OnInit {
       this.httpService.addUser(this.user).subscribe((data) => {
         console.log(data);
       });
-      this.router.navigateByUrl("/home");
+      this.uauth.setUser(this.user);
+      this.router.navigateByUrl("/home", { skipLocationChange: true });
     }).catch((error) => {
       console.log(error);
     });
   }
 
-  // isLoggedIn() {
-  //   return this.auth.authState.pipe(first()).toPromise();
-  // }
-
-  // async checkLoggedIn() {
-  //   const loggedIn = await this.isLoggedIn();
-
-  //   if (loggedIn) {
-  //     this.router.navigateByUrl("/home");
-  //   }
-  // }
-
   logout() {
     this.auth.signOut();
-    this.router.navigateByUrl("/");
+    this.router.navigateByUrl("/", { skipLocationChange: true });
   }
 
   ngOnInit(): void {
-    // this.checkLoggedIn();
   }
 
 }

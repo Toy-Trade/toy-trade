@@ -8,7 +8,7 @@
 </div>
 <ng-template #navButton>
     <div *ngIf="auth.user | async as user; else showLogin">
-        <a class="nav-item nav-link" routerLink="/" (click)="logout()"><i class="ri-logout-box-line icon"></i>Logout {{ user.displayName }}</a>
+        <a class="nav-item nav-link" (click)="logout()"><i class="ri-logout-box-line icon"></i>Logout {{ user.displayName }}</a>
     </div>
     <ng-template #showLogin>
         <a (click)="login()" class="nav-item nav-link"><i class="ri-login-box-line icon"></i>Login</a>
