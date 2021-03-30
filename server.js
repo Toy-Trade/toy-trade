@@ -40,7 +40,7 @@ app.post('/api/v1/users/:uid', (req, res) => {
         console.log("Found the following duplicate");
         console.log(docs);
       }
-    })
+    });
   });
 });
 
