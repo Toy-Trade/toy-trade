@@ -30,10 +30,17 @@ app.post('/api/v1/users/:uid', (req, res) => {
     // Get the Users collection
     const collection = db.collection('Users');
     
-    // Get some documents from the Users collection
-    collection.insertOne(req.body, function(err, docs) {
-      console.log("Inserted one user")
-    });
+    collection.find({uid: req.body.uid}).toArray(function(err, docs) {
+      if (docs.length == 0) {
+        // Get some documents from the Users collection
+        collection.insertOne(req.body, function(err, docs) {
+          console.log("Inserted one user");
+        });
+      } else {
+        console.log("Found the following duplicate");
+        console.log(docs);
+      }
+    })
   });
 });
 
