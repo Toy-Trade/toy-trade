@@ -55,7 +55,9 @@
                   <input type="text" class="form-control" id="description" formControlName="description" placeholder="Describe the toy">
               </div>
               <div class="form-group col-sm-6 col-12">
-                  <button class="btn btn-light button"><span class="button-content"><i class="ri-upload-2-line icon"></i>Upload Image</span></button>
+                  <label for="toy-image-input">Upload Image</label>
+                  <input type="file" class="form-control-file" id="toy-image-input" (change)="changeImage($event)">
+                  <!-- <button class="btn btn-light button"><span class="button-content"><i class="ri-upload-2-line icon"></i>Upload Image</span></button> -->
               </div>
               <div class="col-sm-6 col-12" style="margin-top: 12%;">
                   <button type="submit" class="btn btn-primary button" (click)="onSubmit()">Submit</button>

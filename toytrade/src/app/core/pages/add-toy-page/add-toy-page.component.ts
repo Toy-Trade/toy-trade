@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-toy-page',
@@ -19,7 +20,7 @@ export class AddToyPageComponent implements OnInit {
 
   addToyForm: FormGroup;
 
-  constructor(public uauth: AuthService, private fb: FormBuilder, public httpService: HttpService) { }
+  constructor(public uauth: AuthService, private fb: FormBuilder, public httpService: HttpService, private router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -34,13 +35,9 @@ export class AddToyPageComponent implements OnInit {
       estimatedValue: ['', [Validators.required]],
       ageRange: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      userId: [this.uauth.user.uid]
+      userId: [this.uauth.user.uid],
+      imageUrl: ['', [Validators.required]]
     });
-  }
-
-  // Reset any FormGroup
-  resetForm(form: FormGroup) {
-    form.reset();
   }
 
   // Called when user makes a change to the dropdown
@@ -68,12 +65,19 @@ export class AddToyPageComponent implements OnInit {
     console.log(ageRangeSelected);
   }
 
+  changeImage(event: any): void {
+    let toyImage = event.target.files.item(0);
+    console.log(toyImage);
+    // this.addToyForm.controls['imageUrl'].setValue(imageUrlSelected);
+  }
+
   onSubmit(): void {
     let toyToAdd = this.addToyForm.getRawValue();
     console.log("Get Raw Value of addToyForm:");
     console.log(toyToAdd);
-    this.httpService.addToy(toyToAdd).subscribe((data) => {
-      console.log(data);
-    });
+    // this.httpService.addToy(toyToAdd).subscribe((data) => {
+    //   console.log(data);
+    // });
+    // this.router.navigateByUrl("/home", { skipLocationChange: true });
   }
 }

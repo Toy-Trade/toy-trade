@@ -2,11 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import {Router} from '@angular/router';
-
 import { HttpService } from '../../core/services/http.service';
 import { AuthService } from '../../core/services/auth.service';
-
-// import { first } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 interface User {
   uid: String;
@@ -30,6 +28,20 @@ export class LoginButtonComponent implements OnInit {
   };
 
   constructor(public auth: AngularFireAuth, private router: Router, private httpService: HttpService, public uauth: AuthService) {
+  }
+
+  isLoggedIn() {
+    return this.auth.authState.pipe(first()).toPromise();
+  }
+
+  async checkLoggedIn() {
+    const loggedIn = await this.isLoggedIn();
+
+    if (loggedIn) {
+      if (this.router.url == "/") {
+        this.router.navigateByUrl("/home", { skipLocationChange: true });
+      }
+    }
   }
   
   login() {
@@ -58,6 +70,6 @@ export class LoginButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.checkLoggedIn();
   }
-
 }
