@@ -22,17 +22,34 @@ app.get('/', (req, res) => {
 
 // Add user to database
 app.post('/api/v1/users/:uid', (req, res) => {
-  console.log("Successful post")
+  console.log("Successful Add User POST Request")
   // Use connect method to connect to the server
   client.connect(function(err) {
     console.log('Connected successfully to server');
     const db = client.db(dbName);
-    // Get the Parks collection
+    // Get the Users collection
     const collection = db.collection('Users');
     
-    // Get some documents from the Parks collection
+    // Get some documents from the Users collection
     collection.insertOne(req.body, function(err, docs) {
-      console.log("Inserted one document")
+      console.log("Inserted one user")
+    });
+  });
+});
+
+// Add toy to database
+app.post('/api/v1/toys', (req, res) => {
+  console.log("Successful Add Toy POST Request")
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Toys');
+    
+    // Get some documents from the Toys collection
+    collection.insertOne(req.body, function(err, docs) {
+      console.log("Inserted one toy")
     });
   });
 });

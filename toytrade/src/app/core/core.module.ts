@@ -12,8 +12,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { AddToyPageComponent } from './pages/add-toy-page/add-toy-page.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { SharedModule } from '../shared/shared.module';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,11 +25,13 @@ import { SharedModule } from '../shared/shared.module';
     ChatPageComponent,
     NotificationsPageComponent,
     ProfilePageComponent,
-    AddToyPageComponent],
+    AddToyPageComponent
+  ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,

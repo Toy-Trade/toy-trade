@@ -4,43 +4,61 @@
 
   <div class="container">
       <h1 class="header">+ Add Toy</h1>
-      <form action="javascript:void(0)">
+      <form [formGroup]="addToyForm">
           <div class="form-row form">
               <div class="form-group col-sm-6 col-12">
                   <label for="title">Title</label>
-                  <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Title of your listing">
+                  <input type="text" class="form-control" id="title" aria-describedby="emailHelp" formControlName="title" placeholder="Title of your listing">
               </div>
               <div class="form-group col-sm-6 col-12">
                   <label for="estimated-value">Estimated Value</label>
-                  <input type="text" class="form-control" id="estimated-value" placeholder="Estimated value">
+                  <input type="text" class="form-control" id="estimated-value" formControlName="estimatedValue" placeholder="Estimated value">
               </div>
               <div class="form-group col-sm-6 col-12">
                   <label for="brand">Brand</label>
-                  <input type="text" class="form-control" id="brand" placeholder="Brand of toy">
+                  <select class="form-control" id="brand-select" name="brand-select" (change)="changeBrand($event)">
+                    <option value="holder" selected disabled>Select a Brand</option>
+                    <option value="{{brand}}" *ngFor="let brand of brands">
+                      {{brand}}
+                    </option>
+                </select>
+              </div>
+              <div class="form-group col-sm-6 col-12">
+                <label for="condition">Category</label>
+                  <select class="form-control" id="category-select" name="category-select" (change)="changeCategory($event)">
+                      <option value="holder" selected disabled>Select a Category</option>
+                      <option value="{{category}}" *ngFor="let category of categories">
+                        {{category}}
+                      </option>
+                  </select>
               </div>
               <div class="form-group col-sm-6 col-12">
                   <label for="age-range">Age Range</label>
-                  <input type="text" class="form-control" id="age-range" placeholder="Age range">
+                  <select class="form-control" id="age-range-select" name="age-range-select" (change)="changeAgeRange($event)">
+                    <option value="holder" selected disabled>Select a Age Range</option>
+                    <option value="{{ageRange}}" *ngFor="let ageRange of ageRanges">
+                      {{ageRange}}
+                    </option>
+                  </select>
               </div>
               <div class="form-group col-sm-6 col-12">
                   <label for="condition">Condition</label>
-                      <select class="form-control" id="cars" name="cars">
-                          <option value="holder" selected disabled>Select a condition</option>
-                          <option value="new">New</option>
-                          <option value="like-new">Used: Like New</option>
-                          <option value="very-good">Used: Very Good</option>
-                          <option value="good">Used: Good</option>
-                      </select>
+                    <select class="form-control" id="condition-select" name="condition-select" (change)="changeCondition($event)">
+                        <option value="holder" selected disabled>Select a condition</option>
+                        <option value="{{condition}}" *ngFor="let condition of conditions">
+                          {{condition}}
+                        </option>
+                    </select>
               </div>
               <div class="form-group col-sm-6 col-12">
                   <label for="description">Describe the toy</label>
-                  <input type="text" class="form-control" id="description" placeholder="Describe the toy">
+                  <input type="text" class="form-control" id="description" formControlName="description" placeholder="Describe the toy">
               </div>
               <div class="form-group col-sm-6 col-12">
                   <button class="btn btn-light button"><span class="button-content"><i class="ri-upload-2-line icon"></i>Upload Image</span></button>
               </div>
               <div class="col-sm-6 col-12" style="margin-top: 12%;">
-                  <button type="submit" class="btn btn-primary button" onclick="addToy()">Submit</button>
+                  <button type="submit" class="btn btn-primary button" (click)="onSubmit()">Submit</button>
               </div>
           </div>
       </form>

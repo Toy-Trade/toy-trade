@@ -13,4 +13,8 @@ export class HttpService {
   public addUser(user: { uid: String, email: String, displayName: String, photoURL: String }) {
     return this.httpClient.post(this.apiserver + "/users/" + user.uid, user);
   }
+
+  public addToy(toyToAdd: Object) {
+    return this.httpClient.post(this.apiserver + "/toys", toyToAdd);
+  }
 }
