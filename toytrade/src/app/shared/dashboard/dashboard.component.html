@@ -1,20 +1,24 @@
 <!-- Temporary card 1 -->
 <div class="row justify-content">
+  <div *ngFor="let toy of toys" class="col-lg-6 col-md-6 col-sm-12">
+    <div class="card" data-toggle="modal" data-target="#toyInfoModal">
+      <div class="card-header">
+        <img class="profile-icon" src="assets/svg/profileIcon.svg" alt="Profile Icon">
+        <a class="link user-link" href="">{{toy.username}}</a>
+      </div>
+      <div class="card-body">
+        <div class="card-row row container">
+          <div class="card-col col-8">
+            <img class="toy-image" src="assets/img/placeholders/legoStarWars.jpg" alt="{{toy.title}}">
+          </div>
+          <div class="card-col col-4">
+            <h5 class="card-title">{{toy.title}}</h5>
+            <button type="button" class="btn btn-primary request-button">Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="col-lg-6 col-md-6 col-sm-12">
-    <app-toy-card></app-toy-card>
-  </div>
-
-  <div class="col-lg-6 col-md-6 col-sm-12">
-    <app-toy-card></app-toy-card>
-  </div>
-
-  <div class="col-lg-6 col-md-6 col-sm-12">
-    <app-toy-card></app-toy-card>
-  </div>
-
-  <div class="col-lg-6 col-md-6 col-sm-12">
-    <app-toy-card></app-toy-card>
   </div>
 
   <!-- TOY INFO MODAL -->

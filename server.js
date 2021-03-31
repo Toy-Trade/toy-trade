@@ -20,6 +20,44 @@ app.get('/', (req, res) => {
   res.send();
 });
 
+// Get data from Toys collection
+app.get('/api/v1/toys', (req, res) => {
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Toys');
+    
+    // Get some documents from the Toys collection
+    collection.find().toArray(function(err, docs) {
+      console.log('Found the following records');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
+});
+
+// Get data from Users collection
+app.get('/api/v1/users/:userId', (req, res) => {
+  let userId = req.params.userId;
+  console.log("userId: " + userId);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Users collection
+    const collection = db.collection('Users');
+    
+    // Get some documents from the Toys collection
+    collection.find({uid:userId}).toArray(function(err, docs) {
+      console.log('Found the following records');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
+});
+
 // Add user to database
 app.post('/api/v1/users/:uid', (req, res) => {
   console.log("Successful Add User POST Request")
@@ -29,7 +67,6 @@ app.post('/api/v1/users/:uid', (req, res) => {
     const db = client.db(dbName);
     // Get the Users collection
     const collection = db.collection('Users');
-    
     collection.find({uid: req.body.uid}).toArray(function(err, docs) {
       if (docs.length == 0) {
         // Get some documents from the Users collection

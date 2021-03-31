@@ -17,4 +17,12 @@ export class HttpService {
   public addToy(toyToAdd: Object) {
     return this.httpClient.post(this.apiserver + "/toys", toyToAdd);
   }
+
+  public getToys() {
+    return this.httpClient.get(this.apiserver + "/toys");
+  }
+
+  public getUser(userId: string) {
+    return this.httpClient.get(this.apiserver + "/users/" + userId);
+  }
 }
