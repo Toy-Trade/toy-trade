@@ -22,6 +22,9 @@ export class AddToyPageComponent implements OnInit {
 
   toyObjectId: string = "";
 
+  displayAddToyForm: boolean = true;
+  displayUploadImageForm: boolean = false;
+
   constructor(public uauth: AuthService, private fb: FormBuilder, public httpService: HttpService, private router: Router) { }
 
   ngOnInit(): void {
@@ -104,6 +107,9 @@ export class AddToyPageComponent implements OnInit {
     this.httpService.addToy(toyToAdd).subscribe((data) => {
       this.toyObjectId = data.toString();
     });
+
+    this.displayAddToyForm = false;
+    this.displayUploadImageForm = true;
     // this.router.navigateByUrl("/home", { skipLocationChange: true });
   }
 }

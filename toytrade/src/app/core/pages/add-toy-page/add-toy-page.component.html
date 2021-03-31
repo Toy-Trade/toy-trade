@@ -4,7 +4,7 @@
 
   <div class="container">
       <h1 class="header">+ Add Toy</h1>
-      <form [formGroup]="addToyForm">
+      <form *ngIf="displayAddToyForm" [formGroup]="addToyForm">
           <div class="form-row form">
               <div class="form-group col-sm-6 col-12">
                   <label for="title">Title</label>
@@ -54,25 +54,22 @@
                   <label for="description">Describe the toy</label>
                   <input type="text" class="form-control" id="description" formControlName="description" placeholder="Describe the toy">
               </div>
-              <div class="form-group col-sm-6 col-12">
-                  <label for="toy-image-input">Upload Image</label>
-                  <input type="file" class="form-control-file" id="toy-image-input" name="photo" (change)="changeImage($event)">
-                  <!-- <button class="btn btn-light button"><span class="button-content"><i class="ri-upload-2-line icon"></i>Upload Image</span></button> -->
-              </div>
-              <div class="col-sm-6 col-12" style="margin-top: 12%;">
+              <div class="col-sm-6 col-12">
+                  <label for="submit" style="visibility: hidden;">Ready to submit?</label>
                   <button type="submit" class="btn btn-primary button" (click)="onSubmit()">Submit</button>
               </div>
           </div>
       </form>
 
-      <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="toy-image-input">Upload Image</label>
-        <input type="text" value="{{toyObjectId}}" name="text_value">
-        <input type="file" accept="image/*" name="objectid" originalname="objectid" class="form-control-file" id="toy-image-input">
-        <input type="submit" value="upload">
+      <form *ngIf="displayUploadImageForm" action="/upload" method="post" enctype="multipart/form-data">
+        <div class="form-row form justify-content-center">
+          <div class="form-group col-sm-6 col-12">
+            <label for="toy-image-input">Upload Image</label>
+            <input type="text" value="{{toyObjectId}}" name="text_value" style="visibility: hidden;">
+            <input class="form-control" type="file" accept="image/*" name="objectid" originalname="objectid" class="form-control-file" id="toy-image-input">
+            <input class="btn btn-primary button upload-button" type="submit" value="Upload">
+          </div>
+        </div>
       </form>
-
-      <!-- https://docs.github.com/en/github/administering-a-repository/changing-the-default-branch -->
-
   </div>
 </main>

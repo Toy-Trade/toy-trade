@@ -157,6 +157,14 @@
   padding: 0px;
 }
 
+#home-page .profile-icon {
+  border-radius: 50%;
+}
+
+/* ADD TOY PAGE */
+#addtoy-page .upload-button {
+  margin-top: 5%;
+}
 
 /* PROFILE PAGE */
 
