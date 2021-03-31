@@ -11,6 +11,7 @@ interface Toy {
   ageRange: string;
   description: string;
   username: string;
+  profileUrl: string;
 }
 
 @Component({
@@ -29,8 +30,9 @@ export class DashboardComponent implements OnInit {
       for (let entry of Object.entries(data)) {
         this.httpService.getUser(entry[1].userId).subscribe((data) => {
           let displayName = Object.entries(data)[0][1].displayName;
+          let userImage = Object.entries(data)[0][1].photoURL;
           this.toys.push({
-            objectId: "toy-" + entry[1]._id,
+            objectId: entry[1]._id,
             title: entry[1].title,
             brand: entry[1].brand,
             category: entry[1].category,
@@ -38,7 +40,8 @@ export class DashboardComponent implements OnInit {
             estimatedValue: entry[1].estimatedValue,
             ageRange: entry[1].ageRange,
             description: entry[1].description,
-            username: displayName
+            username: displayName,
+            profileUrl: userImage
           });
         });
       }

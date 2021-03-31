@@ -37,8 +37,7 @@ export class AddToyPageComponent implements OnInit {
       estimatedValue: ['', [Validators.required]],
       ageRange: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      userId: [this.uauth.user.uid],
-      imageUrl: ['', [Validators.required]]
+      userId: [this.uauth.user.uid]
     });
   }
 
