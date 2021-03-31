@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../core/services/http.service';
 
 interface Toy {
+  objectId: string;
   title: string;
   brand: string;
   category: string;
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit {
         this.httpService.getUser(entry[1].userId).subscribe((data) => {
           let displayName = Object.entries(data)[0][1].displayName;
           this.toys.push({
+            objectId: "toy-" + entry[1]._id,
             title: entry[1].title,
             brand: entry[1].brand,
             category: entry[1].category,
