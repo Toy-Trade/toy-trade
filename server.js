@@ -5,7 +5,6 @@ const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
 
 const multer = require('multer');
-const body_parser = require('body-parser');
 
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -22,8 +21,6 @@ app.use(express.static(path.join(__dirname, './toytrade/dist/toytrade')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-app.use(body_parser.json());
 
 // Make a connection to MongoDB
 const url = 'mongodb+srv://dbUser:OrgUser78@cluster0.k5fln.mongodb.net/ToyTrade?retryWrites=true&w=majority';
@@ -110,6 +107,7 @@ app.post('/api/v1/toys', (req, res) => {
     // Get some documents from the Toys collection
     collection.insertOne(req.body, function(err, docs) {
       console.log("Inserted one toy")
+      res.json(docs.ops[0]._id);
     });
   });
 });

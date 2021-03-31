@@ -20,6 +20,8 @@ export class AddToyPageComponent implements OnInit {
 
   addToyForm: FormGroup;
 
+  toyObjectId: string = "";
+
   constructor(public uauth: AuthService, private fb: FormBuilder, public httpService: HttpService, private router: Router) { }
 
   ngOnInit(): void {
@@ -101,7 +103,7 @@ export class AddToyPageComponent implements OnInit {
     console.log("Get Raw Value of addToyForm:");
     console.log(toyToAdd);
     this.httpService.addToy(toyToAdd).subscribe((data) => {
-      console.log(data);
+      this.toyObjectId = data.toString();
     });
     // this.router.navigateByUrl("/home", { skipLocationChange: true });
   }

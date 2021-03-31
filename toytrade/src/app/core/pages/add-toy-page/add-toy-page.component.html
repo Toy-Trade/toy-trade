@@ -67,7 +67,7 @@
 
       <form action="/upload" method="post" enctype="multipart/form-data">
         <label for="toy-image-input">Upload Image</label>
-        <input type="text" value="jody" name="text_value">
+        <input type="text" value="{{toyObjectId}}" name="text_value">
         <input type="file" accept="image/*" name="objectid" originalname="objectid" class="form-control-file" id="toy-image-input">
         <input type="submit" value="upload">
       </form>
