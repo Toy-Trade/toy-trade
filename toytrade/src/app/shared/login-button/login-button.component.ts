@@ -41,9 +41,16 @@ export class LoginButtonComponent implements OnInit {
       if (this.router.url == "/") {
         this.router.navigateByUrl("/home", { skipLocationChange: true });
       }
+      this.user = {
+        uid: loggedIn.uid,
+        email: loggedIn.email,
+        displayName: loggedIn.displayName,
+        photoURL: loggedIn.photoURL
+      }
+      this.uauth.setUser(this.user);
     }
   }
-  
+
   login() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then((result) => {
