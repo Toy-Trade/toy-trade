@@ -162,6 +162,11 @@
 }
 
 /* ADD TOY PAGE */
+#addtoy-page .header{
+  margin-top: 5%;
+  text-align: center;
+}
+
 #addtoy-page .upload-button {
   margin-top: 5%;
 }
