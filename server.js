@@ -4,10 +4,26 @@ const port = 3000;
 const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
 
+const multer = require('multer');
+const body_parser = require('body-parser');
+
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, __dirname + '/toytrade/src/assets/uploads') /* <-- must create this folder manually! */
+  },
+  filename: function(req, file, cb) {
+    // cb(null, file.originalname) /* <-- could make another name too */
+    cb(null, req.body.text_value + ".jpg")
+  }
+})
+const upload = multer({ storage: storage });
+
 app.use(express.static(path.join(__dirname, './toytrade/dist/toytrade')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(body_parser.json());
 
 // Make a connection to MongoDB
 const url = 'mongodb+srv://dbUser:OrgUser78@cluster0.k5fln.mongodb.net/ToyTrade?retryWrites=true&w=majority';
@@ -96,6 +112,17 @@ app.post('/api/v1/toys', (req, res) => {
       console.log("Inserted one toy")
     });
   });
+});
+
+// Upload toy image
+app.post('/upload', upload.single('objectid'), (req, res) => {
+  if(req.file) {
+    res.json(req.file); /* <-- for debugging */
+    // req.body to get hidden input
+    // See if you can edit the file's name in the form in frontend
+    console.log(req.body.text_value)
+  }
+  else throw 'error';
 });
 
 app.listen(port, () => {

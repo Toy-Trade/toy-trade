@@ -100,9 +100,9 @@ export class AddToyPageComponent implements OnInit {
     let toyToAdd = this.addToyForm.getRawValue();
     console.log("Get Raw Value of addToyForm:");
     console.log(toyToAdd);
-    // this.httpService.addToy(toyToAdd).subscribe((data) => {
-    //   console.log(data);
-    // });
+    this.httpService.addToy(toyToAdd).subscribe((data) => {
+      console.log(data);
+    });
     // this.router.navigateByUrl("/home", { skipLocationChange: true });
   }
 }
