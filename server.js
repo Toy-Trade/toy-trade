@@ -115,6 +115,7 @@ app.post('/api/v1/toys', (req, res) => {
 // Upload toy image
 app.post('/upload', upload.single('objectid'), (req, res) => {
   if(req.file) {
+    res.redirect("http://localhost:3000");
     res.json(req.file); /* <-- for debugging */
     // req.body to get hidden input
     // See if you can edit the file's name in the form in frontend
