@@ -61,11 +61,20 @@ export class LoginButtonComponent implements OnInit {
         displayName: result.user.displayName,
         photoURL: result.user.photoURL
       }
+      let inserted = false;
       this.httpService.addUser(this.user).subscribe((data) => {
         console.log(data);
+        console.log("inserted: " + data["inserted"]);
+        inserted = data["inserted"];
+        if (inserted) {
+          this.uauth.setUser(this.user);
+          this.router.navigateByUrl("/newuser", {skipLocationChange: true});
+        }
       });
-      this.uauth.setUser(this.user);
-      this.router.navigateByUrl("/home", { skipLocationChange: true });
+      if (!inserted) {
+        this.uauth.setUser(this.user);
+        this.router.navigateByUrl("/home", { skipLocationChange: true });
+      }
     }).catch((error) => {
       console.log(error);
     });

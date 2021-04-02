@@ -85,10 +85,12 @@ app.post('/api/v1/users/:uid', (req, res) => {
         // Get some documents from the Users collection
         collection.insertOne(req.body, function(err, docs) {
           console.log("Inserted one user");
+          res.json({inserted: true});
         });
       } else {
         console.log("Found the following duplicate");
         console.log(docs);
+        res.json({inserted: false});
       }
     });
   });
