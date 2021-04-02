@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-new-user-page',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-user-page.component.css']
 })
 export class NewUserPageComponent implements OnInit {
+  addNewUserForm: FormGroup;
 
-  constructor() { }
+  constructor(public uauth: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initializeForm();
   }
 
+  initializeForm(): void {
+    this.addNewUserForm = this.fb.group({
+      userId: [this.uauth.user.uid],
+      username: ['', [Validators.required]],
+      zipcode: ['', [Validators.required]],
+      bio: ['', [Validators.required]]
+    });
+  }
+
+  onSubmit(): void {
+    alert("clicked submit!");
+    let userToAdd = this.addNewUserForm.getRawValue();
+    console.log(userToAdd);
+  }
 }
