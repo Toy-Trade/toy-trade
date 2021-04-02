@@ -11,6 +11,9 @@ interface User {
   email: String;
   displayName: String;
   photoURL: String;
+  username: String;
+  zipcode: String;
+  bio: String;
 }
 
 @Component({
@@ -24,7 +27,10 @@ export class LoginButtonComponent implements OnInit {
     uid: "",
     email: "",
     displayName: "",
-    photoURL: ""
+    photoURL: "",
+    username: "",
+    zipcode: "",
+    bio: ""
   };
 
   constructor(public auth: AngularFireAuth, private router: Router, private httpService: HttpService, public uauth: AuthService) {
@@ -41,13 +47,13 @@ export class LoginButtonComponent implements OnInit {
       if (this.router.url == "/") {
         this.router.navigateByUrl("/home", { skipLocationChange: true });
       }
-      this.user = {
+      let currentUser = {
         uid: loggedIn.uid,
         email: loggedIn.email,
         displayName: loggedIn.displayName,
         photoURL: loggedIn.photoURL
       }
-      this.uauth.setUser(this.user);
+      this.uauth.setUser(currentUser);
     }
   }
 
@@ -59,7 +65,10 @@ export class LoginButtonComponent implements OnInit {
         uid: result.user.uid,
         email: result.user.email,
         displayName: result.user.displayName,
-        photoURL: result.user.photoURL
+        photoURL: result.user.photoURL,
+        username: "",
+        zipcode: "",
+        bio: ""
       }
       let inserted = false;
       this.httpService.addUser(this.user).subscribe((data) => {

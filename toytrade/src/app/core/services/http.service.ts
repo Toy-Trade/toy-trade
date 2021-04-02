@@ -25,4 +25,8 @@ export class HttpService {
   public getUser(userId: string) {
     return this.httpClient.get(this.apiserver + "/users/" + userId);
   }
+
+  public addNewUser(newUser: { userId: String, username: String, zipcode: String, bio: String }) {
+    return this.httpClient.put(this.apiserver + "/users/" + newUser.userId, newUser);
+  }
 }

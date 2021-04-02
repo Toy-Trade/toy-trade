@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { HttpService } from '../../services/http.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-user-page',
@@ -10,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class NewUserPageComponent implements OnInit {
   addNewUserForm: FormGroup;
 
-  constructor(public uauth: AuthService, private fb: FormBuilder) { }
+  constructor(public uauth: AuthService, private fb: FormBuilder, public httpService: HttpService, private router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -26,8 +28,11 @@ export class NewUserPageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    alert("clicked submit!");
     let userToAdd = this.addNewUserForm.getRawValue();
     console.log(userToAdd);
+    this.httpService.addNewUser(userToAdd).subscribe((data) => {
+      console.log(data);
+    });
+    this.router.navigateByUrl("/profile", { skipLocationChange: true });
   }
 }

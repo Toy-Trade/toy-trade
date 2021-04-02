@@ -96,6 +96,27 @@ app.post('/api/v1/users/:uid', (req, res) => {
   });
 });
 
+// Add new user information to the database
+app.put('/api/v1/users/:uid', (req, res) => {
+  let myUid = req.params.uid;
+  console.log("Successful Add New User PUT Request")
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Users collection
+    const collection = db.collection('Users');
+    collection.find({uid: req.body.uid}).toArray(function(err, docs) {
+      
+    });
+
+    collection.updateOne (
+      { uid: myUid },
+      { $set: { username: req.body.username, zipcode: req.body.zipcode, bio: req.body.bio } }
+    )
+  });
+});
+
 // Add toy to database
 app.post('/api/v1/toys', (req, res) => {
   console.log("Successful Add Toy POST Request")
