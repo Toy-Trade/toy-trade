@@ -22,7 +22,7 @@ export class HttpService {
     return this.httpClient.get(this.apiserver + "/toys");
   }
 
-  public getUser(userId: string) {
+  public getUser(userId: String) {
     return this.httpClient.get(this.apiserver + "/users/" + userId);
   }
 
