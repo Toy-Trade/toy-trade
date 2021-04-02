@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     this.httpService.getToys().subscribe((data) => {
       for (let entry of Object.entries(data)) {
         this.httpService.getUser(entry[1].userId).subscribe((data) => {
-          let displayName = Object.entries(data)[0][1].displayName;
+          let myUsername = Object.entries(data)[0][1].username;
           let userImage = Object.entries(data)[0][1].photoURL;
           this.toys.push({
             objectId: entry[1]._id,
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
             estimatedValue: entry[1].estimatedValue,
             ageRange: entry[1].ageRange,
             description: entry[1].description,
-            username: displayName,
+            username: myUsername,
             profileUrl: userImage
           });
         });
