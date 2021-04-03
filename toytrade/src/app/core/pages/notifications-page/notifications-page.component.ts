@@ -43,14 +43,23 @@ export class NotificationsPageComponent implements OnInit {
               receiverId: entry[1].receiverId,
               senderUsername: mysenderName,
               transactionId: entry[1].transactionId,
-              date: entry[1].date
+              date: new Date(entry[1].date)
             });
           });
         });
-        
-        
       }
+
+      // this.notifications.sort(function(a, b) {
+      //   if (a.date < b.date) {
+      //     console.log("hi")
+      //     return -1;
+      //   } else if (a.date > b.date) {
+      //     console.log("hi")
+      //     return 1;
+      //   } else {
+      //     return 0;
+      //   }
+      // });
     });
   }
-
 }
