@@ -165,6 +165,24 @@ app.post('/upload', upload.single('objectid'), (req, res) => {
   else throw 'error';
 });
 
+//Toy notification request
+app.post('/api/v1/notifications', (req, res) => {
+  console.log("Successful Request Toy POST Request")
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Notifications collection
+    const collection = db.collection('Notifications');
+    
+    // Get some documents from the Notifications collection
+    collection.insertOne(req.body, function(err, docs) {
+      console.log("Inserted one request notification")
+      res.json(docs.ops[0]._id);
+    });
+  });
+});
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });

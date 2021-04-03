@@ -14,7 +14,7 @@
           </div>
           <div class="card-col col-4">
             <h5 class="card-title">{{toy.title}}</h5>
-            <button type="button" class="btn btn-primary request-button">Request</button>
+            <button type="button" class="btn btn-primary request-button">More Info</button>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Request</button>
+            <button type="button" class="btn btn-primary" (click)="requestToy(toy)">Request</button>
           </div>
         </div>
       </div>

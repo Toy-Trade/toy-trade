@@ -33,4 +33,8 @@ export class HttpService {
   public addNewUser(newUser: { userId: string, username: string, zipcode: string, bio: string }) {
     return this.httpClient.put(this.apiserver + "/users/" + newUser.userId, newUser);
   }
+
+  public requestToy(request: Object) {
+    return this.httpClient.post(this.apiserver + "/notifications", request);
+  }
 }

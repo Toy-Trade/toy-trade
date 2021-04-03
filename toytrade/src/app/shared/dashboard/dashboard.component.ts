@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../core/services/http.service';
+import { AuthService } from '../../core/services/auth.service';
 
 interface Toy {
   objectId: string;
@@ -23,7 +24,7 @@ interface Toy {
 export class DashboardComponent implements OnInit {
   toys: Toy[] = [];
 
-  constructor(public httpService : HttpService) { }
+  constructor(public httpService : HttpService, public uauth: AuthService) { }
 
   ngOnInit(): void {
     // Reading Toys Data from MongoDB
@@ -50,4 +51,18 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  public requestToy(toy: Toy) {
+    console.log(toy);
+    let today = new Date();
+    let request = {
+      type: "request",
+      requesterId: this.uauth.user.uid,
+      receiverId: toy.userId,
+      toyId: toy.objectId,
+      date: today
+    }
+    this.httpService.requestToy(request).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
