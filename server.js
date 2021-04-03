@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectId;
 
 const multer = require('multer');
 
@@ -82,7 +83,7 @@ app.get('/api/v1/users/:userId', (req, res) => {
     
     // Get some documents from the Users collection
     collection.find({uid:userId}).toArray(function(err, docs) {
-      console.log('Found the following records');
+      console.log('Found the following user');
       console.log(docs);
       res.json(docs);
     });
@@ -197,6 +198,27 @@ app.get('/api/v1/notifications/users/:userId', (req, res) => {
     // Get some documents from the Notifications collection
     collection.find({receiverId:userId}).toArray(function(err, docs) {
       console.log('Found the following records');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
+});
+
+//Get Toy from ID
+app.get('/api/v1/toys/:toyId', (req, res) => {
+  let toyId = req.params.toyId;
+  console.log("toyId: " + toyId);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Toys');
+    
+    // Get some documents from the Toys collection
+    let myObject = new ObjectId(toyId);
+    collection.find({_id: myObject}).toArray(function(err, docs) {
+      console.log('Found the following toy');
       console.log(docs);
       res.json(docs);
     });

@@ -41,4 +41,8 @@ export class HttpService {
   public getNotifications(userId: string) {
     return this.httpClient.get(this.apiserver + "/notifications/users/" + userId);
   }
+
+  public getToy(toyId: string) {
+    return this.httpClient.get(this.apiserver + "/toys/" + toyId);
+  }
 }
