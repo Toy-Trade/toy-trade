@@ -51,6 +51,24 @@ app.get('/api/v1/toys', (req, res) => {
   }); 
 });
 
+// Get data from specific user's Toys collection
+app.get('/api/v1/toys/users/:userId', (req, res) => {
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Toys');
+    
+    // Get some documents from the Toys collection
+    collection.find({userId: req.params.userId}).toArray(function(err, docs) {
+      console.log('Found the following records');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
+});
+
 // Get data from Users collection
 app.get('/api/v1/users/:userId', (req, res) => {
   let userId = req.params.userId;

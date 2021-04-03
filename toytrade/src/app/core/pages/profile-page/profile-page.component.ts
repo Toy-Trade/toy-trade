@@ -8,6 +8,20 @@ interface UserInfo {
   bio: String;
 }
 
+interface Toy {
+  objectId: String;
+  title: String;
+  brand: String;
+  category: String;
+  condition: String;
+  estimatedValue: String;
+  ageRange: String;
+  description: String;
+  username: String;
+  profileUrl: String;
+}
+
+
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -22,9 +36,12 @@ export class ProfilePageComponent implements OnInit {
     bio: ""
   };
 
+  toys: Toy[] = [];
+
   constructor(public uauth: AuthService, public httpService: HttpService) { }
 
   ngOnInit(): void {
+    // Get username and bio from MongoDB
     this.httpService.getUser(this.uauth.user.uid).subscribe((data) => {
       console.log(data);
       let myUserInfo = Object.entries(data)[0];
@@ -35,6 +52,27 @@ export class ProfilePageComponent implements OnInit {
       }
       console.log("User info:");
       console.log(this.userInfo);
+    });
+
+    // Reading Toys Data from MongoDB
+    this.httpService.getUserToys(this.uauth.user.uid).subscribe((data) => {
+      for (let entry of Object.entries(data)) {
+        this.httpService.getUser(entry[1].userId).subscribe((data) => {
+          let myUsername = Object.entries(data)[0][1].username;
+          this.toys.push({
+            objectId: entry[1]._id,
+            title: entry[1].title,
+            brand: entry[1].brand,
+            category: entry[1].category,
+            condition: entry[1].condition,
+            estimatedValue: entry[1].estimatedValue,
+            ageRange: entry[1].ageRange,
+            description: entry[1].description,
+            username: myUsername,
+            profileUrl: this.uauth.user.photoURL
+          });
+        });
+      }
     });
   }
 

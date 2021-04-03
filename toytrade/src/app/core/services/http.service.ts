@@ -22,6 +22,10 @@ export class HttpService {
     return this.httpClient.get(this.apiserver + "/toys");
   }
 
+  public getUserToys(userId: String) {
+    return this.httpClient.get(this.apiserver + "/toys/users/" + userId);
+  }
+
   public getUser(userId: String) {
     return this.httpClient.get(this.apiserver + "/users/" + userId);
   }

@@ -298,6 +298,10 @@
     padding-left: 50px;
 }
 
+#profile-page .profile-icon {
+  border-radius: 50%;
+}
+
 /* NOTIFICATIONS PAGE */
 
 #notifications-page .container{
