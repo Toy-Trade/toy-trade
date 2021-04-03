@@ -37,4 +37,8 @@ export class HttpService {
   public requestToy(request: Object) {
     return this.httpClient.post(this.apiserver + "/notifications", request);
   }
+
+  public getNotifications(userId: string) {
+    return this.httpClient.get(this.apiserver + "/notifications/users/" + userId);
+  }
 }

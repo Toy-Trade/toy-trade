@@ -80,7 +80,7 @@ app.get('/api/v1/users/:userId', (req, res) => {
     // Get the Users collection
     const collection = db.collection('Users');
     
-    // Get some documents from the Toys collection
+    // Get some documents from the Users collection
     collection.find({uid:userId}).toArray(function(err, docs) {
       console.log('Found the following records');
       console.log(docs);
@@ -181,6 +181,26 @@ app.post('/api/v1/notifications', (req, res) => {
       res.json(docs.ops[0]._id);
     });
   });
+});
+
+//Get users notifications
+app.get('/api/v1/notifications/users/:userId', (req, res) => {
+  let userId = req.params.userId;
+  console.log("userId: " + userId);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Notifications collection
+    const collection = db.collection('Notifications');
+    
+    // Get some documents from the Notifications collection
+    collection.find({receiverId:userId}).toArray(function(err, docs) {
+      console.log('Found the following records');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
 });
 
 app.listen(port, () => {
