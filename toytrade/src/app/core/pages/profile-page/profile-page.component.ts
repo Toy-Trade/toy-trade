@@ -3,22 +3,22 @@ import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
 
 interface UserInfo {
-  username: String;
-  zipcode: String;
-  bio: String;
+  username: string;
+  zipcode: string;
+  bio: string;
 }
 
 interface Toy {
-  objectId: String;
-  title: String;
-  brand: String;
-  category: String;
-  condition: String;
-  estimatedValue: String;
-  ageRange: String;
-  description: String;
-  username: String;
-  profileUrl: String;
+  objectId: string;
+  title: string;
+  brand: string;
+  category: string;
+  condition: string;
+  estimatedValue: string;
+  ageRange: string;
+  description: string;
+  username: string;
+  profileUrl: string;
 }
 
 
@@ -28,7 +28,7 @@ interface Toy {
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
-  photoURL: String = this.uauth.user.photoURL;
+  photoURL: string = this.uauth.user.photoURL;
 
   userInfo: UserInfo = {
     username: "",

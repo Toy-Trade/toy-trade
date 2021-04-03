@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 interface User {
-  uid: String;
-  email: String;
-  displayName: String;
-  photoURL: String;
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
 }
 
 @Injectable({
@@ -20,7 +20,7 @@ export class AuthService {
 
   constructor() { }
 
-  public setUser(user: { uid: String, email: String, displayName: String, photoURL: String }) {
+  public setUser(user: { uid: string, email: string, displayName: string, photoURL: string }) {
     this.user = user;
   }
 }

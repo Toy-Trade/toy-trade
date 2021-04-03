@@ -10,6 +10,7 @@ interface Toy {
   estimatedValue: string;
   ageRange: string;
   description: string;
+  userId: string;
   username: string;
   profileUrl: string;
 }
@@ -40,6 +41,7 @@ export class DashboardComponent implements OnInit {
             estimatedValue: entry[1].estimatedValue,
             ageRange: entry[1].ageRange,
             description: entry[1].description,
+            userId: entry[1].userId,
             username: myUsername,
             profileUrl: userImage
           });

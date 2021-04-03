@@ -10,7 +10,7 @@ export class HttpService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public addUser(user: { uid: String, email: String, displayName: String, photoURL: String }) {
+  public addUser(user: { uid: string, email: string, displayName: string, photoURL: string }) {
     return this.httpClient.post(this.apiserver + "/users/" + user.uid, user);
   }
 
@@ -22,15 +22,15 @@ export class HttpService {
     return this.httpClient.get(this.apiserver + "/toys");
   }
 
-  public getUserToys(userId: String) {
+  public getUserToys(userId: string) {
     return this.httpClient.get(this.apiserver + "/toys/users/" + userId);
   }
 
-  public getUser(userId: String) {
+  public getUser(userId: string) {
     return this.httpClient.get(this.apiserver + "/users/" + userId);
   }
 
-  public addNewUser(newUser: { userId: String, username: String, zipcode: String, bio: String }) {
+  public addNewUser(newUser: { userId: string, username: string, zipcode: string, bio: string }) {
     return this.httpClient.put(this.apiserver + "/users/" + newUser.userId, newUser);
   }
 }

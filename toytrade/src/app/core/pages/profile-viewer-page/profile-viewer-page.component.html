@@ -3,11 +3,11 @@
   <app-header></app-header>
 
   <div class="container">
-    <h1 class="header">My Profile (Editable)</h1>
+    <h1 class="header">{{userInfo.username}}'s Profile</h1>
 
     <div class="row justify-content" style="margin-top:50px; width:50%; margin-left: auto; margin-right: auto;">
       <div class="col-12 col-sm-4 text-right">
-        <img src="{{ photoURL }}" style="border-radius: 50%;">
+        <img src="{{ userInfo.profileUrl }}" style="border-radius: 50%;">
       </div>
       <div class="col-12 col-sm-8 profile-description">
         <h5 style="color: #169CC6; margin-top: 20px;">@{{userInfo.username}}</h5>
@@ -26,7 +26,7 @@
         <div class="card" data-toggle="modal" [attr.data-target]="'#toy-' + toy.objectId">
           <div class="card-header">
             <img class="profile-icon" src="{{toy.profileUrl}}" alt="Profile Icon">
-            <a class="link user-link" routerLink="/profile" skipLocationChange>{{toy.username}}</a>
+            <a class="link user-link" href="">{{toy.username}}</a>
           </div>
           <div class="card-body">
             <div class="card-row row container">

@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  user: String = this.uauth.user.displayName;
+  user: string = this.uauth.user.displayName;
 
   constructor(public uauth: AuthService) { }
 

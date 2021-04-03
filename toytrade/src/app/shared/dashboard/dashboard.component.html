@@ -4,7 +4,7 @@
     <div class="card" data-toggle="modal" [attr.data-target]="'#toy-' + toy.objectId">
       <div class="card-header">
         <img class="profile-icon" src="{{toy.profileUrl}}" alt="Profile Icon">
-        <a class="link user-link" href="">{{toy.username}}</a>
+        <a class="link user-link" routerLink="/profile/{{toy.userId}}" skipLocationChange>{{toy.username}}</a>
       </div>
       <div class="card-body">
         <div class="card-row row container">

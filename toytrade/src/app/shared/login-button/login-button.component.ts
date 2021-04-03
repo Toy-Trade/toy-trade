@@ -7,13 +7,13 @@ import { AuthService } from '../../core/services/auth.service';
 import { first } from 'rxjs/operators';
 
 interface User {
-  uid: String;
-  email: String;
-  displayName: String;
-  photoURL: String;
-  username: String;
-  zipcode: String;
-  bio: String;
+  uid: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+  username: string;
+  zipcode: string;
+  bio: string;
 }
 
 @Component({

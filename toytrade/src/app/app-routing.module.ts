@@ -8,12 +8,14 @@ import { LandingPageComponent } from './core/pages/landing-page/landing-page.com
 import { NewUserPageComponent } from './core/pages/new-user-page/new-user-page.component';
 import { NotificationsPageComponent } from './core/pages/notifications-page/notifications-page.component';
 import { ProfilePageComponent } from './core/pages/profile-page/profile-page.component';
+import { ProfileViewerPageComponent } from './core/pages/profile-viewer-page/profile-viewer-page.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent},
   { path: 'about', component: AboutPageComponent },
   { path: 'newuser', component: NewUserPageComponent },
   { path: 'home', component: HomePageComponent },
+  { path: 'profile/:userId', component: ProfileViewerPageComponent },
   { path: 'chat', component: ChatPageComponent },
   { path: 'notifications', component: NotificationsPageComponent },
   { path: 'profile', component: ProfilePageComponent },
