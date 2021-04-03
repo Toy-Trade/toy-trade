@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     let today = new Date();
     let request = {
       type: "request",
-      requesterId: this.uauth.user.uid,
+      senderId: this.uauth.user.uid,
       receiverId: toy.userId,
       toyId: toy.objectId,
       date: today

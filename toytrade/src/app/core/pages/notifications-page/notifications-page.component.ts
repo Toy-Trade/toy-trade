@@ -7,9 +7,9 @@ interface Notification {
   type: string,
   toyId: string,
   toyName: string,
-  requesterId: string,
+  senderId: string,
   receiverId: string,
-  requesterUsername: string,
+  senderUsername: string,
   transactionId: string,
   date: Date
 }
@@ -29,24 +29,26 @@ export class NotificationsPageComponent implements OnInit {
     this.httpService.getNotifications(this.uauth.user.uid).subscribe((data) => {
       for (let entry of Object.entries(data)) {
       // console.log(data);
-        let myRequesterName = "";
+        let mysenderName = "";
         let myToyName = "";
-        this.httpService.getUser(entry[1].requesterId).subscribe((data) => {
-          myRequesterName = Object.entries(data)[0][1].username;
+        this.httpService.getUser(entry[1].senderId).subscribe((data) => {
+          mysenderName = Object.entries(data)[0][1].username;
+          this.httpService.getToy(entry[1].toyId).subscribe((data) => {
+            myToyName = Object.entries(data)[0][1].title;
+            this.notifications.push({
+              type: entry[1].type,
+              toyId: entry[1].toyId,
+              toyName: myToyName,
+              senderId: entry[1].senderId,
+              receiverId: entry[1].receiverId,
+              senderUsername: mysenderName,
+              transactionId: entry[1].transactionId,
+              date: entry[1].date
+            });
+          });
         });
-        this.httpService.getToy(entry[1].toyId).subscribe((data) => {
-          myToyName = Object.entries(data)[0][1].title;
-        });
-        this.notifications.push({
-          type: entry[1].type,
-          toyId: entry[1].toyId,
-          toyName: myToyName,
-          requesterId: entry[1].requesterId,
-          receiverId: entry[1].receiverId,
-          requesterUsername: myRequesterName,
-          transactionId: entry[1].transactionId,
-          date: entry[1].date
-        });
+        
+        
       }
     });
   }
