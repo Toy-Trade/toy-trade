@@ -1,0 +1,22 @@
+#index-page {
+  background-image: url('../../../../assets/img/landingPage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+#landing-page-logo {
+  width: 60%;
+  display: block;
+  margin: auto;
+  margin-top: 8%;
+}
+
+.g-signin2 {
+  /* width: 100%; */
+  margin: 0 auto;
+}
+
+/* .g-signin2 > div{
+  margin: 0 auto;
+} */

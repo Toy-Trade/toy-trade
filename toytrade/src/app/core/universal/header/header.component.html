@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" routerLink="/home" skipLocationChange>
+      <img id="navbar-logo" src="assets/img/logo.png" height="50" alt="Toy Trade Logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/home" skipLocationChange><i class="ri-home-2-line icon"></i>Home</a>
+      <a class="nav-item nav-link" routerLink="/chat" skipLocationChange><i class="ri-message-line icon"></i>Messages</a>
+      <a class="nav-item nav-link" routerLink="/notifications" skipLocationChange><i class="ri-notification-2-line icon"></i>Notifications</a>
+      <a class="nav-item nav-link" routerLink="/profile" skipLocationChange><i class="ri-user-3-line icon"></i>Profile</a>
+      <app-login-button [blueButton]="false"></app-login-button>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,18 @@
+<main id="home-page">
+  <!-- Header Component -->
+  <app-header></app-header>
+
+  <div class="container">
+    <h1 class="header">Welcome {{ user }}</h1>
+
+    <div class="row">
+      <div class="col-6 search-col">
+        <app-search-bar></app-search-bar>
+      </div>
+      <div class="col-6">
+          <app-add-toy-button></app-add-toy-button>
+      </div>
+    </div>
+    <app-dashboard></app-dashboard>
+  </div>
+</main>

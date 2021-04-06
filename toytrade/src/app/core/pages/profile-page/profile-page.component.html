@@ -1,0 +1,106 @@
+<main id="profile-page">
+  <!-- Header Component -->
+  <app-header></app-header>
+
+  <div class="container">
+    <h1 class="header">My Profile (Editable)</h1>
+
+    <div class="row justify-content" style="margin-top:50px; width:50%; margin-left: auto; margin-right: auto;">
+      <div class="col-12 col-sm-4 text-right">
+        <img src="{{ photoURL }}" style="border-radius: 50%;">
+      </div>
+      <div class="col-12 col-sm-8 profile-description">
+        <h5 style="color: #169CC6; margin-top: 20px;">@{{userInfo.username}}</h5>
+        <p>{{userInfo.bio}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col text-right">
+        <app-add-toy-button></app-add-toy-button>
+      </div>
+    </div>
+
+    <div class="row justify-content">
+      <div *ngFor="let toy of toys" class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card" data-toggle="modal" [attr.data-target]="'#toy-' + toy.objectId">
+          <div class="card-header">
+            <img class="profile-icon" src="{{toy.profileUrl}}" alt="Profile Icon">
+            <a class="link user-link" routerLink="/profile" skipLocationChange>{{toy.username}}</a>
+          </div>
+          <div class="card-body">
+            <div class="card-row row container">
+              <div class="card-col col-8">
+                <!-- <img class="toy-image" src="assets/uploads/{{toy.objectId}}.jpg" alt="{{toy.title}}"> -->
+                <img class="toy-image" src="../../../assets/uploads/{{toy.objectId}}.jpg" alt="{{toy.title}}">
+              </div>
+              <div class="card-col col-4">
+                <h5 class="card-title">{{toy.title}}</h5>
+                <button type="button" class="btn btn-primary request-button">Request</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOY INFO MODAL -->
+        <div class="modal fade" id="toy-{{toy.objectId}}" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">{{toy.title}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <img class="modal-toy-image" src="../../../assets/uploads/{{toy.objectId}}.jpg" alt="{{toy.title}}">
+                <div class="modal-toy-description">
+                  <div class="row">
+                    <div class="col-6 modal-col">
+                      <div class="row">
+                        <i class="ri-price-tag-3-line modal-icon"></i>
+                        <p class="modal-icon-text">{{toy.brand}}</p>
+                      </div>
+                    </div>
+                    <div class="col-6 modal-col">
+                      <div class="row">
+                        <i class="ri-money-dollar-circle-line modal-icon"></i>
+                        <p class="modal-icon-text">${{toy.estimatedValue}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-6 modal-col">
+                      <div class="row">
+                        <i class="ri-checkbox-line modal-icon"></i>
+                        <p class="modal-icon-text">{{toy.condition}}</p>
+                      </div>
+                    </div>
+                    <div class="col-6 modal-col">
+                      <div class="row">
+                        <i class="ri-history-line modal-icon"></i>
+                        <p class="modal-icon-text">{{toy.ageRange}} Years Old</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <i class="ri-information-line modal-icon"></i>
+                    <p class="modal-icon-text">{{toy.description}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Request</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</main>

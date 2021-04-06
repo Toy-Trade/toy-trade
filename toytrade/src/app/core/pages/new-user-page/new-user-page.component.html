@@ -1,0 +1,26 @@
+<main id="new-user-page">
+  <app-header-landing></app-header-landing>
+  <div class="container">
+    <h1 class="header">New User</h1>
+    <form [formGroup]="addNewUserForm">
+      <div class="form-row form mx-auto" style="width:50%">
+        <div class="form-group col-12">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter username">
+        </div>
+        <div class="form-group col-12">
+          <label for="zipcode">Zip Code</label>
+          <input type="text" class="form-control" id="zipcode" formControlName="zipcode"
+            placeholder="Enter your zip code">
+        </div>
+        <div class="form-group col-12">
+          <label for="bio">Bio</label>
+          <input type="text" class="form-control" id="bio" formControlName="bio" placeholder="Tell us about yourself">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary button new-user-submit-btn" (click)="onSubmit()">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>

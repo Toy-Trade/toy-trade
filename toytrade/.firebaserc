@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "toy-trade": {
+      "hosting": {
+        "toytrade": [
+          "toy-trade"
+        ]
+      }
+    }
+  }
+}

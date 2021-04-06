@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Toy Trading App",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.5",
+    "multer": "^1.4.2"
   },
   "license": "UNLICENSED",
   "repository": {
@@ -14,5 +17,8 @@
     "start": "node server.js"
   },
   "main": "server.js",
-  "author": "Colleen Corrigan, Joyce Fang, Tyler Green, Jody Sunray"
+  "author": "Colleen Corrigan, Joyce Fang, Tyler Green, Jody Sunray",
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.1102.4"
+  }
 }
