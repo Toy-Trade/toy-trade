@@ -100,16 +100,31 @@ export class AddToyPageComponent implements OnInit {
     // This is another thing they can filter by ("near me")
   }
 
-  onSubmit(): void {
-    let toyToAdd = this.addToyForm.getRawValue();
-    console.log("Get Raw Value of addToyForm:");
-    console.log(toyToAdd);
-    this.httpService.addToy(toyToAdd).subscribe((data) => {
-      this.toyObjectId = data.toString();
-    });
+  public validate() {
+    var form = document.getElementsByClassName('needs-validation')[0] as HTMLFormElement;
+    if (form.checkValidity() === false) {
+      form.classList.add('was-validated');
 
-    this.displayAddToyForm = false;
-    this.displayUploadImageForm = true;
-    // this.router.navigateByUrl("/home", { skipLocationChange: true });
+      return false;
+    }
+    return true;
+    
+  }
+
+  onSubmit(): void {
+    if (this.validate()) {
+      let toyToAdd = this.addToyForm.getRawValue();
+      console.log("Get Raw Value of addToyForm:");
+      console.log(toyToAdd);
+      this.httpService.addToy(toyToAdd).subscribe((data) => {
+        this.toyObjectId = data.toString();
+      });
+
+      this.displayAddToyForm = false;
+      this.displayUploadImageForm = true;
+      // this.router.navigateByUrl("/home", { skipLocationChange: true });
+    }
+
+    
   }
 }
