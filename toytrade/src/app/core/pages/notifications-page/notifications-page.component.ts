@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
 
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+
+TimeAgo.addDefaultLocale(en)
 
 interface Notification {
   type: string,
@@ -11,7 +15,7 @@ interface Notification {
   receiverId: string,
   senderUsername: string,
   transactionId: string,
-  date: Date
+  date: string
 }
 
 @Component({
@@ -35,6 +39,9 @@ export class NotificationsPageComponent implements OnInit {
           mysenderName = Object.entries(data)[0][1].username;
           this.httpService.getToy(entry[1].toyId).subscribe((data) => {
             myToyName = Object.entries(data)[0][1].title;
+            const timeAgo = new TimeAgo('en-US');
+            console.log(timeAgo.format(new Date(entry[1].date)));
+            
             this.notifications.push({
               type: entry[1].type,
               toyId: entry[1].toyId,
@@ -43,7 +50,7 @@ export class NotificationsPageComponent implements OnInit {
               receiverId: entry[1].receiverId,
               senderUsername: mysenderName,
               transactionId: entry[1].transactionId,
-              date: new Date(entry[1].date)
+              date: timeAgo.format(new Date(entry[1].date))
             });
           });
         });
