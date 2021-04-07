@@ -12,11 +12,11 @@ import {Router} from '@angular/router';
 export class AddToyPageComponent implements OnInit {
   conditions: string[] = [ "New", "Used: Like New", "Used: Very Good", "Used: Good" ];
 
-  categories: string[] = [ "Action Figures", "Dolls", "Animals", "Cars", "Education", "Electronic Toys", "Games and Puzzles" ];
+  categories: string[] = [ "Action Figures", "Dolls", "Animals", "Cars", "Education", "Electronic Toys", "Games and Puzzles", "Other" ];
 
   ageRanges: string[] = [ "1-2", "2-3", "4-5", "6-7", "8+" ];
 
-  brands: string[] = [ "Lego", "Barbie", "Hot Wheels", "American Girl", "Fisher-Price", "Nerf", "Hasbro" ];
+  brands: string[] = [ "Lego", "Barbie", "Hot Wheels", "American Girl", "Fisher-Price", "Nerf", "Hasbro", "Other" ];
 
   addToyForm: FormGroup;
 
