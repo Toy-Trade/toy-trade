@@ -175,12 +175,26 @@ app.post('/api/v1/notifications', (req, res) => {
     const db = client.db(dbName);
     // Get the Notifications collection
     const collection = db.collection('Notifications');
-    
-    // Get some documents from the Notifications collection
-    collection.insertOne(req.body, function(err, docs) {
-      console.log("Inserted one request notification")
-      res.json(docs.ops[0]._id);
+
+    collection.find({senderId: req.body.senderId, toyId: req.body.toyId}).toArray(function(err, docs) {
+      if (docs.length == 0) {
+        // Get some documents from the Notifications collection
+        collection.insertOne(req.body, function(err, docs) {
+          console.log("Inserted one request notification")
+          res.json(docs.ops[0]._id);
+        });
+      } else {
+        console.log("This request has already been made");
+        console.log(docs);
+        res.json({inserted: false});
+      }
     });
+    
+    // // Get some documents from the Notifications collection
+    // collection.insertOne(req.body, function(err, docs) {
+    //   console.log("Inserted one request notification")
+    //   res.json(docs.ops[0]._id);
+    // });
   });
 });
 
