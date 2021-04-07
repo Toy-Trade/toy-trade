@@ -5,10 +5,10 @@
   <div class="container">
     <h1 class="header">Notifications</h1>
 
-    <div class="row justify-content-center" *ngFor="let notification of notifications">
+    <div class="row justify-content-center" *ngFor="let notification of notifications.sort(compare)">
       <div class="card" *ngIf="notification.type == 'request'">
         <div class="card-body">
-          <p>{{notification.date}}</p>
+          <p>{{notification.timeAgo}}</p>
           <p class="card-text">You have received a request for your <a class="link" href="">{{notification.toyName}}</a> from <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>.</p>
           <button type="button" class="btn btn-primary button" routerLink="/profile/{{notification.senderId}}" skipLocationChange>See Profile</button>
         </div>

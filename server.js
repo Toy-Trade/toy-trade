@@ -215,7 +215,7 @@ app.get('/api/v1/notifications/users/:userId', (req, res) => {
     
     // Get some documents from the Notifications collection
     collection.find({receiverId:userId}).toArray(function(err, docs) {
-      console.log('Found the following records');
+      console.log('Found the following notifications');
       console.log(docs);
       res.json(docs);
     });

@@ -15,7 +15,8 @@ interface Notification {
   receiverId: string,
   senderUsername: string,
   transactionId: string,
-  date: string
+  timeAgo: string,
+  date: Date
 }
 
 @Component({
@@ -32,7 +33,6 @@ export class NotificationsPageComponent implements OnInit {
   ngOnInit(): void {
     this.httpService.getNotifications(this.uauth.user.uid).subscribe((data) => {
       for (let entry of Object.entries(data)) {
-      // console.log(data);
         let mysenderName = "";
         let myToyName = "";
         this.httpService.getUser(entry[1].senderId).subscribe((data) => {
@@ -40,7 +40,6 @@ export class NotificationsPageComponent implements OnInit {
           this.httpService.getToy(entry[1].toyId).subscribe((data) => {
             myToyName = Object.entries(data)[0][1].title;
             const timeAgo = new TimeAgo('en-US');
-            console.log(timeAgo.format(new Date(entry[1].date)));
             
             this.notifications.push({
               type: entry[1].type,
@@ -50,23 +49,24 @@ export class NotificationsPageComponent implements OnInit {
               receiverId: entry[1].receiverId,
               senderUsername: mysenderName,
               transactionId: entry[1].transactionId,
-              date: timeAgo.format(new Date(entry[1].date))
+              timeAgo: timeAgo.format(new Date(entry[1].date)),
+              date: entry[1].date
             });
           });
         });
       }
-
-      // this.notifications.sort(function(a, b) {
-      //   if (a.date < b.date) {
-      //     console.log("hi")
-      //     return -1;
-      //   } else if (a.date > b.date) {
-      //     console.log("hi")
-      //     return 1;
-      //   } else {
-      //     return 0;
-      //   }
-      // });
     });
+  }
+
+  public compare(a: Notification, b: Notification) {
+    if (new Date(a.date).getTime() > new Date(b.date).getTime()) {
+      return -1;
+    }
+
+    if (new Date(b.date).getTime() > new Date(a.date).getTime()) {
+      return 1;
+    }
+
+    return 0;
   }
 }
