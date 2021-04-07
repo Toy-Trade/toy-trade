@@ -71,7 +71,9 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="requestToy(toy)" data-dismiss="modal">Request</button>
+            <div *ngIf="toy.userId != uauth.user.uid">
+              <button type="button" class="btn btn-primary" (click)="requestToy(toy)" data-dismiss="modal">Request</button>
+            </div>
           </div>
         </div>
       </div>
