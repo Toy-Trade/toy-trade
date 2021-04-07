@@ -178,11 +178,15 @@ app.post('/api/v1/notifications', (req, res) => {
 
     collection.find({senderId: req.body.senderId, toyId: req.body.toyId}).toArray(function(err, docs) {
       if (docs.length == 0) {
-        // Get some documents from the Notifications collection
-        collection.insertOne(req.body, function(err, docs) {
-          console.log("Inserted one request notification")
-          res.json(docs.ops[0]._id);
-        });
+        if (req.body.senderId == req.body.receiverId) {
+          console.log("Cannot request your own toy")
+        } else {
+          // Get some documents from the Notifications collection
+          collection.insertOne(req.body, function(err, docs) {
+            console.log("Inserted one request notification")
+            res.json(docs.ops[0]._id);
+          });
+        }
       } else {
         console.log("This request has already been made");
         console.log(docs);
