@@ -264,7 +264,8 @@ app.get('/api/v1/toys/:toyId', (req, res) => {
   }); 
 });
 
-// Get Brands CSV
+// LAB 6
+// Get Brands CSV: Joyce
 app.get('/api/v1/csv/brands', (req, res) => {
   // Use connect method to connect to the server
   client.connect(function(err) {
@@ -282,13 +283,13 @@ app.get('/api/v1/csv/brands', (req, res) => {
         const parser = new Parser();
         const csv = parser.parse(docs);
         console.log(csv);
-        fs.writeFile('toytrade/src/assets/csv/test.csv', csv, (err) => {
+        fs.writeFile('toytrade/src/assets/csv/brands.csv', csv, (err) => {
           if (err) {
             console.log(err);
           } else {
             console.log("File written successfully\n"); 
             console.log("The written has the following contents:"); 
-            console.log(fs.readFileSync("toytrade/src/assets/csv/test.csv", "utf8"));
+            console.log(fs.readFileSync("toytrade/src/assets/csv/brands.csv", "utf8"));
           }
         });
       } catch (err) {
@@ -296,11 +297,46 @@ app.get('/api/v1/csv/brands', (req, res) => {
       }
     });
   });
-
   res.json({"success":true});
 });
 
-// Get Categories CSV
+
+// Get CSV for Toy Requests: Joyce
+app.get('/api/v1/csv/toyrequests', (req, res) => {
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Notifications collection
+    const collection = db.collection('Notifications');
+    
+    // Get some documents from the Notifications collection
+    collection.aggregate([{$project: {'toyId':1}}]).toArray(function(err, docs) {
+      console.log('Found the following notifications:');
+      console.log(docs);
+
+      try {
+        const parser = new Parser();
+        const csv = parser.parse(docs);
+        console.log(csv);
+        fs.writeFile('toytrade/src/assets/csv/toyrequests.csv', csv, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("File written successfully\n"); 
+            console.log("The written has the following contents:"); 
+            console.log(fs.readFileSync("toytrade/src/assets/csv/toyrequests.csv", "utf8"));
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+  res.json({"success":true});
+});
+
+// Get Categories CSV: Jody
 app.get('/api/v1/csv/categories', (req, res) => {
   // Use connect method to connect to the server
   client.connect(function(err) {
@@ -332,11 +368,10 @@ app.get('/api/v1/csv/categories', (req, res) => {
       }
     });
   });
-
   res.json({"success":true});
 });
 
-// Get Users Requests CSV
+// Get Users Requests CSV: Jody
 app.get('/api/v1/csv/userrequests', (req, res) => {
   // Use connect method to connect to the server
   client.connect(function(err) {
