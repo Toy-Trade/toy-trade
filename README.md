@@ -24,3 +24,7 @@ Steps for creating a Histogram
 1. table_var <- table(filename$col_name)
 
 2. hist(table_var, main="Title of Histogram", xlab="X-Axis Label", xlim=c(1, 4), ylab="Y-Axis Label", col="lightblue")
+
+Resources for Creating R Data Visualizations
+
+[R Histograms](https://www.datamentor.io/r-programming/histogram/)
