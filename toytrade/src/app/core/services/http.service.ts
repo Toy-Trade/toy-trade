@@ -45,4 +45,8 @@ export class HttpService {
   public getToy(toyId: string) {
     return this.httpClient.get(this.apiserver + "/toys/" + toyId);
   }
+
+  public getBrandsCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/brands");
+  }
 }

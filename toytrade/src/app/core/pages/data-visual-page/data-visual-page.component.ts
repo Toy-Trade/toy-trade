@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-data-visual-page',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataVisualPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public httpService: HttpService) { }
 
   ngOnInit(): void {
+  }
+
+  public async onClickBrandsButton() {
+    console.log("onClickBrandsButton");
+    this.httpService.getBrandsCSV().subscribe((data) => {
+      console.log(data);
+      setTimeout(() => {
+        let link = document.createElement("a");
+        link.download = "brandsData";
+        link.href = "../../.././../assets/csv/test.csv";
+        link.click();
+      }, 2000);
+    });
   }
 
 }
