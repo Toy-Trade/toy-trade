@@ -39,4 +39,17 @@ export class DataVisualPageComponent implements OnInit {
     });
   }
 
+  public async onClickRequestsUsersButton() {
+    console.log("onClickRequestsUsersButton");
+    this.httpService.getRequestsUsersCSV().subscribe((data) => {
+      console.log(data);
+      setTimeout(() => {
+        let link = document.createElement("a");
+        link.download = "requestsUsersData";
+        link.href = "../../.././../assets/csv/requests_users.csv";
+        link.click();
+      }, 2000);
+    });
+  }
+
 }

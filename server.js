@@ -336,6 +336,42 @@ app.get('/api/v1/csv/categories', (req, res) => {
   res.json({"success":true});
 });
 
+// Get Users Requests CSV
+app.get('/api/v1/csv/requests/users', (req, res) => {
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Notifications');
+    
+    // Get some documents from the Toys collection
+    collection.aggregate([{$project: {'receiverId':1}}]).toArray(function(err, docs) {
+      console.log('Found the following users:');
+      console.log(docs);
+
+      try {
+        const parser = new Parser();
+        const csv = parser.parse(docs);
+        console.log(csv);
+        fs.writeFile('toytrade/src/assets/csv/requests_users.csv', csv, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("File written successfully\n"); 
+            console.log("The written has the following contents:"); 
+            console.log(fs.readFileSync("toytrade/src/assets/csv/requests_users.csv", "utf8"));
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+
+  res.json({"success":true});
+});
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });

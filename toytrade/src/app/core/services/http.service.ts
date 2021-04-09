@@ -53,4 +53,8 @@ export class HttpService {
   public getCategoriesCSV() {
     return this.httpClient.get(this.apiserver + "/csv/categories");
   }
+
+  public getRequestsUsersCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/requests/users");
+  }
 }
