@@ -236,8 +236,8 @@ app.get('/api/v1/notifications/users/:userId', (req, res) => {
     
     // Get some documents from the Notifications collection
     collection.find({receiverId:userId}).toArray(function(err, docs) {
-      // console.log('Found the following notifications');
-      // console.log(docs);
+      console.log('Found the following notifications');
+      console.log(docs);
       res.json(docs);
     });
   }); 
@@ -264,8 +264,8 @@ app.get('/api/v1/toys/:toyId', (req, res) => {
   }); 
 });
 
-
-// Get Brands CSV
+// LAB 6
+// Get Brands CSV: Joyce
 app.get('/api/v1/csv/brands', (req, res) => {
   // Use connect method to connect to the server
   client.connect(function(err) {
@@ -297,34 +297,11 @@ app.get('/api/v1/csv/brands', (req, res) => {
       }
     });
   });
-
-  // var myData = {
-  //   name: "Joyce",
-  //   age: 19
-  // }
-  // console.log("hi")
-  // try {
-  //   const parser = new Parser();
-  //   const csv = parser.parse(myData);
-  //   console.log(typeof csv);
-  //   console.log(csv);
-  //   fs.writeFile('toytrade/src/assets/csv/test.csv', csv, (err) => {
-  //     if (err) {
-  //       console.log(err);
-  //     } else {
-  //       console.log("File written successfully\n"); 
-  //       console.log("The written has the following contents:"); 
-  //       console.log(fs.readFileSync("toytrade/src/assets/csv/test.csv", "utf8"));
-  //     }
-  //   });
-  // } catch (err) {
-  //   console.error(err);
-  // }
-
   res.json({"success":true});
 });
 
-// Get CSV for Toy Requests
+
+// Get CSV for Toy Requests: Joyce
 app.get('/api/v1/csv/toyrequests', (req, res) => {
   // Use connect method to connect to the server
   client.connect(function(err) {
@@ -356,6 +333,77 @@ app.get('/api/v1/csv/toyrequests', (req, res) => {
       }
     });
   });
+  res.json({"success":true});
+});
+
+// Get Categories CSV: Jody
+app.get('/api/v1/csv/categories', (req, res) => {
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Toys');
+    
+    // Get some documents from the Toys collection
+    collection.aggregate([{$project: {'category':1}}]).toArray(function(err, docs) {
+      console.log('Found the following categories:');
+      console.log(docs);
+
+      try {
+        const parser = new Parser();
+        const csv = parser.parse(docs);
+        console.log(csv);
+        fs.writeFile('toytrade/src/assets/csv/categories.csv', csv, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("File written successfully\n"); 
+            console.log("The written has the following contents:"); 
+            console.log(fs.readFileSync("toytrade/src/assets/csv/categories.csv", "utf8"));
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+  res.json({"success":true});
+});
+
+// Get Users Requests CSV: Jody
+app.get('/api/v1/csv/userrequests', (req, res) => {
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Notifications');
+    
+    // Get some documents from the Toys collection
+    collection.aggregate([{$project: {'receiverId':1}}]).toArray(function(err, docs) {
+      console.log('Found the following users:');
+      console.log(docs);
+
+      try {
+        const parser = new Parser();
+        const csv = parser.parse(docs);
+        console.log(csv);
+        fs.writeFile('toytrade/src/assets/csv/user_requests.csv', csv, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("File written successfully\n"); 
+            console.log("The written has the following contents:"); 
+            console.log(fs.readFileSync("toytrade/src/assets/csv/user_requests.csv", "utf8"));
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+
   res.json({"success":true});
 });
 

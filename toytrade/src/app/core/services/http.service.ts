@@ -46,11 +46,21 @@ export class HttpService {
     return this.httpClient.get(this.apiserver + "/toys/" + toyId);
   }
 
+  // Joyce
   public getBrandsCSV() {
     return this.httpClient.get(this.apiserver + "/csv/brands");
   }
 
   public getToyRequestsCSV() {
     return this.httpClient.get(this.apiserver + "/csv/toyrequests");
+  }
+
+  // Jody
+  public getCategoriesCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/categories");
+  }
+
+  public getUserRequestsCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/userrequests");
   }
 }

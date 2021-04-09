@@ -32,6 +32,7 @@ export class NotificationsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.getNotifications(this.uauth.user.uid).subscribe((data) => {
+      console.log(data)
       for (let entry of Object.entries(data)) {
         let mysenderName = "";
         let myToyName = "";
@@ -55,6 +56,9 @@ export class NotificationsPageComponent implements OnInit {
           });
         });
       }
+
+      console.log("notifications")
+      console.log(this.notifications)
     });
   }
 
