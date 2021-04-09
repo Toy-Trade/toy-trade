@@ -49,4 +49,8 @@ export class HttpService {
   public getBrandsCSV() {
     return this.httpClient.get(this.apiserver + "/csv/brands");
   }
+
+  public getToyRequestsCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/toyrequests");
+  }
 }
