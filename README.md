@@ -10,6 +10,8 @@
 
 ## Overview
 
+In Lab 6, we used R to create data visualizations about various data points on our application. All of the visualizations and their corresponding "Download CSV" buttons are located on the Data Visualization page.
+
 ## Challenges
 
 ## Steps for creating a Pie Chart in RStudio
