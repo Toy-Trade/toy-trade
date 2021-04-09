@@ -45,8 +45,8 @@ export class DataVisualPageComponent implements OnInit {
       console.log(data);
       setTimeout(() => {
         let link = document.createElement("a");
-        link.download = "requestsUsersData";
-        link.href = "../../.././../assets/csv/requests_users.csv";
+        link.download = "userRequestsData";
+        link.href = "../../.././../assets/csv/user_requests.csv";
         link.click();
       }, 2000);
     });

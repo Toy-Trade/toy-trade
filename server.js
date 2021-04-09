@@ -354,13 +354,13 @@ app.get('/api/v1/csv/requests/users', (req, res) => {
         const parser = new Parser();
         const csv = parser.parse(docs);
         console.log(csv);
-        fs.writeFile('toytrade/src/assets/csv/requests_users.csv', csv, (err) => {
+        fs.writeFile('toytrade/src/assets/csv/user_requests.csv', csv, (err) => {
           if (err) {
             console.log(err);
           } else {
             console.log("File written successfully\n"); 
             console.log("The written has the following contents:"); 
-            console.log(fs.readFileSync("toytrade/src/assets/csv/requests_users.csv", "utf8"));
+            console.log(fs.readFileSync("toytrade/src/assets/csv/user_requests.csv", "utf8"));
           }
         });
       } catch (err) {
