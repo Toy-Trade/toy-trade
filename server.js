@@ -337,7 +337,7 @@ app.get('/api/v1/csv/categories', (req, res) => {
 });
 
 // Get Users Requests CSV
-app.get('/api/v1/csv/requests/users', (req, res) => {
+app.get('/api/v1/csv/userrequests', (req, res) => {
   // Use connect method to connect to the server
   client.connect(function(err) {
     console.log('Connected successfully to server');

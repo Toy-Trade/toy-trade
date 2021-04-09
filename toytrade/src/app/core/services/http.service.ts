@@ -54,7 +54,7 @@ export class HttpService {
     return this.httpClient.get(this.apiserver + "/csv/categories");
   }
 
-  public getRequestsUsersCSV() {
-    return this.httpClient.get(this.apiserver + "/csv/requests/users");
+  public getUserRequestsCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/userrequests");
   }
 }

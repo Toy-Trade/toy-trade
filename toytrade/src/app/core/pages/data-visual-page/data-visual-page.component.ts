@@ -39,9 +39,9 @@ export class DataVisualPageComponent implements OnInit {
     });
   }
 
-  public async onClickRequestsUsersButton() {
-    console.log("onClickRequestsUsersButton");
-    this.httpService.getRequestsUsersCSV().subscribe((data) => {
+  public async onClickUserRequestsButton() {
+    console.log("onClickUserRequestsButton");
+    this.httpService.getUserRequestsCSV().subscribe((data) => {
       console.log(data);
       setTimeout(() => {
         let link = document.createElement("a");
