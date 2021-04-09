@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutPageComponent } from './core/pages/about-page/about-page.component';
 import { AddToyPageComponent } from './core/pages/add-toy-page/add-toy-page.component';
 import { ChatPageComponent } from './core/pages/chat-page/chat-page.component';
+import { DataVisualPageComponent } from './core/pages/data-visual-page/data-visual-page.component';
 import { HomePageComponent } from './core/pages/home-page/home-page.component';
 import { LandingPageComponent } from './core/pages/landing-page/landing-page.component';
 import { NewUserPageComponent } from './core/pages/new-user-page/new-user-page.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'chat', component: ChatPageComponent },
   { path: 'notifications', component: NotificationsPageComponent },
   { path: 'profile', component: ProfilePageComponent },
-  { path: 'addtoy', component: AddToyPageComponent }
+  { path: 'addtoy', component: AddToyPageComponent },
+  { path: 'datavisual', component: DataVisualPageComponent },
 ];
 
 @NgModule({

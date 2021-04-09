@@ -15,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewUserPageComponent } from './pages/new-user-page/new-user-page.component';
 import { ProfileViewerPageComponent } from './pages/profile-viewer-page/profile-viewer-page.component';
+import { DataVisualPageComponent } from './pages/data-visual-page/data-visual-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProfileViewerPageComponent } from './pages/profile-viewer-page/profile-
     ProfilePageComponent,
     AddToyPageComponent,
     NewUserPageComponent,
-    ProfileViewerPageComponent
+    ProfileViewerPageComponent,
+    DataVisualPageComponent
   ],
   imports: [
     CommonModule,
