@@ -17,3 +17,10 @@ Steps for creating a Pie Chart in RStudio
 6. lbls <- paste(lbls,"%",sep="") # ad % to labels
 
 7. pie(table_var, labels=lbls, main="Title of Pie Chart")
+
+
+Steps for creating a Histogram
+
+1. table_var <- table(filename$col_name)
+
+2. hist(table_var, main="Title of Histogram", xlab="X-Axis Label", xlim=c(1, 4), ylab="Y-Axis Label", col="lightblue")
