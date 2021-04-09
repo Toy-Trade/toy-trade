@@ -267,30 +267,64 @@ app.get('/api/v1/toys/:toyId', (req, res) => {
 
 // Get Brands CSV
 app.get('/api/v1/csv/brands', (req, res) => {
-  // Make a connection to MongoDB
-  
-  var myData = {
-    name: "Joyce",
-    age: 19
-  }
-  console.log("hi")
-  try {
-    const parser = new Parser();
-    const csv = parser.parse(myData);
-    console.log(typeof csv);
-    console.log(csv);
-    fs.writeFile('toytrade/src/assets/csv/test.csv', csv, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("File written successfully\n"); 
-        console.log("The written has the following contents:"); 
-        console.log(fs.readFileSync("toytrade/src/assets/csv/test.csv", "utf8"));
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Toys');
+    
+    // Get some documents from the Toys collection
+    collection.aggregate([{$project: {'brand':1}}]).toArray(function(err, docs) {
+      console.log('Found the following brands:');
+      console.log(docs);
+
+      try {
+        const parser = new Parser();
+        const csv = parser.parse(docs);
+        console.log(csv);
+        fs.writeFile('toytrade/src/assets/csv/test.csv', csv, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("File written successfully\n"); 
+            console.log("The written has the following contents:"); 
+            console.log(fs.readFileSync("toytrade/src/assets/csv/test.csv", "utf8"));
+          }
+        });
+      } catch (err) {
+        console.error(err);
       }
+
+      // res.json(docs);
     });
-  } catch (err) {
-    console.error(err);
-  }
+
+  }); 
+
+
+
+  // var myData = {
+  //   name: "Joyce",
+  //   age: 19
+  // }
+  // console.log("hi")
+  // try {
+  //   const parser = new Parser();
+  //   const csv = parser.parse(myData);
+  //   console.log(typeof csv);
+  //   console.log(csv);
+  //   fs.writeFile('toytrade/src/assets/csv/test.csv', csv, (err) => {
+  //     if (err) {
+  //       console.log(err);
+  //     } else {
+  //       console.log("File written successfully\n"); 
+  //       console.log("The written has the following contents:"); 
+  //       console.log(fs.readFileSync("toytrade/src/assets/csv/test.csv", "utf8"));
+  //     }
+  //   });
+  // } catch (err) {
+  //   console.error(err);
+  // }
 
   res.json({"success":true});
 });

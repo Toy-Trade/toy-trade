@@ -360,8 +360,14 @@
   display: inline;
 }
 
-/* #notifications-page .date {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  text-align: left;
-} */
+/* DATA VISUALIZATION PAGE */
+#data-visual-page .header {
+  margin-top: 5%;
+  font-size: 24px;
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+#data-visual-page .title {
+  font-size: 24px;
+}
