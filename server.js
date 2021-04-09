@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const path = require('path');
+const fs = require('fs');
+const { Parser } = require('json2csv');
 const MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
 
@@ -45,11 +47,34 @@ app.get('/api/v1/toys', (req, res) => {
     
     // Get some documents from the Toys collection
     collection.find().toArray(function(err, docs) {
-      console.log('Found the following records');
-      console.log(docs);
+      // console.log('Found the following records');
+      // console.log(docs);
       res.json(docs);
     });
-  }); 
+  });
+
+  var myData = {
+    name: "Joyce",
+    age: 19
+  }
+  console.log("hi")
+  try {
+    const parser = new Parser();
+    const csv = parser.parse(myData);
+    console.log(typeof csv);
+    console.log(csv);
+    fs.writeFile('toytrade/src/assets/csv/test.csv', csv, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("File written successfully\n"); 
+        console.log("The written has the following contents:"); 
+        console.log(fs.readFileSync("toytrade/src/assets/csv/test.csv", "utf8"));
+      }
+    });
+  } catch (err) {
+    console.error(err);
+  }
 });
 
 // Get data from specific user's Toys collection
@@ -63,8 +88,8 @@ app.get('/api/v1/toys/users/:userId', (req, res) => {
     
     // Get some documents from the Toys collection
     collection.find({userId: req.params.userId}).toArray(function(err, docs) {
-      console.log('Found the following records');
-      console.log(docs);
+      // console.log('Found the following records');
+      // console.log(docs);
       res.json(docs);
     });
   }); 
@@ -83,8 +108,8 @@ app.get('/api/v1/users/:userId', (req, res) => {
     
     // Get some documents from the Users collection
     collection.find({uid:userId}).toArray(function(err, docs) {
-      console.log('Found the following user');
-      console.log(docs);
+      // console.log('Found the following user');
+      // console.log(docs);
       res.json(docs);
     });
   }); 
@@ -107,8 +132,8 @@ app.post('/api/v1/users/:uid', (req, res) => {
           res.json({inserted: true});
         });
       } else {
-        console.log("Found the following duplicate");
-        console.log(docs);
+        // console.log("Found the following duplicate");
+        // console.log(docs);
         res.json({inserted: false});
       }
     });
@@ -184,8 +209,8 @@ app.post('/api/v1/notifications', (req, res) => {
           res.json(docs.ops[0]._id);
         });
       } else {
-        console.log("This request has already been made");
-        console.log(docs);
+        // console.log("This request has already been made");
+        // console.log(docs);
         res.json({inserted: false});
       }
     });
@@ -211,8 +236,8 @@ app.get('/api/v1/notifications/users/:userId', (req, res) => {
     
     // Get some documents from the Notifications collection
     collection.find({receiverId:userId}).toArray(function(err, docs) {
-      console.log('Found the following notifications');
-      console.log(docs);
+      // console.log('Found the following notifications');
+      // console.log(docs);
       res.json(docs);
     });
   }); 
@@ -232,8 +257,8 @@ app.get('/api/v1/toys/:toyId', (req, res) => {
     // Get some documents from the Toys collection
     let myObject = new ObjectId(toyId);
     collection.find({_id: myObject}).toArray(function(err, docs) {
-      console.log('Found the following toy');
-      console.log(docs);
+      // console.log('Found the following toy');
+      // console.log(docs);
       res.json(docs);
     });
   }); 
