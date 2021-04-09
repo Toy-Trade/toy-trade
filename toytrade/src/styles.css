@@ -375,5 +375,8 @@
 #data-visual-page .col-6 {
   text-align: center;
   padding-bottom: 40px;
-  border: solid 1px;
+}
+
+#data-visual-page .row {
+  margin-bottom: 2%;
 }
