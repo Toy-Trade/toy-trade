@@ -19,14 +19,14 @@
         <div class="card" *ngIf="notification.type == 'accept_acceptor'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">You have accepted <a class="link" href="">@{{notification.senderUsername}}'s</a> request for your <a class="link" href="">{{notification.toyName}}</a></p>
+            <p class="card-text">You have accepted <a class="link" href="">@{{notification.senderUsername}}</a>'s request for your <a class="link" href="">{{notification.toyName}}</a></p>
             <button type="button" class="btn btn-primary button">See Chat</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'accept_receiver'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">Your request for <a class="link" href="">@{{notification.senderUsername}}'s </a><a class="link" href="">{{notification.toyName}}</a> has been accepted.</p>
+            <p class="card-text">Your request for <a class="link" href="">@{{notification.senderUsername}}</a>'s <a class="link" href="">{{notification.toyName}}</a> has been accepted.</p>
             <button type="button" class="btn btn-primary button">See Chat</button>
           </div>
         </div>
