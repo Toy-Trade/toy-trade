@@ -442,7 +442,8 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
     const collection = db.collection('Notifications');
     
     let notification1 = {
-      type: "accept_request",
+      // it would say "You have accepted @user's request for your toy"
+      type: "accept_acceptor",
       senderId: req.body.senderId,
       receiverId: req.body.receiverId,
       toyId: req.body.toyId,
@@ -451,7 +452,8 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
     }
 
     let notification2 = {
-      type: "accept_request",
+      // it would say "Your request for toy from @user has been accepted."
+      type: "accept_receiver",
       senderId: req.body.receiverId,
       receiverId: req.body.senderId,
       toyId: req.body.toyId,
