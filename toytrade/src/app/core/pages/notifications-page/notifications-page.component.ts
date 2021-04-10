@@ -43,7 +43,7 @@ export class NotificationsPageComponent implements OnInit {
           this.httpService.getToy(entry[1].toyId).subscribe((data) => {
             myToyName = Object.entries(data)[0][1].title;
             const timeAgo = new TimeAgo('en-US');
-            
+
             this.notifications.push({
               id: entry[1]._id,
               type: entry[1].type,
@@ -87,5 +87,13 @@ export class NotificationsPageComponent implements OnInit {
     });
 
     request.archived = true;
+  }
+
+  public acceptRequest(request: Notification) {
+    console.log("Request has been accepted");
+
+    this.httpService.acceptToyRequest(request).subscribe((data) => {
+      console.log(data);
+    });
   }
 }

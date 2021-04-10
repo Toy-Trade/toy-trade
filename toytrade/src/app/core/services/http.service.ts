@@ -1,6 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+interface Notification {
+  id: string,
+  type: string,
+  toyId: string,
+  toyName: string,
+  senderId: string,
+  receiverId: string,
+  senderUsername: string,
+  transactionId: string,
+  timeAgo: string,
+  date: Date,
+  archived: boolean
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -65,6 +79,10 @@ export class HttpService {
   }
 
   public denyToyRequest(requestId: string) {
-    return this.httpClient.put(this.apiserver + "/notifications/requests/" + requestId, { id: requestId });
+    return this.httpClient.put(this.apiserver + "/notifications/requests/deny/" + requestId, { id: requestId });
+  }
+
+  public acceptToyRequest(request: Notification) {
+    return this.httpClient.post(this.apiserver + "/notifications/requests/accept/" + request.id, request);
   }
 }

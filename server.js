@@ -408,7 +408,7 @@ app.get('/api/v1/csv/userrequests', (req, res) => {
 });
 
 // Deny toy request, archive the request notification
-app.put('/api/v1/notifications/requests/:requestId', (req, res) => {
+app.put('/api/v1/notifications/requests/deny/:requestId', (req, res) => {
   let requestId = req.params.requestId;
   console.log("Request id: " + requestId)
   // Use connect method to connect to the server
@@ -426,6 +426,57 @@ app.put('/api/v1/notifications/requests/:requestId', (req, res) => {
     )
 
     console.log("Notification has been archived")
+  }); 
+});
+
+// Accept toy request, post request to create two new notifications, 
+// then put request to archive the notification request
+app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
+  let requestId = req.params.requestId;
+  console.log("Request id: " + requestId)
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Notifications collection
+    const collection = db.collection('Notifications');
+    
+    let notification1 = {
+      type: "accept_request",
+      senderId: req.body.senderId,
+      receiverId: req.body.receiverId,
+      toyId: req.body.toyId,
+      date: new Date(),
+      archived: false
+    }
+
+    let notification2 = {
+      type: "accept_request",
+      senderId: req.body.receiverId,
+      receiverId: req.body.senderId,
+      toyId: req.body.toyId,
+      date: new Date(),
+      archived: false
+    }
+
+    collection.insertOne(notification1, function(err, docs) {
+      console.log("Inserted notification1");
+      // res.json({inserted: true});
+    });
+
+    collection.insertOne(notification2, function(err, docs) {
+      console.log("Inserted notification2");
+      // res.json({inserted: true});
+    });
+
+    // Update with request notification as archived: true
+    let myObject = new ObjectId(requestId);
+    collection.updateOne (
+      { _id: myObject },
+      { $set: { archived: true } }
+    )
+
+    console.log("Original Request Notification has been archived");
   }); 
 });
 
