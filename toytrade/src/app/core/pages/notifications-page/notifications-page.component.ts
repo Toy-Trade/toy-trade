@@ -92,8 +92,43 @@ export class NotificationsPageComponent implements OnInit {
   public acceptRequest(request: Notification) {
     console.log("Request has been accepted");
 
+    let newNotification: Notification = {
+      id: "",
+      type: "",
+      toyId: "",
+      toyName: "",
+      senderId: "",
+      receiverId: "",
+      senderUsername: "",
+      transactionId: "",
+      timeAgo: "",
+      date: new Date(),
+      archived: false
+    };
+
     this.httpService.acceptToyRequest(request).subscribe((data) => {
-      console.log(data);
+      console.log(data); // the two notifications created
+      newNotification.id = data[0]._id;
+      newNotification.type = data[0].type;
+      newNotification.toyId = data[0].toyId;
+      this.httpService.getToy(data[0].toyId).subscribe((data) => {
+        newNotification.toyName = Object.entries(data)[0][1].title;
+      });
+      newNotification.senderId = data[0].senderId;
+      newNotification.receiverId = data[0].receiverId;
+      this.httpService.getUser(data[0].senderId).subscribe((data) => {
+        newNotification.senderUsername = Object.entries(data)[0][1].username;
+      })
+      newNotification.transactionId = "";
+      const timeAgo = new TimeAgo('en-US');
+      newNotification.timeAgo = timeAgo.format(new Date(data[0].date));
+      newNotification.archived = data[0].archived;
     });
+
+    console.log("New Notification:");
+    console.log(newNotification);
+
+    this.notifications.push(newNotification);
+    request.archived = true;
   }
 }
