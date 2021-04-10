@@ -63,4 +63,8 @@ export class HttpService {
   public getUserRequestsCSV() {
     return this.httpClient.get(this.apiserver + "/csv/userrequests");
   }
+
+  public denyToyRequest(requestId: string) {
+    return this.httpClient.put(this.apiserver + "/notifications/requests/" + requestId, { id: requestId });
+  }
 }

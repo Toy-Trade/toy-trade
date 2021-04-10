@@ -59,7 +59,8 @@ export class DashboardComponent implements OnInit {
       senderId: this.uauth.user.uid,
       receiverId: toy.userId,
       toyId: toy.objectId,
-      date: today
+      date: today,
+      archived: false
     }
     this.httpService.requestToy(request).subscribe((data) => {
       console.log(data);

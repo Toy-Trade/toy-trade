@@ -360,6 +360,15 @@
   display: inline;
 }
 
+#notifications-page .deny-button {
+  float: left;
+  margin-right: 10px;
+}
+
+#notifications-page .accept-button {
+  float: left;
+}
+
 /* DATA VISUALIZATION PAGE */
 #data-visual-page .header {
   margin-top: 5%;

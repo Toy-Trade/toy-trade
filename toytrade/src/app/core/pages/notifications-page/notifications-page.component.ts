@@ -8,6 +8,7 @@ import en from 'javascript-time-ago/locale/en';
 TimeAgo.addDefaultLocale(en)
 
 interface Notification {
+  id: string,
   type: string,
   toyId: string,
   toyName: string,
@@ -16,7 +17,8 @@ interface Notification {
   senderUsername: string,
   transactionId: string,
   timeAgo: string,
-  date: Date
+  date: Date,
+  archived: boolean
 }
 
 @Component({
@@ -43,6 +45,7 @@ export class NotificationsPageComponent implements OnInit {
             const timeAgo = new TimeAgo('en-US');
             
             this.notifications.push({
+              id: entry[1]._id,
               type: entry[1].type,
               toyId: entry[1].toyId,
               toyName: myToyName,
@@ -51,7 +54,8 @@ export class NotificationsPageComponent implements OnInit {
               senderUsername: mysenderName,
               transactionId: entry[1].transactionId,
               timeAgo: timeAgo.format(new Date(entry[1].date)),
-              date: entry[1].date
+              date: entry[1].date,
+              archived: entry[1].archived
             });
           });
         });
@@ -72,5 +76,16 @@ export class NotificationsPageComponent implements OnInit {
     }
 
     return 0;
+  }
+
+  public denyRequest(request: Notification) {
+    console.log("Request has been denied");
+    console.log(request);
+
+    this.httpService.denyToyRequest(request.id).subscribe((data) => {
+      console.log(data)
+    });
+
+    request.archived = true;
   }
 }

@@ -5,18 +5,42 @@
   <div class="container">
     <h1 class="header">Notifications</h1>
 
-    <div class="row justify-content-center" *ngFor="let notification of notifications.sort(compare)">
-      <div class="card" *ngIf="notification.type == 'request'">
-        <div class="card-body">
-          <p>{{notification.timeAgo}}</p>
-          <p class="card-text">You have received a request for your <a class="link" href="">{{notification.toyName}}</a> from <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>.</p>
-          <button type="button" class="btn btn-primary button" routerLink="/profile/{{notification.senderId}}" skipLocationChange>See Profile</button>
+    <div *ngFor="let notification of notifications.sort(compare)">
+      <div class="row justify-content-center" *ngIf="notification.archived == false">
+        <div class="card" *ngIf="notification.type == 'request'">
+          <div class="card-body">
+            <p>{{notification.timeAgo}}</p>
+            <p class="card-text">You have received a request for your <a class="link" href="">{{notification.toyName}}</a> from <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>.</p>
+            <button type="button" class="btn btn-danger button deny-button" (click)="denyRequest(notification)">Deny</button>
+            <button type="button" class="btn btn-success button accept-button">Accept</button>
+            <button type="button" class="btn btn-primary button" routerLink="/profile/{{notification.senderId}}" skipLocationChange>See Profile</button>
+          </div>
+        </div>
+        <div class="card" *ngIf="notification.type == 'transaction'">
+          <div class="card-body">
+            <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
+            <button type="button" class="btn btn-primary button">See Profile</button>
+          </div>
         </div>
       </div>
-      <div class="card" *ngIf="notification.type == 'transaction'">
-        <div class="card-body">
-          <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
-          <button type="button" class="btn btn-primary button">See Profile</button>
+    </div>
+
+    <h1 class="header">History</h1>
+
+    <div *ngFor="let notification of notifications.sort(compare)">
+      <div class="row justify-content-center" *ngIf="notification.archived == true">
+        <div class="card" *ngIf="notification.type == 'request'">
+          <div class="card-body">
+            <p>{{notification.timeAgo}}</p>
+            <p class="card-text">You have received a request for your <a class="link" href="">{{notification.toyName}}</a> from <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>.</p>
+            <button type="button" class="btn btn-primary button" routerLink="/profile/{{notification.senderId}}" skipLocationChange>See Profile</button>
+          </div>
+        </div>
+        <div class="card" *ngIf="notification.type == 'transaction'">
+          <div class="card-body">
+            <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
+            <button type="button" class="btn btn-primary button">See Profile</button>
+          </div>
         </div>
       </div>
     </div>
