@@ -422,7 +422,7 @@ app.put('/api/v1/notifications/requests/deny/:requestId', (req, res) => {
     let myObject = new ObjectId(requestId);
     collection.updateOne (
       { _id: myObject },
-      { $set: { archived: true } }
+      { $set: { archived: true, status: "denied" } }
     )
 
     console.log("Notification has been archived")
@@ -475,7 +475,7 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
     let myObject = new ObjectId(requestId);
     collection.updateOne (
       { _id: myObject },
-      { $set: { archived: true } }
+      { $set: { archived: true, status: "accepted" } }
     )
 
     console.log("Original Request Notification has been archived");

@@ -18,7 +18,8 @@ interface Notification {
   transactionId: string,
   timeAgo: string,
   date: Date,
-  archived: boolean
+  archived: boolean,
+  status: string
 }
 
 @Component({
@@ -55,7 +56,8 @@ export class NotificationsPageComponent implements OnInit {
               transactionId: entry[1].transactionId,
               timeAgo: timeAgo.format(new Date(entry[1].date)),
               date: entry[1].date,
-              archived: entry[1].archived
+              archived: entry[1].archived,
+              status: entry[1].status
             });
           });
         });
@@ -103,7 +105,8 @@ export class NotificationsPageComponent implements OnInit {
       transactionId: "",
       timeAgo: "",
       date: new Date(),
-      archived: false
+      archived: false,
+      status: ""
     };
 
     this.httpService.acceptToyRequest(request).subscribe((data) => {
@@ -123,6 +126,7 @@ export class NotificationsPageComponent implements OnInit {
       const timeAgo = new TimeAgo('en-US');
       newNotification.timeAgo = timeAgo.format(new Date(data[0].date));
       newNotification.archived = data[0].archived;
+      newNotification.status = "accepted";
     });
 
     console.log("New Notification:");

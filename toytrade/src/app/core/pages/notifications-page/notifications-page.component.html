@@ -27,7 +27,7 @@
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
             <p class="card-text">Your request for <a class="link" href="">@{{notification.senderUsername}}</a>'s <a class="link" href="">{{notification.toyName}}</a> has been accepted.</p>
-            <button type="button" class="btn btn-primary button">See Chat</button>
+            <button type="button" class="btn btn-primary button" routerLink="/chat">See Chat</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'transaction'">
@@ -43,23 +43,20 @@
 
     <div *ngFor="let notification of notifications.sort(compare)">
       <div class="row justify-content-center" *ngIf="notification.archived == true">
-        <div class="card" *ngIf="notification.type == 'request'">
+        <div class="card" *ngIf="notification.type == 'request' && notification.status == 'denied'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">You have received a request for your <a class="link" href="">{{notification.toyName}}</a> from <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>.</p>
-            <button type="button" class="btn btn-primary button" routerLink="/profile/{{notification.senderId}}" skipLocationChange>See Profile</button>
+            <p class="card-text">You denied <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>'s request for your <a class="link" href="">{{notification.toyName}}</a>.</p>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'accept_request'">
           <div class="card-body">
             <p class="card-text">Your request for<a class="link" href="">{{notification.toyName}}</a> from <a class="link" href="">@{{notification.senderId}}</a> has been accepted.</p>
-            <button type="button" class="btn btn-primary button">See Chat</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'transaction'">
           <div class="card-body">
             <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
-            <button type="button" class="btn btn-primary button">See Profile</button>
           </div>
         </div>
       </div>
