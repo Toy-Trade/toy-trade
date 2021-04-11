@@ -37,20 +37,27 @@ app.get('/', (req, res) => {
 });
 
 // Get data from Toys collection
-app.get('/api/v1/toys', (req, res) => {
+app.get('/api/v1/toys', async (req, res) => {
   // Use connect method to connect to the server
-  client.connect(function(err) {
+  client.connect(async function(err) {
     console.log('Connected successfully to server');
     const db = client.db(dbName);
     // Get the Toys collection
     const collection = db.collection('Toys');
+    const collection1 = db.collection('Users');
     
     // Get some documents from the Toys collection
-    collection.find().toArray(function(err, docs) {
-      // console.log('Found the following records');
-      // console.log(docs);
-      res.json(docs);
-    });
+    const response = await collection.find().toArray();
+    // console.log(response)
+    for (let i = 0; i < response.length; i++) {
+      const subResponse = await collection1.findOne({uid: response[i].userId})
+      console.log(subResponse)
+      response[i]["username"] = subResponse.username;
+      response[i]["profileUrl"] = subResponse.photoURL;
+    }
+
+    console.log(response)
+    res.json(response)
   });
 
   // var myData = {
