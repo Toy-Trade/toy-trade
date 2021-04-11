@@ -1,7 +1,7 @@
 <!-- Cards Dashboard -->
 <div class="row justify-content">
   <div *ngFor="let toy of toys" class="col-lg-6 col-md-6 col-sm-12">
-    <div class="card" data-toggle="modal" [attr.data-target]="'#toy-' + toy.objectId">
+    <div class="card toy-card" data-toggle="modal" [attr.data-target]="'#toy-' + toy.objectId">
       <div class="card-header">
         <img class="profile-icon" src="{{toy.profileUrl}}" alt="Profile Icon">
         <a class="link user-link" routerLink="/profile/{{toy.userId}}" skipLocationChange>{{toy.username}}</a>

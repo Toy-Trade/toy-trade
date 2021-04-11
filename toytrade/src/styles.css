@@ -96,7 +96,7 @@
   top: 1px;
 }
 
-#home-page .card {
+#home-page .toy-card {
   border: 2px solid #aaaaaa;
   border-radius: 12px;
   cursor: pointer;
@@ -124,7 +124,7 @@
   border-right: 2px solid #aaaaaa;
 }
 
-#home-page .card {
+#home-page .toy-card {
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -183,6 +183,19 @@
 
 #home-page .profile-icon {
   border-radius: 50%;
+}
+
+#home-page .refine-form {
+  margin: 20px;
+}
+
+#home-page .refine-category {
+  margin-bottom: 20px;
+}
+
+#home-page .refine-tag-button {
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 /* ADD TOY PAGE */

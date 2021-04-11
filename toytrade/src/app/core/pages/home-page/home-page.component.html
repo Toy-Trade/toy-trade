@@ -8,12 +8,54 @@
     <div class="row">
       <div class="col-6 search-col">
         <!-- <app-search-bar></app-search-bar> -->
-        <button class="btn btn-primary refine-area"><i class="ri-equalizer-line refine-icon"></i>Refine</button>
+        <button class="btn btn-primary refine-area" data-toggle="modal" data-target="#refineModal"><i class="ri-equalizer-line refine-icon"></i>Refine</button>
       </div>
       <div class="col-6">
           <app-add-toy-button></app-add-toy-button>
       </div>
     </div>
     <app-dashboard></app-dashboard>
+  </div>
+
+  <div class="modal fade" id="refineModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Refine Your Search</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form class="refine-form">
+            <div class="refine-category">
+              <h5>Brands</h5>
+              <button *ngFor="let brand of brands" class="btn btn-light refine-tag-button">{{brand}}</button>
+            </div>
+
+            <div class="refine-category">
+              <h5>Categories</h5>
+              <button *ngFor="let category of categories" class="btn btn-light refine-tag-button">{{category}}</button>
+            </div>
+
+            <div class="refine-category">
+              <h5>Age Range</h5>
+              <button *ngFor="let ageRange of ageRanges" class="btn btn-light refine-tag-button">{{ageRange}}</button>
+            </div>
+
+            <div class="refine-category">
+              <h5>Conditions</h5>
+              <button *ngFor="let condition of conditions" class="btn btn-light refine-tag-button">{{condition}}</button>
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Apply</button>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
