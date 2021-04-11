@@ -89,11 +89,13 @@ export class NotificationsPageComponent implements OnInit {
     });
 
     request.archived = true;
+    request.status = "denied";
   }
 
   public acceptRequest(request: Notification) {
     console.log("Request has been accepted");
 
+    // one of the notifications of the two that branched off
     let newNotification: Notification = {
       id: "",
       type: "",
@@ -114,19 +116,13 @@ export class NotificationsPageComponent implements OnInit {
       newNotification.id = data[0]._id;
       newNotification.type = data[0].type;
       newNotification.toyId = data[0].toyId;
-      this.httpService.getToy(data[0].toyId).subscribe((data) => {
-        newNotification.toyName = Object.entries(data)[0][1].title;
-      });
+      newNotification.toyName = request.toyName;
       newNotification.senderId = data[0].senderId;
       newNotification.receiverId = data[0].receiverId;
-      this.httpService.getUser(data[0].senderId).subscribe((data) => {
-        newNotification.senderUsername = Object.entries(data)[0][1].username;
-      })
-      newNotification.transactionId = "";
+      newNotification.senderUsername = request.senderUsername;
       const timeAgo = new TimeAgo('en-US');
       newNotification.timeAgo = timeAgo.format(new Date(data[0].date));
       newNotification.archived = data[0].archived;
-      newNotification.status = "accepted";
     });
 
     console.log("New Notification:");
@@ -134,5 +130,6 @@ export class NotificationsPageComponent implements OnInit {
 
     this.notifications.push(newNotification);
     request.archived = true;
+    request.status = "accepted";
   }
 }

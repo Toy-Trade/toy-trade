@@ -480,7 +480,7 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
 
     console.log("Original Request Notification has been archived");
 
-    res.json([notification1, notification2]);
+    res.json([notification1]);
   }); 
 });
 

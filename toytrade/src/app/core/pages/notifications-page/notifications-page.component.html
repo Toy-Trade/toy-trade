@@ -49,11 +49,6 @@
             <p class="card-text">You denied <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>'s request for your <a class="link" href="">{{notification.toyName}}</a>.</p>
           </div>
         </div>
-        <div class="card" *ngIf="notification.type == 'accept_request'">
-          <div class="card-body">
-            <p class="card-text">Your request for<a class="link" href="">{{notification.toyName}}</a> from <a class="link" href="">@{{notification.senderId}}</a> has been accepted.</p>
-          </div>
-        </div>
         <div class="card" *ngIf="notification.type == 'transaction'">
           <div class="card-body">
             <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
