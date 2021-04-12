@@ -13,7 +13,8 @@ export class DataVisualPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public async onClickBrandsButton() {
+  public onClickBrandsButton() {
+    document.getElementById("brandsButton").style.cursor = "wait";
     console.log("onClickBrandsButton");
     this.httpService.getBrandsCSV().subscribe((data) => {
       console.log(data);
@@ -22,11 +23,13 @@ export class DataVisualPageComponent implements OnInit {
         link.download = "brandsData";
         link.href = "../../.././../assets/csv/brands.csv";
         link.click();
+        document.getElementById("brandsButton").style.cursor = "initial";
       }, 2000);
     });
   }
 
-  public async onClickToyRequestsButton() {
+  public onClickToyRequestsButton() {
+    document.getElementById("toyRequestsButton").style.cursor = "wait";
     console.log("onClickToyRequestsButton");
     this.httpService.getToyRequestsCSV().subscribe((data) => {
       console.log(data);
@@ -35,11 +38,13 @@ export class DataVisualPageComponent implements OnInit {
         link.download = "toyRequestsData";
         link.href = "../../.././../assets/csv/toyrequests.csv";
         link.click();
+        document.getElementById("toyRequestsButton").style.cursor = "initial";
       }, 2000);
     });
   }
 
-  public async onClickCategoriesButton() {
+  public onClickCategoriesButton() {
+    document.getElementById("categoriesButton").style.cursor = "wait";
     console.log("onClickCategoriesButton");
     this.httpService.getCategoriesCSV().subscribe((data) => {
       console.log(data);
@@ -48,11 +53,13 @@ export class DataVisualPageComponent implements OnInit {
         link.download = "categoriesData";
         link.href = "../../.././../assets/csv/categories.csv";
         link.click();
+        document.getElementById("categoriesButton").style.cursor = "initial";
       }, 2000);
     });
   }
 
-  public async onClickUserRequestsButton() {
+  public onClickUserRequestsButton() {
+    document.getElementById("userRequestsButton").style.cursor = "wait";
     console.log("onClickUserRequestsButton");
     this.httpService.getUserRequestsCSV().subscribe((data) => {
       console.log(data);
@@ -61,6 +68,7 @@ export class DataVisualPageComponent implements OnInit {
         link.download = "userRequestsData";
         link.href = "../../.././../assets/csv/user_requests.csv";
         link.click();
+        document.getElementById("userRequestsButton").style.cursor = "initial";
       }, 2000);
     });
   }
