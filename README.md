@@ -64,7 +64,7 @@ Joyce:
 
 Tyler:
 
-Jody: For creativity, changed the mouse cursor styling to cursor: wait when the user clicks on the "Download CSV" button. I decided to add this feature because we set a timeout for two seconds before downloading the file to ensure that the file is up to date. In order to notify the user of this wait time, I decided to change the cursor styling to a spinner. Once the file downloads, I change the cursor styling back to its default state by setting it to cursor: initial.
+Jody: For creativity, I changed the mouse cursor styling to cursor: wait when the user clicks on the "Download CSV" button. I decided to add this feature because we set a timeout for two seconds before downloading the file to ensure that the file is up to date. In order to notify the user of this wait time, I decided to change the cursor styling to a spinner. Once the file downloads, I change the cursor styling back to its default state by setting it to cursor: initial.
 
 ## How to Run Application
 
