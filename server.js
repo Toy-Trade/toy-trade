@@ -85,20 +85,34 @@ app.get('/api/v1/toys', async (req, res) => {
 });
 
 // Get data from specific user's Toys collection
-app.get('/api/v1/toys/users/:userId', (req, res) => {
+app.get('/api/v1/toys/users/:userId', async (req, res) => {
   // Use connect method to connect to the server
-  client.connect(function(err) {
+  client.connect(async function(err) {
     console.log('Connected successfully to server');
     const db = client.db(dbName);
     // Get the Toys collection
     const collection = db.collection('Toys');
+    const collection1 = db.collection('Users')
+
+    ////
+    // Get some documents from the Toys collection
+    const response = await collection.find({userId: req.params.userId}).toArray();
+    const subResponse = await collection1.findOne({uid: req.params.userId})
+    // console.log(response)
+    for (let i = 0; i < response.length; i++) {
+      response[i]["username"] = subResponse.username;
+    }
+
+    console.log(response)
+    res.json(response)
+    ////
     
     // Get some documents from the Toys collection
-    collection.find({userId: req.params.userId}).toArray(function(err, docs) {
-      // console.log('Found the following records');
-      // console.log(docs);
-      res.json(docs);
-    });
+    // collection.find({userId: req.params.userId}).toArray(function(err, docs) {
+    //   // console.log('Found the following records');
+    //   // console.log(docs);
+    //   res.json(docs);
+    // });
   }); 
 });
 

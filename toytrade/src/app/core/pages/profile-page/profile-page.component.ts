@@ -57,8 +57,8 @@ export class ProfilePageComponent implements OnInit {
     // Reading Toys Data from MongoDB
     this.httpService.getUserToys(this.uauth.user.uid).subscribe((data) => {
       for (let entry of Object.entries(data)) {
-        this.httpService.getUser(entry[1].userId).subscribe((data) => {
-          let myUsername = Object.entries(data)[0][1].username;
+        // this.httpService.getUser(entry[1].userId).subscribe((data) => {
+          // let myUsername = Object.entries(data)[0][1].username;
           this.toys.push({
             objectId: entry[1]._id,
             title: entry[1].title,
@@ -68,10 +68,10 @@ export class ProfilePageComponent implements OnInit {
             estimatedValue: entry[1].estimatedValue,
             ageRange: entry[1].ageRange,
             description: entry[1].description,
-            username: myUsername,
+            username: entry[1].username,
             profileUrl: this.uauth.user.photoURL
           });
-        });
+        // });
       }
     });
   }
