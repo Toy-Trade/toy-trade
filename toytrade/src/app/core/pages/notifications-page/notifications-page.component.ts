@@ -37,30 +37,22 @@ export class NotificationsPageComponent implements OnInit {
     this.httpService.getNotifications(this.uauth.user.uid).subscribe((data) => {
       console.log(data)
       for (let entry of Object.entries(data)) {
-        // let mysenderName = "";
-        // let myToyName = "";
-        // this.httpService.getUser(entry[1].senderId).subscribe((data) => {
-          // mysenderName = Object.entries(data)[0][1].username;
-          // this.httpService.getToy(entry[1].toyId).subscribe((data) => {
-            // myToyName = Object.entries(data)[0][1].title;
-            const timeAgo = new TimeAgo('en-US');
+        const timeAgo = new TimeAgo('en-US');
 
-            this.notifications.push({
-              id: entry[1]._id,
-              type: entry[1].type,
-              toyId: entry[1].toyId,
-              toyName: entry[1].toyName,
-              senderId: entry[1].senderId,
-              receiverId: entry[1].receiverId,
-              senderUsername: entry[1].senderUsername,
-              transactionId: entry[1].transactionId,
-              timeAgo: timeAgo.format(new Date(entry[1].date)),
-              date: entry[1].date,
-              archived: entry[1].archived,
-              status: entry[1].status
-            });
-          // });
-        // });
+        this.notifications.push({
+          id: entry[1]._id,
+          type: entry[1].type,
+          toyId: entry[1].toyId,
+          toyName: entry[1].toyName,
+          senderId: entry[1].senderId,
+          receiverId: entry[1].receiverId,
+          senderUsername: entry[1].senderUsername,
+          transactionId: entry[1].transactionId,
+          timeAgo: timeAgo.format(new Date(entry[1].date)),
+          date: entry[1].date,
+          archived: entry[1].archived,
+          status: entry[1].status
+        });
       }
 
       console.log("notifications")
