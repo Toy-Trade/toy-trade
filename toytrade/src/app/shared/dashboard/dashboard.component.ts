@@ -31,11 +31,7 @@ export class DashboardComponent implements OnInit {
     this.httpService.getToys().subscribe((data) => {
       console.log("Data")
       console.log(data)
-      // let myUsername = "";
-      // let userImage = "";
       for (let entry of Object.entries(data)) {
-        // myUsername = Object.entries(data)[0][1].username;
-        // userImage = Object.entries(data)[0][1].photoURL;
 
         this.toys.push({
           objectId: entry[1]._id,
