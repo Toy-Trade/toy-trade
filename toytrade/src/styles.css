@@ -413,8 +413,11 @@
 }
 
 /* DATA VISUALIZATION PAGE */
-#data-visual-page .header {
+#data-visual-page .container {
   margin-top: 5%;
+}
+
+#data-visual-page .header {
   font-size: 24px;
   margin-bottom: 2%;
   text-align: center;
