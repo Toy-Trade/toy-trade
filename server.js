@@ -245,22 +245,41 @@ app.post('/api/v1/notifications', (req, res) => {
 });
 
 //Get users notifications
-app.get('/api/v1/notifications/users/:userId', (req, res) => {
+app.get('/api/v1/notifications/users/:userId', async (req, res) => {
   let userId = req.params.userId;
   console.log("userId: " + userId);
   // Use connect method to connect to the server
-  client.connect(function(err) {
+  client.connect(async function(err) {
     console.log('Connected successfully to server');
     const db = client.db(dbName);
     // Get the Notifications collection
     const collection = db.collection('Notifications');
+    const collection1 = db.collection('Users');
+    const collection2 = db.collection('Toys');
+
+    ////
+    // Get some documents from the Notifications collection
+    const response = await collection.find({receiverId:userId}).toArray();
+    // console.log(response)
+    for (let i = 0; i < response.length; i++) {
+      const subResponse = await collection1.findOne({uid: response[i].senderId});
+      let myObject = new ObjectId(response[i].toyId);
+      const subResponse1 = await collection2.findOne({_id: myObject});
+      // console.log(subResponse)
+      response[i]["senderUsername"] = subResponse.username;
+      response[i]["toyName"] = subResponse1.title;
+    }
+
+    console.log(response)
+    res.json(response)
+    ////
     
     // Get some documents from the Notifications collection
-    collection.find({receiverId:userId}).toArray(function(err, docs) {
-      console.log('Found the following notifications');
-      console.log(docs);
-      res.json(docs);
-    });
+    // collection.find({receiverId:userId}).toArray(function(err, docs) {
+    //   console.log('Found the following notifications');
+    //   console.log(docs);
+    //   res.json(docs);
+    // });
   }); 
 });
 
