@@ -459,47 +459,117 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
     const db = client.db(dbName);
     // Get the Notifications collection
     const collection = db.collection('Notifications');
+    const collection1 = db.collection('MessageGroups');
+
+    // Create message group between two users
+    let messageGroup = {
+      userId1: req.body.senderId,
+      userId2: req.body.receiverId
+    }
+
+    // let existingMessageGroup = "";
+
+    collection1.find({$or: [{userId1: req.body.senderId, userId2: req.body.receiverId}, {userId1: req.body.receiverId, userId2: req.body.senderId}]}).toArray(function(err, docs) {
+      if (docs.length == 0) {
+        collection1.insertOne(messageGroup, function(err, docs) {
+          console.log("Inserted message group");
     
-    let notification1 = {
-      // it would say "You have accepted @user's request for your toy"
-      type: "accept_acceptor",
-      senderId: req.body.senderId,
-      receiverId: req.body.receiverId,
-      toyId: req.body.toyId,
-      date: new Date(),
-      archived: false
-    }
+          let myMessageGroupId = docs.ops[0]._id;
+    
+          let notification1 = {
+            // it would say "You have accepted @user's request for your toy"
+            type: "accept_acceptor",
+            senderId: req.body.senderId,
+            receiverId: req.body.receiverId,
+            toyId: req.body.toyId,
+            date: new Date(),
+            archived: false,
+            messageGroupId: myMessageGroupId
+          }
+      
+          let notification2 = {
+            // it would say "Your request for toy from @user has been accepted."
+            type: "accept_receiver",
+            senderId: req.body.receiverId,
+            receiverId: req.body.senderId,
+            toyId: req.body.toyId,
+            date: new Date(),
+            archived: false,
+            messageGroupId: myMessageGroupId
+          }
+      
+          collection.insertOne(notification1, function(err, docs) {
+            console.log("Inserted notification1");
+            // res.json({inserted: true});
+          });
+      
+          collection.insertOne(notification2, function(err, docs) {
+            console.log("Inserted notification2");
+            // res.json({inserted: true});
+          });
+      
+          // Update with request notification as archived: true
+          let myObject = new ObjectId(requestId);
+          collection.updateOne (
+            { _id: myObject },
+            { $set: { archived: true, status: "accepted" } }
+          )
+      
+          console.log("Original Request Notification has been archived");
+      
+          res.json([notification1]);
+        });
+      } else {
+        // Set message group id to existing one
+        console.log("Found existing message group");
+        console.log("Did not insert new message group");
+  
+        let myMessageGroupId = docs[0]._id;
 
-    let notification2 = {
-      // it would say "Your request for toy from @user has been accepted."
-      type: "accept_receiver",
-      senderId: req.body.receiverId,
-      receiverId: req.body.senderId,
-      toyId: req.body.toyId,
-      date: new Date(),
-      archived: false
-    }
-
-    collection.insertOne(notification1, function(err, docs) {
-      console.log("Inserted notification1");
-      // res.json({inserted: true});
+        let notification1 = {
+          // it would say "You have accepted @user's request for your toy"
+          type: "accept_acceptor",
+          senderId: req.body.senderId,
+          receiverId: req.body.receiverId,
+          toyId: req.body.toyId,
+          date: new Date(),
+          archived: false,
+          messageGroupId: myMessageGroupId
+        }
+    
+        let notification2 = {
+          // it would say "Your request for toy from @user has been accepted."
+          type: "accept_receiver",
+          senderId: req.body.receiverId,
+          receiverId: req.body.senderId,
+          toyId: req.body.toyId,
+          date: new Date(),
+          archived: false,
+          messageGroupId: myMessageGroupId
+        }
+    
+        collection.insertOne(notification1, function(err, docs) {
+          console.log("Inserted notification1");
+          // res.json({inserted: true});
+        });
+    
+        collection.insertOne(notification2, function(err, docs) {
+          console.log("Inserted notification2");
+          // res.json({inserted: true});
+        });
+    
+        // Update with request notification as archived: true
+        let myObject = new ObjectId(requestId);
+        collection.updateOne (
+          { _id: myObject },
+          { $set: { archived: true, status: "accepted" } }
+        )
+    
+        console.log("Original Request Notification has been archived");
+    
+        res.json([notification1]);
+      }
     });
-
-    collection.insertOne(notification2, function(err, docs) {
-      console.log("Inserted notification2");
-      // res.json({inserted: true});
-    });
-
-    // Update with request notification as archived: true
-    let myObject = new ObjectId(requestId);
-    collection.updateOne (
-      { _id: myObject },
-      { $set: { archived: true, status: "accepted" } }
-    )
-
-    console.log("Original Request Notification has been archived");
-
-    res.json([notification1]);
   }); 
 });
 
