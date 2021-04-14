@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'profile/:userId', component: ProfileViewerPageComponent },
   { path: 'chat', component: ChatPageComponent },
+  { path: 'chat/:messageGroupId', component: ChatPageComponent },
   { path: 'notifications', component: NotificationsPageComponent },
   { path: 'profile', component: ProfilePageComponent },
   { path: 'addtoy', component: AddToyPageComponent },
