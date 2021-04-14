@@ -8,6 +8,14 @@ interface MessageGroup {
   objectId: string;
 }
 
+interface Message{
+  messageGroupId: string;
+  text: string;
+  senderId: string;
+  senderUsername: string;
+  date: Date;
+}
+
 @Component({
   selector: 'app-chat-page',
   templateUrl: './chat-page.component.html',
@@ -16,6 +24,8 @@ interface MessageGroup {
 export class ChatPageComponent implements OnInit {
 
   messageGroups: MessageGroup[] = []; 
+  currentMessageGroupId: string = "";
+  messages: Message[] = [];
 
   constructor(public httpService : HttpService, public uauth: AuthService) { }
 
@@ -31,6 +41,11 @@ export class ChatPageComponent implements OnInit {
 
       }
     })
+  }
+
+  public getMessages(objectId: string){
+    console.log(objectId);
+    this.currentMessageGroupId = objectId;
 
   }
 
