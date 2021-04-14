@@ -85,4 +85,8 @@ export class HttpService {
   public acceptToyRequest(request: Notification) {
     return this.httpClient.post(this.apiserver + "/notifications/requests/accept/" + request.id, request);
   }
+
+  public getMessageGroups(userId: string){
+    return this.httpClient.get(this.apiserver + "/messagegroups/" + userId);
+  }
 }
