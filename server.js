@@ -573,6 +573,25 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
   }); 
 });
 
+app.get("/api/v1/messagegroups/:userId", (req, res) => {
+  let userId = req.params.userId;
+  console.log("userId: " + userId);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Users collection
+    const collection = db.collection('MessageGroups');
+    
+    // Get some documents from the Users collection
+    collection.find({$or: [{userId1: userId}, {userId2: userId}]}).toArray(function(err, docs) {
+      console.log('Found the following message group');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
+});
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });

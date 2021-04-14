@@ -1,67 +1,25 @@
 <main id="chat-page">
   <!-- Header Component -->
   <app-header></app-header>
+
+
+
+
+
+
   <div class="container">
     <h1 class="text-center">Toy Trade Messaging</h1>
     <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
-          <div class="headind_srch">
-            <div class="recent_heading">
-              <h4>Recent</h4>
-            </div>
-            <div class="srch_bar">
-              <div class="stylish-input-group">
-                <input type="text" class="search-bar" placeholder="Search">
-                <span class="input-group-addon">
-                  <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                </span> </div>
-            </div>
-          </div>
-          <div class="inbox_chat">
+          <div *ngFor = "let messageGroup of messageGroups" class="inbox_chat">
             <div class="chat_list first">
               <div class="chat_people">
                 <div class="chat_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="@boardgames44">
                 </div>
+
                 <div class="chat_ib">
-                  <h5>@boardgames44 <span class="chat_date">March 10</span></h5>
-                  <p>Messaging Thread about some toys for trading!</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="@toystorytoys">
-                </div>
-                <div class="chat_ib">
-                  <h5>@toystorytoys <span class="chat_date">March 8</span></h5>
-                  <p>Messaging Thread about some toys for trading!</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="@toytrader70"> </div>
-                <div class="chat_ib">
-                  <h5>@toytrader70 <span class="chat_date">March 1</span></h5>
-                  <p>Messaging Thread about some toys for trading!</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="@ilovelegos"> </div>
-                <div class="chat_ib">
-                  <h5>@ilovelegos <span class="chat_date">Feb 24</span></h5>
-                  <p>Messaging Thread about some toys for trading!</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="@starwars101"> </div>
-                <div class="chat_ib">
-                  <h5>@starwars101 <span class="chat_date">Feb 12</span></h5>
+                  <h5>{{messageGroup.userId1}}<span class="chat_date">March 10</span></h5>
                   <p>Messaging Thread about some toys for trading!</p>
                 </div>
               </div>
