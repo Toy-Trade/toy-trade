@@ -3,8 +3,8 @@ import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
 
 interface MessageGroup {
-  userId1: string;
-  userId2: string;
+  otherUserId: string;
+  otherUsername: string;
   objectId: string;
 }
 
@@ -24,9 +24,9 @@ export class ChatPageComponent implements OnInit {
     this.httpService.getMessageGroups(this.uauth.user.uid).subscribe((data) => {
       for (let entry of Object.entries(data)) {
         this.messageGroups.push({
-          userId1: entry[1].userId1,
-          userId2: entry[1].userId2,
-          objectId: entry[1]._id
+          otherUserId: entry[1].otherUserId,
+          otherUsername: entry[1].otherUsername,
+          objectId: entry[1].messageGroupId
         })
 
       }

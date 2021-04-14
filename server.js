@@ -573,24 +573,41 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
   }); 
 });
 
-app.get("/api/v1/messagegroups/:userId", (req, res) => {
+app.get("/api/v1/messagegroups/:userId", async (req, res) => {
   let userId = req.params.userId;
   console.log("userId: " + userId);
   // Use connect method to connect to the server
-  client.connect(function(err) {
+  client.connect(async function(err) {
     console.log('Connected successfully to server');
     const db = client.db(dbName);
     // Get the Users collection
     const collection = db.collection('MessageGroups');
-    
-    // Get some documents from the Users collection
-    collection.find({$or: [{userId1: userId}, {userId2: userId}]}).toArray(function(err, docs) {
-      console.log('Found the following message group');
-      console.log(docs);
-      res.json(docs);
-    });
+    const collection1 = db.collection('Users');
+    let messageGroups = [];
+    const response = await collection.find({$or: [{userId1: userId}, {userId2: userId}]}).toArray();
+    // console.log(response)
+    for (let i = 0; i < response.length; i++) {
+      let otherUser = "";
+      if (response[i].userId1 == userId){
+        otherUser = response[i].userId2;
+      }else{
+        otherUser = response[i].userId1;
+      }
+      const subResponse = await collection1.findOne({uid: otherUser})
+      //console.log(subResponse)
+      let messageGroup = {
+        otherUserId: otherUser,
+        otherUsername: subResponse.username,
+        messageGroupId: response[i]._id
+        
+      }
+      messageGroups.push(messageGroup);
+    }
+    res.json(messageGroups);
   }); 
 });
+
+
 
 app.listen(port, () => {
   console.log('Listening on *:3000');
