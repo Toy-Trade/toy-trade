@@ -608,6 +608,32 @@ app.get("/api/v1/messagegroups/:userId", async (req, res) => {
 });
 
 
+// Add message to database
+app.post('/api/v1/messages', (req, res) => {
+  console.log("Successful Add Message POST Request")
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Messages collection
+    const collection = db.collection('Messages');
+    const collection1 = db.collection('Users');
+
+    collection1.find({uid: req.body.senderId}).toArray(function(err, docs) {
+      console.log(docs);
+      let username = docs[0].username;
+
+      // Get some documents from the Messages collection
+      collection.insertOne(req.body, function(err, docs) {
+        console.log("Inserted one message");
+        docs.ops[0]["senderUsername"] = username;
+        console.log(docs.ops);
+        res.json(docs.ops);
+      });
+    });
+  });
+});
+
 
 app.listen(port, () => {
   console.log('Listening on *:3000');

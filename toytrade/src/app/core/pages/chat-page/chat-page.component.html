@@ -29,7 +29,7 @@
         <div class="mesgs">
           <div class="msg_history">
             <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="sunil"> </div>
+              <div class="incoming_msg_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="sunil"></div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Hello</p>
@@ -44,10 +44,11 @@
               </div>
             </div>
           </div>
-          <div class="type_msg">
+          <div class="type_msg" [formGroup]="addMessageForm">
+            <input type="text" formControlName="messageGroupId" style="display: none;">
             <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              <input type="text" class="write_msg" placeholder="Type a message" formControlName="text">
+              <button class="msg_send_btn" type="button" (click)="postMessage()"><i class="ri-send-plane-fill"></i></button>
             </div>
           </div>
         </div>
