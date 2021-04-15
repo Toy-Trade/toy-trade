@@ -9,12 +9,12 @@ interface MessageGroup {
   objectId: string;
 }
 
-interface Message{
+interface Message {
   messageGroupId: string;
   text: string;
   senderId: string;
   senderUsername: string;
-  date: Date;
+  date: string;
 }
 
 @Component({
@@ -42,8 +42,7 @@ export class ChatPageComponent implements OnInit {
           otherUserId: entry[1].otherUserId,
           otherUsername: entry[1].otherUsername,
           objectId: entry[1].messageGroupId
-        })
-
+        });
       }
     });
   }
@@ -69,7 +68,7 @@ export class ChatPageComponent implements OnInit {
           text: entry[1].text,
           senderId: entry[1].senderId,
           senderUsername: entry[1].senderUsername,
-          date: entry[1].date
+          date: new Date(entry[1].date).toLocaleTimeString()
         });
       }
       console.log(data);
@@ -88,7 +87,7 @@ export class ChatPageComponent implements OnInit {
         text: data[0].text,
         senderId: this.uauth.user.uid,
         senderUsername: data[0].senderUsername,
-        date: data[0].date
+        date: new Date(data[0].date).toLocaleTimeString()
       }
       this.messages.push(messageAdded);
     });
