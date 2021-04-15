@@ -89,4 +89,12 @@ export class HttpService {
   public getMessageGroups(userId: string){
     return this.httpClient.get(this.apiserver + "/messagegroups/" + userId);
   }
+
+  public addMessage(messageToAdd: Object) {
+    return this.httpClient.post(this.apiserver + "/messages", messageToAdd);
+  }
+
+  public getMessages(messageGroupId: string) {
+    return this.httpClient.get(this.apiserver + "/messages/" + messageGroupId);
+  }
 }

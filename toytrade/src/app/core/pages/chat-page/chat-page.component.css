@@ -47,6 +47,7 @@ border: 2px solid #aaaaaa;
 border-radius: 12px;
 clear: both;
 overflow: hidden;
+margin-bottom: 2%;
 }
 
 .recent_heading {float: left; width:40%;}
@@ -81,11 +82,14 @@ font-size: 18px;
 .chat_img {
 float: left;
 width: 30px;
+border-radius: 50%;
 }
 .chat_ib {
 float: left;
 padding: 0 0 0 15px;
 width: 88%;
+position: relative;
+top: 4px;
 }
 
 .chat_people{ overflow:hidden; clear:both;}

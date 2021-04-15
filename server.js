@@ -47,7 +47,7 @@ app.get('/api/v1/toys', async (req, res) => {
     const collection1 = db.collection('Users');
     
     // Get some documents from the Toys collection
-    const response = await collection.find().toArray();
+    const response = await collection.find().sort({$natural:-1}).toArray();
     // console.log(response)
     for (let i = 0; i < response.length; i++) {
       const subResponse = await collection1.findOne({uid: response[i].userId})
@@ -95,7 +95,7 @@ app.get('/api/v1/toys/users/:userId', async (req, res) => {
     const collection1 = db.collection('Users')
 
     // Get some documents from the Toys collection
-    const response = await collection.find({userId: req.params.userId}).toArray();
+    const response = await collection.find({userId: req.params.userId}).sort({$natural: -1}).toArray();
     const subResponse = await collection1.findOne({uid: req.params.userId})
     for (let i = 0; i < response.length; i++) {
       response[i]["username"] = subResponse.username;
@@ -598,15 +598,62 @@ app.get("/api/v1/messagegroups/:userId", async (req, res) => {
       let messageGroup = {
         otherUserId: otherUser,
         otherUsername: subResponse.username,
+        otherProfileUrl: subResponse.photoURL,
         messageGroupId: response[i]._id
-        
       }
+      console.log("messageGroup");
+      console.log(messageGroup);
       messageGroups.push(messageGroup);
     }
     res.json(messageGroups);
   }); 
 });
 
+
+// Add message to database
+app.post('/api/v1/messages', (req, res) => {
+  console.log("Successful Add Message POST Request")
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Messages collection
+    const collection = db.collection('Messages');
+    const collection1 = db.collection('Users');
+
+    collection1.find({uid: req.body.senderId}).toArray(function(err, docs) {
+      console.log(docs);
+      let username = docs[0].username;
+
+      // Get some documents from the Messages collection
+      collection.insertOne(req.body, function(err, docs) {
+        console.log("Inserted one message");
+        docs.ops[0]["senderUsername"] = username;
+        console.log(docs.ops);
+        res.json(docs.ops);
+      });
+    });
+  });
+});
+
+app.get('/api/v1/messages/:messageGroupId', (req, res) => {
+  let myMessageGroupId = req.params.messageGroupId;
+  console.log("myMessageGroupId: " + myMessageGroupId);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Messages collection
+    const collection = db.collection('Messages');
+    
+    // Get some documents from the Messages collection
+    collection.find({messageGroupId:myMessageGroupId}).toArray(function(err, docs) {
+      console.log('Found the following messages');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
+});
 
 
 app.listen(port, () => {

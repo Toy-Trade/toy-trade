@@ -245,7 +245,7 @@
 
 #profile-page .row {
     text-align: left;
-    margin: 4% 0;
+    margin: 2% 0;
 }
 
 #profile-page .link {
@@ -320,22 +320,32 @@
 #profile-page .profile-icon {
   border-radius: 50%;
 }
-
+/*
 #profile-page .profile-photo {
   text-align: right;
 }
 
 #profile-page .profile-description {
   text-align: left;
+} */
+
+#profile-page .profile-photo {
+  text-align: center;
+}
+
+#profile-page .profile-description {
+  text-align: center;
+}
+
+#profile-page .profile-description p {
+  margin: auto;
+  width: 40%
 }
 
 @media only screen and (max-width: 600px) {
-  #profile-page .profile-photo {
-    text-align: center;
-  }
-
-  #profile-page .profile-description {
-    text-align: center;
+  #profile-page .profile-description p {
+    margin: auto;
+    width: 100%
   }
 }
 

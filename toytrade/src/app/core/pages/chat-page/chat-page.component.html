@@ -1,26 +1,20 @@
 <main id="chat-page">
   <!-- Header Component -->
   <app-header></app-header>
-
-
-
-
-
-
   <div class="container">
     <h1 class="text-center">Toy Trade Messaging</h1>
     <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
           <div class="inbox_chat">
-            <div *ngFor = "let messageGroup of messageGroups" class="chat_list first" (click) = "getMessages(messageGroup.objectId)">
+            <div *ngFor = "let messageGroup of messageGroups" class="chat_list first" (click) = "getMessages(messageGroup)">
               <div class="chat_people">
-                <div class="chat_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="@boardgames44">
+                <div class="chat_img"> <img class="chat_img" src="{{messageGroup.otherProfileUrl}}" alt="@boardgames44">
                 </div>
 
                 <div class="chat_ib">
-                  <h5>{{messageGroup.otherUsername}}<span class="chat_date">March 10</span></h5>
-                  <p>Messaging Thread about some toys for trading!</p>
+                  <h5>{{messageGroup.otherUsername}}</h5>
+                  <!-- <p>Messaging Thread about some toys for trading!</p> -->
                 </div>
               </div>
             </div>
@@ -28,26 +22,29 @@
         </div>
         <div class="mesgs">
           <div class="msg_history">
-            <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img class="chat_img" src="assets/svg/profileIcon.svg" alt="sunil"> </div>
-              <div class="received_msg">
-                <div class="received_withd_msg">
-                  <p>Hello</p>
-                  <span class="time_date"> 11:01 AM | Today</span>
+            <div *ngFor="let message of messages">
+              <div *ngIf="message.senderId != this.uauth.user.uid" class="incoming_msg">
+                <div class="incoming_msg_img"><img class="chat_img" src="{{currentMessageGroup.otherProfileUrl}}" alt="sunil"></div>
+                <div class="received_msg">
+                  <div class="received_withd_msg">
+                    <p>{{message.text}}</p>
+                    <span class="time_date">{{message.date}}</span>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="message.senderId == this.uauth.user.uid" class="outgoing_msg">
+                <div class="sent_msg">
+                  <p>{{message.text}}</p>
+                  <span class="time_date">{{message.date}}</span>
                 </div>
               </div>
             </div>
-            <div class="outgoing_msg">
-              <div class="sent_msg">
-                <p>Hello</p>
-                <span class="time_date"> 11:01 AM | Today</span>
-              </div>
-            </div>
           </div>
-          <div class="type_msg">
+          <div class="type_msg" [formGroup]="addMessageForm">
+            <input type="text" formControlName="messageGroupId" style="display: none;">
             <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              <input type="text" class="write_msg" placeholder="Type a message" formControlName="text">
+              <button class="msg_send_btn" type="button" (click)="postMessage()"><i class="ri-send-plane-fill"></i></button>
             </div>
           </div>
         </div>
