@@ -95,7 +95,7 @@ app.get('/api/v1/toys/users/:userId', async (req, res) => {
     const collection1 = db.collection('Users')
 
     // Get some documents from the Toys collection
-    const response = await collection.find({userId: req.params.userId}).toArray();
+    const response = await collection.find({userId: req.params.userId}).sort({$natural: -1}).toArray();
     const subResponse = await collection1.findOne({uid: req.params.userId})
     for (let i = 0; i < response.length; i++) {
       response[i]["username"] = subResponse.username;

@@ -5,11 +5,11 @@
   <div class="container">
     <h1 class="header">{{userInfo.username}}'s Profile</h1>
 
-    <div class="row justify-content" style="margin-top:50px; width:50%; margin-left: auto; margin-right: auto;">
-      <div class="col-12 col-sm-4 text-right">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-12 profile-photo">
         <img src="{{ userInfo.profileUrl }}" style="border-radius: 50%;">
       </div>
-      <div class="col-12 col-sm-8 profile-description">
+      <div class="col-sm-12 col-12 profile-description" style="padding-left: 15px">
         <h5 style="color: #169CC6; margin-top: 20px;">@{{userInfo.username}}</h5>
         <p>{{userInfo.bio}}</p>
       </div>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="row justify-content">
-      <div *ngFor="let toy of toys" class="col-lg-6 col-md-6 col-sm-12">
+      <div *ngFor="let toy of toys" class="col-lg-6 col-md-12 col-sm-12">
         <div class="card" data-toggle="modal" [attr.data-target]="'#toy-' + toy.objectId">
           <div class="card-header">
             <img class="profile-icon" src="{{toy.profileUrl}}" alt="Profile Icon">
@@ -100,7 +100,5 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </main>
