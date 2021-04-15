@@ -28,6 +28,35 @@ export class DataVisualPageComponent implements OnInit {
     });
   }
 
+  public onClickAgesButton() {
+    document.getElementById("agesButton").style.cursor = "wait";
+    console.log("onClickAgesButton");
+    this.httpService.getAgeRangeCSV().subscribe((data) => {
+      console.log(data);
+      setTimeout(() => {
+        let link = document.createElement("a");
+        link.download = "agesData";
+        link.href = "../../.././../assets/csv/ageRange.csv";
+        link.click();
+        document.getElementById("agesButton").style.cursor = "initial";
+      }, 2000);
+    });
+  }
+  public onClickTypicalToysButton() {
+    document.getElementById("typicalToysButton").style.cursor = "wait";
+    console.log("onClickTypicalToysButton");
+    this.httpService.getAgeRangeCSV().subscribe((data) => {
+      console.log(data);
+      setTimeout(() => {
+        let link = document.createElement("a");
+        link.download = "toysListedData";
+        link.href = "../../.././../assets/csv/userToys.csv";
+        link.click();
+        document.getElementById("typicalToysButton").style.cursor = "initial";
+      }, 2000);
+    });
+  }
+
   public onClickToyRequestsButton() {
     document.getElementById("toyRequestsButton").style.cursor = "wait";
     console.log("onClickToyRequestsButton");

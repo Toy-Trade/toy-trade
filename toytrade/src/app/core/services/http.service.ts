@@ -69,6 +69,15 @@ export class HttpService {
     return this.httpClient.get(this.apiserver + "/csv/toyrequests");
   }
 
+  //Tyler
+  public getAgeRangeCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/ages");
+  }
+
+  public getUserandToysCSV(){
+    return this.httpClient.get(this.apiserver + "csv/usertoys");
+  }
+
   // Jody
   public getCategoriesCSV() {
     return this.httpClient.get(this.apiserver + "/csv/categories");
