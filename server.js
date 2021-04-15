@@ -598,9 +598,11 @@ app.get("/api/v1/messagegroups/:userId", async (req, res) => {
       let messageGroup = {
         otherUserId: otherUser,
         otherUsername: subResponse.username,
+        otherProfileUrl: subResponse.photoURL,
         messageGroupId: response[i]._id
-        
       }
+      console.log("messageGroup");
+      console.log(messageGroup);
       messageGroups.push(messageGroup);
     }
     res.json(messageGroups);

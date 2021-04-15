@@ -81,6 +81,7 @@ font-size: 18px;
 .chat_img {
 float: left;
 width: 30px;
+border-radius: 50%;
 }
 .chat_ib {
 float: left;

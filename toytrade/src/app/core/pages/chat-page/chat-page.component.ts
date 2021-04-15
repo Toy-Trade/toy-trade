@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 interface MessageGroup {
   otherUserId: string;
   otherUsername: string;
+  otherProfileUrl: string;
   objectId: string;
 }
 
@@ -25,7 +26,13 @@ interface Message {
 export class ChatPageComponent implements OnInit {
 
   messageGroups: MessageGroup[] = [];
-  currentMessageGroupId: string = "";
+  // currentMessageGroupId: string = "";
+  currentMessageGroup: MessageGroup = {
+    otherUserId: "",
+    otherUsername: "",
+    otherProfileUrl: "",
+    objectId: "",
+  };
   messages: Message[] = [];
 
   addMessageForm: FormGroup;
@@ -41,6 +48,7 @@ export class ChatPageComponent implements OnInit {
         this.messageGroups.push({
           otherUserId: entry[1].otherUserId,
           otherUsername: entry[1].otherUsername,
+          otherProfileUrl: entry[1].otherProfileUrl,
           objectId: entry[1].messageGroupId
         });
       }
@@ -56,12 +64,12 @@ export class ChatPageComponent implements OnInit {
     });
   }
 
-  public getMessages(objectId: string) {
+  public getMessages(messageGroup: MessageGroup) {
     this.messages = [];
-    console.log(objectId);
-    this.currentMessageGroupId = objectId;
+    console.log(messageGroup);
+    this.currentMessageGroup = messageGroup;
 
-    this.httpService.getMessages(this.currentMessageGroupId).subscribe((data) => {
+    this.httpService.getMessages(this.currentMessageGroup.objectId).subscribe((data) => {
       for (let entry of Object.entries(data)) {
         this.messages.push({
           messageGroupId: entry[1].messageGroupId,
@@ -77,7 +85,7 @@ export class ChatPageComponent implements OnInit {
 
   public postMessage() {
     // set the message group id to the current one
-    this.addMessageForm.controls['messageGroupId'].setValue(this.currentMessageGroupId);
+    this.addMessageForm.controls['messageGroupId'].setValue(this.currentMessageGroup.objectId);
     this.httpService.addMessage(this.addMessageForm.getRawValue()).subscribe((data) => {
       console.log(data);
       console.log("messageGroupId:" + data[0].messageGroupId);
