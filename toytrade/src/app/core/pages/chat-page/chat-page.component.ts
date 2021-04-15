@@ -45,7 +45,7 @@ export class ChatPageComponent implements OnInit {
         })
 
       }
-    })
+    });
   }
 
   initializeForm(): void {
@@ -57,9 +57,23 @@ export class ChatPageComponent implements OnInit {
     });
   }
 
-  public getMessages(objectId: string){
+  public getMessages(objectId: string) {
+    this.messages = [];
     console.log(objectId);
     this.currentMessageGroupId = objectId;
+
+    this.httpService.getMessages(this.currentMessageGroupId).subscribe((data) => {
+      for (let entry of Object.entries(data)) {
+        this.messages.push({
+          messageGroupId: entry[1].messageGroupId,
+          text: entry[1].text,
+          senderId: entry[1].senderId,
+          senderUsername: entry[1].senderUsername,
+          date: entry[1].date
+        });
+      }
+      console.log(data);
+    });
   }
 
   public postMessage() {

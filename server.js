@@ -634,6 +634,25 @@ app.post('/api/v1/messages', (req, res) => {
   });
 });
 
+app.get('/api/v1/messages/:messageGroupId', (req, res) => {
+  let myMessageGroupId = req.params.messageGroupId;
+  console.log("myMessageGroupId: " + myMessageGroupId);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Messages collection
+    const collection = db.collection('Messages');
+    
+    // Get some documents from the Messages collection
+    collection.find({messageGroupId:myMessageGroupId}).toArray(function(err, docs) {
+      console.log('Found the following messages');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
+});
+
 
 app.listen(port, () => {
   console.log('Listening on *:3000');
