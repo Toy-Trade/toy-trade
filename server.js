@@ -584,7 +584,7 @@ app.get("/api/v1/messagegroups/:userId", async (req, res) => {
     const collection = db.collection('MessageGroups');
     const collection1 = db.collection('Users');
     let messageGroups = [];
-    const response = await collection.find({$or: [{userId1: userId}, {userId2: userId}]}).toArray();
+    const response = await collection.find({$or: [{userId1: userId}, {userId2: userId}]}).sort({date: -1}).toArray();
     // console.log(response)
     for (let i = 0; i < response.length; i++) {
       let otherUser = "";
@@ -599,7 +599,8 @@ app.get("/api/v1/messagegroups/:userId", async (req, res) => {
         otherUserId: otherUser,
         otherUsername: subResponse.username,
         otherProfileUrl: subResponse.photoURL,
-        messageGroupId: response[i]._id
+        messageGroupId: response[i]._id,
+        date: response[i].date
       }
       console.log("messageGroup");
       console.log(messageGroup);
@@ -620,6 +621,7 @@ app.post('/api/v1/messages', (req, res) => {
     // Get the Messages collection
     const collection = db.collection('Messages');
     const collection1 = db.collection('Users');
+    const collection2 = db.collection('MessageGroups');
 
     collection1.find({uid: req.body.senderId}).toArray(function(err, docs) {
       console.log(docs);
@@ -633,6 +635,12 @@ app.post('/api/v1/messages', (req, res) => {
         res.json(docs.ops);
       });
     });
+
+    let myObject = new ObjectId(req.body.messageGroupId);
+    collection2.updateOne (
+      { _id: myObject },
+      { $set: { date: req.body.date } }
+    );
   });
 });
 

@@ -88,8 +88,8 @@ border-radius: 50%;
 float: left;
 padding: 0 0 0 15px;
 width: 88%;
-position: relative;
-top: 4px;
+/* position: relative;
+top: 4px; */
 }
 
 .chat_people{ overflow:hidden; clear:both;}

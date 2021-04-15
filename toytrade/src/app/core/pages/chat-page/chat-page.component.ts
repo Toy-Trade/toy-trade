@@ -8,6 +8,7 @@ interface MessageGroup {
   otherUsername: string;
   otherProfileUrl: string;
   objectId: string;
+  date: string;
 }
 
 interface Message {
@@ -32,6 +33,7 @@ export class ChatPageComponent implements OnInit {
     otherUsername: "",
     otherProfileUrl: "",
     objectId: "",
+    date: ""
   };
   messages: Message[] = [];
 
@@ -49,9 +51,13 @@ export class ChatPageComponent implements OnInit {
           otherUserId: entry[1].otherUserId,
           otherUsername: entry[1].otherUsername,
           otherProfileUrl: entry[1].otherProfileUrl,
-          objectId: entry[1].messageGroupId
+          objectId: entry[1].messageGroupId,
+          date: new Date(entry[1].date).toLocaleTimeString()
         });
       }
+      console.log("message groups")
+      console.log(this.messageGroups)
+      this.getMessages(this.messageGroups[0]);
     });
   }
 
