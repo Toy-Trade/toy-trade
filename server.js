@@ -729,7 +729,8 @@ app.post('/api/v1/messages', (req, res) => {
           senderId: req.body.senderId,
           receiverId: req.body.receiverId,
           date: req.body.date,
-          messageGroupId: req.body.messageGroupId
+          messageGroupId: req.body.messageGroupId,
+          archived: false
         }
 
         collection3.insertOne(notificationToAdd, function(err, docs1) {
