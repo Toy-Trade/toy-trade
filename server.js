@@ -796,11 +796,28 @@ app.post('/api/v1/transactions', (req, res) => {
     const db = client.db(dbName);
     // Get the Transactions collection
     const collection = db.collection('Transactions');
+    const collection1 = db.collection('Notifications');
     
     // Get some documents from the Transactions collection
     collection.insertOne(req.body, function(err, docs) {
       console.log("Inserted one transaction")
       res.json(docs.ops[0]._id);
+
+      let notificationToAdd = {
+        type: "confirm_transaction",
+        senderId: req.body.user1Id,
+        receiverId: req.body.user2Id,
+        date: req.body.date,
+        transactionId: docs.ops[0]._id,
+        archived: false
+      }
+
+      console.log(notificationToAdd)
+
+      collection1.insertOne(notificationToAdd, function(err, docs) {
+        // Notification added to collection
+        console.log("Inserted one notification")
+      });
     });
   });
 });
