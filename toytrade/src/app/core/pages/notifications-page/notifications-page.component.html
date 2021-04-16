@@ -30,6 +30,13 @@
             <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}" skipLocationChange>See Chat</button>
           </div>
         </div>
+        <div class="card" *ngIf="notification.type == 'message'">
+          <div class="card-body">
+            <p>{{notification.timeAgo}}</p>
+            <p class="card-text">You have received a message from <a class="link" href="">@{{notification.senderUsername}}</a>.</p>
+            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}" skipLocationChange>See Chat</button>
+          </div>
+        </div>
         <div class="card" *ngIf="notification.type == 'transaction'">
           <div class="card-body">
             <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>

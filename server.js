@@ -96,7 +96,7 @@ app.get('/api/v1/toys/users/:userId', async (req, res) => {
 
     // Get some documents from the Toys collection
     const response = await collection.find({userId: req.params.userId}).sort({$natural: -1}).toArray();
-    const subResponse = await collection1.findOne({uid: req.params.userId})
+    const subResponse = await collection1.findOne({uid: req.params.userId});
     for (let i = 0; i < response.length; i++) {
       response[i]["username"] = subResponse.username;
     }
@@ -252,13 +252,17 @@ app.get('/api/v1/notifications/users/:userId', async (req, res) => {
     for (let i = 0; i < response.length; i++) {
       const subResponse = await collection1.findOne({uid: response[i].senderId});
       let myObject = new ObjectId(response[i].toyId);
-      const subResponse1 = await collection2.findOne({_id: myObject});
-      response[i]["senderUsername"] = subResponse.username;
-      response[i]["toyName"] = subResponse1.title;
-    }
 
-    console.log(response)
-    res.json(response)
+      response[i]["senderUsername"] = subResponse.username;
+      if (response[i].type != "message") {
+        const subResponse1 = await collection2.findOne({_id: myObject});
+        response[i]["toyName"] = subResponse1.title;
+        console.log("subResponse1.title");
+        console.log(subResponse1.title);
+      }
+    }
+    console.log(response);
+    res.json(response);
   }); 
 });
 
@@ -548,7 +552,8 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
     // Create message group between two users
     let messageGroup = {
       userId1: req.body.senderId,
-      userId2: req.body.receiverId
+      userId2: req.body.receiverId,
+      date: new Date()
     }
 
     // let existingMessageGroup = "";
@@ -695,7 +700,7 @@ app.get("/api/v1/messagegroups/:userId", async (req, res) => {
 });
 
 
-// Add message to database
+// POST Request: Add message to database, Add notification to database
 app.post('/api/v1/messages', (req, res) => {
   console.log("Successful Add Message POST Request")
   // Use connect method to connect to the server
@@ -706,6 +711,7 @@ app.post('/api/v1/messages', (req, res) => {
     const collection = db.collection('Messages');
     const collection1 = db.collection('Users');
     const collection2 = db.collection('MessageGroups');
+    const collection3 = db.collection('Notifications');
 
     collection1.find({uid: req.body.senderId}).toArray(function(err, docs) {
       console.log(docs);
@@ -716,7 +722,22 @@ app.post('/api/v1/messages', (req, res) => {
         console.log("Inserted one message");
         docs.ops[0]["senderUsername"] = username;
         console.log(docs.ops);
-        res.json(docs.ops);
+        messageAdded = docs.ops
+        
+        let notificationToAdd = {
+          type: "message",
+          senderId: req.body.senderId,
+          receiverId: req.body.receiverId,
+          date: req.body.date,
+          messageGroupId: req.body.messageGroupId,
+          archived: false
+        }
+
+        collection3.insertOne(notificationToAdd, function(err, docs1) {
+          console.log("message added and notification added:");
+          // send messageAdded back to frontend
+          res.json(docs.ops);
+        });
       });
     });
 
@@ -725,6 +746,7 @@ app.post('/api/v1/messages', (req, res) => {
       { _id: myObject },
       { $set: { date: req.body.date } }
     );
+
   });
 });
 
@@ -746,7 +768,6 @@ app.get('/api/v1/messages/:messageGroupId', (req, res) => {
     });
   }); 
 });
-
 
 app.listen(port, () => {
   console.log('Listening on *:3000');
