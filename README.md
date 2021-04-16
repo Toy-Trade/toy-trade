@@ -60,7 +60,7 @@ Jody: For this lab, I worked on the two data visualizations in the second row on
 
 Colleen:
 
-Joyce: For creativity, I used some nice pastel colors for both the histogram and the pie chart. I also helped to style the Data Visualization page with a nice border surrounding each visualization.
+Joyce: For creativity, I used some nice pastel colors for both the histogram and the pie chart. I also helped to style the Data Visualization page with a nice border surrounding each visualization. Another aspect of creativity I incorporated was the use of Bootstrap cards to show each data visualization. For more aesthetics and visual appeal, I included a dropshadow on each card.
 
 Tyler:
 
