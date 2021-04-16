@@ -252,13 +252,17 @@ app.get('/api/v1/notifications/users/:userId', async (req, res) => {
     for (let i = 0; i < response.length; i++) {
       const subResponse = await collection1.findOne({uid: response[i].senderId});
       let myObject = new ObjectId(response[i].toyId);
-      const subResponse1 = await collection2.findOne({_id: myObject});
-      response[i]["senderUsername"] = subResponse.username;
-      response[i]["toyName"] = subResponse1.title;
-    }
 
-    console.log(response)
-    res.json(response)
+      response[i]["senderUsername"] = subResponse.username;
+      if (response[i].type != "message") {
+        const subResponse1 = await collection2.findOne({_id: myObject});
+        response[i]["toyName"] = subResponse1.title;
+        console.log("subResponse1.title");
+        console.log(subResponse1.title);
+      }
+    }
+    console.log(response);
+    res.json(response);
   }); 
 });
 
