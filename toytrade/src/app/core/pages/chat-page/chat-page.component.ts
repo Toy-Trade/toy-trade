@@ -20,6 +20,11 @@ interface Message {
   date: string;
 }
 
+interface Toy {
+  id: string;
+  title: string;
+}
+
 @Component({
   selector: 'app-chat-page',
   templateUrl: './chat-page.component.html',
@@ -39,15 +44,19 @@ export class ChatPageComponent implements OnInit {
   messages: Message[] = [];
 
   addMessageForm: FormGroup;
+  transactionForm: FormGroup;
 
   currentMessageGroupId: string = "";
+
+  myToys: Toy[] = [];
+  theirToys: Toy[] = [];
 
   constructor(private fb: FormBuilder, public httpService : HttpService, public uauth: AuthService, private _Activatedroute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.currentMessageGroupId = this._Activatedroute.snapshot.paramMap.get("messageGroupId");
 
-    this.initializeForm();
+    this.initializeForms();
 
     this.httpService.getMessageGroups(this.uauth.user.uid).subscribe((data) => {
       for (let entry of Object.entries(data)) {
@@ -64,8 +73,6 @@ export class ChatPageComponent implements OnInit {
 
       if (this.currentMessageGroupId == null) {
         this.getMessages(this.messageGroups[0]);
-        console.log("currentMessageGroupId:");
-        console.log(this.currentMessageGroupId);
       } else {
         console.log("currentMessageGroupId:");
         console.log(this.currentMessageGroupId);
@@ -90,10 +97,14 @@ export class ChatPageComponent implements OnInit {
           console.log(data);
         });
       }
+
+      this.transactionForm.controls['messageGroupId'].setValue(this.currentMessageGroup.objectId);
+      this.transactionForm.controls['user1Id'].setValue(this.uauth.user.uid);
+      this.transactionForm.controls['user2Id'].setValue(this.currentMessageGroup.otherUserId);
     });
   }
 
-  initializeForm(): void {
+  initializeForms(): void {
     this.addMessageForm = this.fb.group({
       messageGroupId: "",
       text: "",
@@ -101,10 +112,36 @@ export class ChatPageComponent implements OnInit {
       receiverId: "",
       date: new Date()
     });
+
+    this.transactionForm = this.fb.group({
+      messageGroupId: "",
+      user1Id: "",
+      user2Id: "",
+      user1Toy: "",
+      user2Toy: "",
+      date: new Date(),
+      status: ""
+    });
+  }
+
+  changeMyToy(event: any): void {
+    let myToyId = event.target.value;
+    this.transactionForm.controls['user1Toy'].setValue(myToyId);
+    console.log(myToyId);
+  }
+
+  changeTheirToy(event: any): void {
+    let theirToyId = event.target.value;
+    this.transactionForm.controls['user2Toy'].setValue(theirToyId);
+    console.log(theirToyId);
   }
 
   // When you click on a message group
   public getMessages(messageGroup: MessageGroup) {
+    this.transactionForm.controls['messageGroupId'].setValue(this.currentMessageGroup.objectId);
+    this.transactionForm.controls['user1Id'].setValue(this.uauth.user.uid);
+    this.transactionForm.controls['user2Id'].setValue(this.currentMessageGroup.otherUserId);
+
     this.messages = [];
     console.log(messageGroup);
     this.currentMessageGroup = messageGroup;
@@ -142,6 +179,46 @@ export class ChatPageComponent implements OnInit {
         date: new Date(data[0].date).toLocaleTimeString()
       }
       this.messages.push(messageAdded);
+    });
+  }
+
+  public makeTransaction() {
+    console.log("Make transaction");
+
+    this.transactionForm.controls['date'].setValue(new Date());
+    this.transactionForm.controls['status'].setValue("pending");
+
+    console.log("transactionForm:");
+    console.log(this.transactionForm.getRawValue());
+
+    let transactionToAdd = this.transactionForm.getRawValue();
+
+    this.httpService.makeTransaction(transactionToAdd).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+  public getOurToys() {
+    // Reading My Toys from MongoDB
+    this.myToys = [];
+    this.httpService.getUserToys(this.uauth.user.uid).subscribe((data) => {
+      for (let entry of Object.entries(data)) {
+        this.myToys.push({
+          id: entry[1]._id,
+          title: entry[1].title
+        });
+      }
+    });
+
+    // Reading Their Toys from MongoDB
+    this.theirToys = [];
+    this.httpService.getUserToys(this.currentMessageGroup.otherUserId).subscribe((data) => {
+      for (let entry of Object.entries(data)) {
+        this.theirToys.push({
+          id: entry[1]._id,
+          title: entry[1].title
+        });
+      }
     });
   }
 }

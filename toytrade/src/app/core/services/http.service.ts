@@ -110,4 +110,8 @@ export class HttpService {
   public archiveNotification(notificationId: string) {
     return this.httpClient.put(this.apiserver + "/notifications/archives/" + notificationId, {id: notificationId});
   }
+
+  public makeTransaction(transaction: Object) {
+    return this.httpClient.post(this.apiserver + "/transactions", transaction);
+  }
 }

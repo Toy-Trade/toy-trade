@@ -37,10 +37,10 @@
             <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}" skipLocationChange (click)="archiveNotification(notification.id)">See Chat</button>
           </div>
         </div>
-        <div class="card" *ngIf="notification.type == 'transaction'">
+        <div class="card" *ngIf="notification.type == 'confirm_transaction'">
           <div class="card-body">
-            <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
-            <button type="button" class="btn btn-primary button">See Profile</button>
+            <p class="card-text">Please confirm your transaction with <a class="link" href="">@{{notification.senderUsername}}</a>.</p>
+            <button type="button" class="btn btn-primary button">See Transaction</button>
           </div>
         </div>
       </div>

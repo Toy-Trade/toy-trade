@@ -254,7 +254,7 @@ app.get('/api/v1/notifications/users/:userId', async (req, res) => {
       let myObject = new ObjectId(response[i].toyId);
 
       response[i]["senderUsername"] = subResponse.username;
-      if (response[i].type != "message") {
+      if (response[i].type != "message" && response[i].type != "confirm_transaction") {
         const subResponse1 = await collection2.findOne({_id: myObject});
         response[i]["toyName"] = subResponse1.title;
         console.log("subResponse1.title");
@@ -784,6 +784,41 @@ app.put('/api/v1/notifications/archives/:notificationId', (req, res) => {
       { _id: objectId },
       { $set: { archived: true } }
     )
+  });
+});
+
+// Add transaction to Transactions collection
+app.post('/api/v1/transactions', (req, res) => {
+  console.log("Successful Add Transaction POST Request")
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Transactions collection
+    const collection = db.collection('Transactions');
+    const collection1 = db.collection('Notifications');
+    
+    // Get some documents from the Transactions collection
+    collection.insertOne(req.body, function(err, docs) {
+      console.log("Inserted one transaction")
+      res.json(docs.ops[0]._id);
+
+      let notificationToAdd = {
+        type: "confirm_transaction",
+        senderId: req.body.user1Id,
+        receiverId: req.body.user2Id,
+        date: req.body.date,
+        transactionId: docs.ops[0]._id,
+        archived: false
+      }
+
+      console.log(notificationToAdd)
+
+      collection1.insertOne(notificationToAdd, function(err, docs) {
+        // Notification added to collection
+        console.log("Inserted one notification")
+      });
+    });
   });
 });
 
