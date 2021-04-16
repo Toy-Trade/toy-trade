@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface MessageGroup {
   otherUserId: string;
@@ -39,9 +40,12 @@ export class ChatPageComponent implements OnInit {
 
   addMessageForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public httpService : HttpService, public uauth: AuthService) { }
+  currentMessageGroupId: string = "";
+
+  constructor(private fb: FormBuilder, public httpService : HttpService, public uauth: AuthService, private _Activatedroute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.currentMessageGroupId = this._Activatedroute.snapshot.paramMap.get("messageGroupId");
 
     this.initializeForm();
 
@@ -57,7 +61,35 @@ export class ChatPageComponent implements OnInit {
       }
       console.log("message groups")
       console.log(this.messageGroups)
-      this.getMessages(this.messageGroups[0]);
+
+      if (this.currentMessageGroupId == null) {
+        this.getMessages(this.messageGroups[0]);
+        console.log("currentMessageGroupId:");
+        console.log(this.currentMessageGroupId);
+      } else {
+        console.log("currentMessageGroupId:");
+        console.log(this.currentMessageGroupId);
+
+        for (let i = 0; i < this.messageGroups.length; i++) {
+          if (this.messageGroups[i].objectId == this.currentMessageGroupId) {
+            this.currentMessageGroup = this.messageGroups[i];
+          }
+        }
+
+        this.messages = [];
+        this.httpService.getMessages(this.currentMessageGroupId).subscribe((data) => {
+          for (let entry of Object.entries(data)) {
+            this.messages.push({
+              messageGroupId: entry[1].messageGroupId,
+              text: entry[1].text,
+              senderId: entry[1].senderId,
+              senderUsername: entry[1].senderUsername,
+              date: new Date(entry[1].date).toLocaleTimeString()
+            });
+          }
+          console.log(data);
+        });
+      }
     });
   }
 
@@ -70,6 +102,7 @@ export class ChatPageComponent implements OnInit {
     });
   }
 
+  // When you click on a message group
   public getMessages(messageGroup: MessageGroup) {
     this.messages = [];
     console.log(messageGroup);

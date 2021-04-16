@@ -96,7 +96,7 @@ app.get('/api/v1/toys/users/:userId', async (req, res) => {
 
     // Get some documents from the Toys collection
     const response = await collection.find({userId: req.params.userId}).sort({$natural: -1}).toArray();
-    const subResponse = await collection1.findOne({uid: req.params.userId})
+    const subResponse = await collection1.findOne({uid: req.params.userId});
     for (let i = 0; i < response.length; i++) {
       response[i]["username"] = subResponse.username;
     }
@@ -548,7 +548,8 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
     // Create message group between two users
     let messageGroup = {
       userId1: req.body.senderId,
-      userId2: req.body.receiverId
+      userId2: req.body.receiverId,
+      date: new Date()
     }
 
     // let existingMessageGroup = "";
@@ -746,7 +747,6 @@ app.get('/api/v1/messages/:messageGroupId', (req, res) => {
     });
   }); 
 });
-
 
 app.listen(port, () => {
   console.log('Listening on *:3000');
