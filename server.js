@@ -254,7 +254,7 @@ app.get('/api/v1/notifications/users/:userId', async (req, res) => {
       let myObject = new ObjectId(response[i].toyId);
 
       response[i]["senderUsername"] = subResponse.username;
-      if (response[i].type != "message") {
+      if (response[i].type != "message" && response[i].type != "confirm_transaction") {
         const subResponse1 = await collection2.findOne({_id: myObject});
         response[i]["toyName"] = subResponse1.title;
         console.log("subResponse1.title");
