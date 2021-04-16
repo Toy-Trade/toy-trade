@@ -514,6 +514,77 @@ app.get('/api/v1/csv/userrequests', (req, res) => {
   res.json({"success":true});
 });
 
+// Get Toy Conditions CSV: Colleen
+app.get('/api/v1/csv/conditions', (req, res) => {
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Toys');
+    
+    // Get some documents from the Toys collection
+    collection.aggregate([{$project: {'condition':1}}]).toArray(function(err, docs) {
+      console.log('Found the following conditions:');
+      console.log(docs);
+
+      try {
+        const parser = new Parser();
+        const csv = parser.parse(docs);
+        console.log(csv);
+        fs.writeFile('toytrade/src/assets/csv/conditions.csv', csv, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("File written successfully\n"); 
+            console.log("The written has the following contents:"); 
+            console.log(fs.readFileSync("toytrade/src/assets/csv/conditions.csv", "utf8"));
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+  res.json({"success":true});
+});
+
+// Get Messages CSV: Colleen
+app.get('/api/v1/csv/sentmessages', (req, res) => {
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Messages collection
+    const collection = db.collection('Messages');
+    
+    // Get some documents from the Toys collection
+    collection.aggregate([{$project: {'senderId':1}}]).toArray(function(err, docs) {
+      console.log('Found the following users:');
+      console.log(docs);
+
+      try {
+        const parser = new Parser();
+        const csv = parser.parse(docs);
+        console.log(csv);
+        fs.writeFile('toytrade/src/assets/csv/sentmessages.csv', csv, (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("File written successfully\n"); 
+            console.log("The written has the following contents:"); 
+            console.log(fs.readFileSync("toytrade/src/assets/csv/sentmessages.csv", "utf8"));
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
+
+  res.json({"success":true});
+});
+
 // Deny toy request, archive the request notification
 app.put('/api/v1/notifications/requests/deny/:requestId', (req, res) => {
   let requestId = req.params.requestId;

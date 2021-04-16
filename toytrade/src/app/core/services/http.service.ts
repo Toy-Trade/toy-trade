@@ -114,4 +114,14 @@ export class HttpService {
   public makeTransaction(transaction: Object) {
     return this.httpClient.post(this.apiserver + "/transactions", transaction);
   }
+
+  // Colleen
+  public getConditionsCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/conditions");
+  }
+
+  public getSentMessagesCSV() {
+    return this.httpClient.get(this.apiserver + "/csv/sentmessages");
+  }
+
 }

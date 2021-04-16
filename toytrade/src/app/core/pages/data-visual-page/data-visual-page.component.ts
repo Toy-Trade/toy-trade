@@ -102,4 +102,30 @@ export class DataVisualPageComponent implements OnInit {
     });
   }
 
+  public async onClickConditionsButton() {
+    console.log("onClickConditionsButton");
+    this.httpService.getConditionsCSV().subscribe((data) => {
+      console.log(data);
+      setTimeout(() => {
+        let link = document.createElement("a");
+        link.download = "conditionsData";
+        link.href = "../../.././../assets/csv/conditions.csv";
+        link.click();
+      }, 2000);
+    });
+  }
+
+  public async onClickSentMessagesButton() {
+    console.log("onClickSentMessagesButton");
+    this.httpService.getSentMessagesCSV().subscribe((data) => {
+      console.log(data);
+      setTimeout(() => {
+        let link = document.createElement("a");
+        link.download = "sentMessagesData";
+        link.href = "../../.././../assets/csv/sentmessages.csv";
+        link.click();
+      }, 2000);
+    });
+  }
+  
 }
