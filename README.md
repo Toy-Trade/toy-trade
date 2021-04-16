@@ -48,7 +48,7 @@ In Lab 6, we used R to create data visualizations about various data points on o
 
 ## Contributions and Challenges
 
-Colleen:
+Colleen: For this lab, I worked on two different data visualizations: a Pie Chart and Histogram. The first visualization, the Pie Chart, represents the percentage of various conditions of toys on Toy Trade that users have listed. These conditions include "New", "Used: Like New", "Used: Very Good", and "Used: Good." The data comes from the Toys collection in the database. The second visualization is the histogram, which represents the average number of messages that a user has sent. This data is downloaded from the current data in the Messages collection of the database. Each of the visualizations data can be downloaded using the "Download CSV" button.
 
 Joyce: For this lab I worked on two different types of data visualizations: Pie Chart and Histogram (the top two on the Data Visualization page). The Pie Chart represents the percentages of various brands of toys that users on Toy Trade typically list. These brands range from Hasbro, Lego, Fisher-Price, etc. The other type of data visualization, the histogram, demonstrates how many requests each toy typically receives. For example, the first purple bar shows that 8 different toys received a single request, while one toy received 3 requests. Under the visualizations, you can also download the CSV for the relevant data needed to make these visualizations. Note that the data in the CSV file may not match the image because the CSV file is grabbed dynamically with a get request. One of the challenges I had was learning how to write the R code to make the charts. There were plenty of helpful resources online that helped me to understand how to create the visualizations.
 
@@ -58,7 +58,7 @@ Jody: For this lab, I worked on the two data visualizations in the second row on
 
 ## Creativity
 
-Colleen:
+Colleen: For creativity, I changed the colors and formatted the pie chart and histogram of the data that I created the visualizations for.
 
 Joyce: For creativity, I used some nice pastel colors for both the histogram and the pie chart. I also helped to style the Data Visualization page with a nice border surrounding each visualization. Another aspect of creativity I incorporated was the use of Bootstrap cards to show each data visualization. For more aesthetics and visual appeal, I included a dropshadow on each card.
 
