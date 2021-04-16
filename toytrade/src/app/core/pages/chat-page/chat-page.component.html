@@ -9,7 +9,7 @@
           <div class="inbox_chat">
             <div *ngFor = "let messageGroup of messageGroups" class="chat_list first" (click) = "getMessages(messageGroup)">
               <div class="chat_people">
-                <div class="chat_img"> <img class="chat_img" src="{{messageGroup.otherProfileUrl}}" alt="@boardgames44">
+                <div class="chat_img"><img class="chat_img" src="{{messageGroup.otherProfileUrl}}" alt="@boardgames44">
                 </div>
 
                 <div class="chat_ib">
@@ -42,6 +42,7 @@
           </div>
           <div class="type_msg" [formGroup]="addMessageForm">
             <input type="text" formControlName="messageGroupId" style="display: none;">
+            <input type="text" formControlName="receiverId" style="display: none;">
             <div class="input_msg_write">
               <input type="text" class="write_msg" placeholder="Type a message" formControlName="text">
               <button class="msg_send_btn" type="button" (click)="postMessage()"><i class="ri-send-plane-fill"></i></button>

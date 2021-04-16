@@ -98,6 +98,7 @@ export class ChatPageComponent implements OnInit {
       messageGroupId: "",
       text: "",
       senderId: this.uauth.user.uid,
+      receiverId: "",
       date: new Date()
     });
   }
@@ -125,6 +126,10 @@ export class ChatPageComponent implements OnInit {
   public postMessage() {
     // set the message group id to the current one
     this.addMessageForm.controls['messageGroupId'].setValue(this.currentMessageGroup.objectId);
+    this.addMessageForm.controls['receiverId'].setValue(this.currentMessageGroup.otherUserId);
+
+    console.log("addMessageForm:");
+    console.log(this.addMessageForm.getRawValue());
     this.httpService.addMessage(this.addMessageForm.getRawValue()).subscribe((data) => {
       console.log(data);
       console.log("messageGroupId:" + data[0].messageGroupId);
