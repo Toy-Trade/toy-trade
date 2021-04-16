@@ -11,3 +11,5 @@
 4. Open a separate terminal and `cd` into `toy-trade/toytrade`. Run `npm install`. Then run `ng build --watch`.
 
 5. In the `toy-trade` (Node.js directory), run `node server`.
+
+6. In your browser, go to `http://localhost:3000/`.
