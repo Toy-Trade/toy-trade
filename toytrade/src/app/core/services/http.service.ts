@@ -106,4 +106,8 @@ export class HttpService {
   public getMessages(messageGroupId: string) {
     return this.httpClient.get(this.apiserver + "/messages/" + messageGroupId);
   }
+
+  public archiveNotification(notificationId: string) {
+    return this.httpClient.put(this.apiserver + "/notifications/archives/" + notificationId, {id: notificationId});
+  }
 }

@@ -128,4 +128,10 @@ export class NotificationsPageComponent implements OnInit {
     request.archived = true;
     request.status = "accepted";
   }
+
+  public archiveNotification(notificationId: string) {
+    this.httpService.archiveNotification(notificationId).subscribe((data) => {
+      console.log(data);
+    })
+  }
 }

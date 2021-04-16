@@ -769,6 +769,24 @@ app.get('/api/v1/messages/:messageGroupId', (req, res) => {
   }); 
 });
 
+// PUT Request: archive notification by id
+app.put('/api/v1/notifications/archives/:notificationId', (req, res) => {
+  let notificationId = req.params.notificationId;
+  let objectId = new ObjectId(notificationId);
+  console.log("Successful Notification Archive PUT Request")
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Notifications collection
+    const collection = db.collection('Notifications');
+    collection.updateOne (
+      { _id: objectId },
+      { $set: { archived: true } }
+    )
+  });
+});
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });
