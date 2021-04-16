@@ -168,6 +168,20 @@ right: 0;
 top: 11px;
 width: 33px;
 }
+
+.msg_transaction_btn {
+border: medium none;
+border-radius: 50%;
+color: #05728f;
+cursor: pointer;
+font-size: 17px;
+height: 33px;
+/* position: absolute;
+right: 0;
+top: 11px; */
+width: 33px;
+}
+
 .msg_history {
 height: 516px;
 overflow-y: auto;

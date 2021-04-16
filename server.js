@@ -787,6 +787,24 @@ app.put('/api/v1/notifications/archives/:notificationId', (req, res) => {
   });
 });
 
+// Add transaction to Transactions collection
+app.post('/api/v1/transactions', (req, res) => {
+  console.log("Successful Add Transaction POST Request")
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Transactions collection
+    const collection = db.collection('Transactions');
+    
+    // Get some documents from the Transactions collection
+    collection.insertOne(req.body, function(err, docs) {
+      console.log("Inserted one transaction")
+      res.json(docs.ops[0]._id);
+    });
+  });
+});
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });

@@ -44,12 +44,52 @@
             <input type="text" formControlName="messageGroupId" style="display: none;">
             <input type="text" formControlName="receiverId" style="display: none;">
             <div class="input_msg_write">
+              <button class="msg_transaction_btn" type="button" data-toggle="modal" data-target="#transactionModal" (click)="getOurToys()"><i class="ri-arrow-left-right-line"></i></button>
               <input type="text" class="write_msg" placeholder="Type a message" formControlName="text">
               <button class="msg_send_btn" type="button" (click)="postMessage()"><i class="ri-send-plane-fill"></i></button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- TRANSACTION MODAL -->
+  <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Make Transaction</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body" [formGroup]="transactionForm">
+          <div class="form-group">
+            <label for="my-toy-select">My Toy</label>
+            <select class="form-control form-select" id="my-toy-select" name="my-toy-select" (change)="changeMyToy($event)">
+              <option value="" selected disabled>Select My Toy</option>
+              <option value="{{myToy.id}}" *ngFor="let myToy of myToys">
+                {{myToy.title}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="their-toy-select">{{currentMessageGroup.otherUsername}}'s Toy</label>
+            <select class="form-control form-select" id="their-toy-select" name="their-toy-select" (change)="changeTheirToy($event)">
+              <option value="" selected disabled>Select Their Toy</option>
+              <option value="{{theirToy.id}}" *ngFor="let theirToy of theirToys">
+                {{theirToy.title}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="makeTransaction()">Confirm</button>
+        </div>
+    </div>
     </div>
   </div>
 </main>
