@@ -19,6 +19,7 @@ interface Toy {
   estimatedValue: string;
   ageRange: string;
   description: string;
+  userId: string;
   username: string;
   profileUrl: string;
 }
@@ -81,6 +82,7 @@ export class ProfileViewerPageComponent implements OnInit {
               estimatedValue: entry[1].estimatedValue,
               ageRange: entry[1].ageRange,
               description: entry[1].description,
+              userId: entry[1].userId,
               username: myUsername,
               profileUrl: this.userInfo.profileUrl
             });
@@ -88,5 +90,21 @@ export class ProfileViewerPageComponent implements OnInit {
         }
       });
     }
+  }
+
+  public requestToy(toy: Toy) {
+    console.log(toy);
+    let today = new Date();
+    let request = {
+      type: "request",
+      senderId: this.uauth.user.uid,
+      receiverId: toy.userId,
+      toyId: toy.objectId,
+      date: today,
+      archived: false
+    }
+    this.httpService.requestToy(request).subscribe((data) => {
+      console.log(data);
+    });
   }
 }

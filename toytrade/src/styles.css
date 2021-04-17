@@ -237,6 +237,7 @@
 #profile-page .card {
     border: 2px solid #aaaaaa;
     border-radius: 12px;
+    cursor: pointer;
 }
 
 #profile-page .card-header {
