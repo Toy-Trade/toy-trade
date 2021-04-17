@@ -28,6 +28,8 @@ interface Transaction {
   messageGroupId: string;
   user1Id: string;
   user2Id: string;
+  user1Username: string;
+  user2Username: string;
   user1Toy: string;
   user2Toy: string;
   date: Date;
@@ -48,6 +50,8 @@ export class NotificationsPageComponent implements OnInit {
     messageGroupId: "",
     user1Id: "",
     user2Id: "",
+    user1Username: "",
+    user2Username: "",
     user1Toy: "",
     user2Toy: "",
     date: new Date(),
@@ -167,6 +171,8 @@ export class NotificationsPageComponent implements OnInit {
         messageGroupId: data[0].messageGroupId,
         user1Id: data[0].user1Id,
         user2Id: data[0].user2Id,
+        user1Username: data[0].user1Username,
+        user2Username: data[0].user2Username,
         user1Toy: data[0].user1ToyName,
         user2Toy: data[0].user2ToyName,
         date: data[0].date,

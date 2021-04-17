@@ -893,6 +893,7 @@ app.post('/api/v1/transactions', (req, res) => {
   });
 });
 
+// Get transaction by id
 app.get('/api/v1/transactions/:transactionId', async (req, res) => {
   let myTransactionId = req.params.transactionId;
   console.log("myTransactionId: " + myTransactionId);
@@ -903,7 +904,8 @@ app.get('/api/v1/transactions/:transactionId', async (req, res) => {
     // Get the Transactions collection
     const collection = db.collection('Transactions');
     const collection1 = db.collection('Toys');
-    
+    const collection2 = db.collection('Users');
+
     // Get some documents from the Transactions collection
     let myObject = new ObjectId(myTransactionId);
     const response = await collection.findOne({_id: myObject});
@@ -916,10 +918,19 @@ app.get('/api/v1/transactions/:transactionId', async (req, res) => {
     const subResponse1 = await collection1.findOne({_id: toy2Id});
     let toy2Name = subResponse1.title;
 
+    const subResponse2 = await collection2.findOne({uid: response.user1Id});
+    let user1Username = subResponse2.username;
+
+    const subResponse3 = await collection2.findOne({uid: response.user2Id});
+    let user2Username = subResponse3.username;
+
     console.log("Toys: " + toy1Name + " and " + toy2Name);
 
     response["user1ToyName"] = toy1Name;
     response["user2ToyName"] = toy2Name;
+
+    response["user1Username"] = user1Username;
+    response["user2Username"] = user2Username;
 
     console.log(response);
     res.json([response]);
