@@ -23,6 +23,17 @@ interface Notification {
   messageGroupId: string
 }
 
+interface Transaction {
+  id: string;
+  messageGroupId: string;
+  user1Id: string;
+  user2Id: string;
+  user1Toy: string;
+  user2Toy: string;
+  date: Date;
+  status: string;
+}
+
 @Component({
   selector: 'app-notifications-page',
   templateUrl: './notifications-page.component.html',
@@ -31,6 +42,17 @@ interface Notification {
 export class NotificationsPageComponent implements OnInit {
 
   notifications: Notification[] = [];
+
+  currentTransaction: Transaction = {
+    id: "",
+    messageGroupId: "",
+    user1Id: "",
+    user2Id: "",
+    user1Toy: "",
+    user2Toy: "",
+    date: new Date(),
+    status: ""
+  }
 
   constructor(public httpService : HttpService, public uauth: AuthService) { }
 
@@ -132,6 +154,26 @@ export class NotificationsPageComponent implements OnInit {
   public archiveNotification(notificationId: string) {
     this.httpService.archiveNotification(notificationId).subscribe((data) => {
       console.log(data);
+    })
+  }
+
+  public getTransactionById(transactionId: string) {
+    console.log("Get transaction by Id");
+
+    this.httpService.getTransactionById(transactionId).subscribe((data) => {
+      console.log(data);
+      this.currentTransaction = {
+        id: data[0]._id,
+        messageGroupId: data[0].messageGroupId,
+        user1Id: data[0].user1Id,
+        user2Id: data[0].user2Id,
+        user1Toy: data[0].user1ToyName,
+        user2Toy: data[0].user2ToyName,
+        date: data[0].date,
+        status: data[0].status
+      }
+      console.log("Current transaction")
+      console.log(this.currentTransaction);
     })
   }
 }

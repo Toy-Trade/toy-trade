@@ -124,4 +124,8 @@ export class HttpService {
     return this.httpClient.get(this.apiserver + "/csv/sentmessages");
   }
 
+  public getTransactionById(transactionId: string) {
+    return this.httpClient.get(this.apiserver + "/transactions/" + transactionId);
+  }
+
 }

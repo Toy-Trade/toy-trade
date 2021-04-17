@@ -893,6 +893,39 @@ app.post('/api/v1/transactions', (req, res) => {
   });
 });
 
+app.get('/api/v1/transactions/:transactionId', async (req, res) => {
+  let myTransactionId = req.params.transactionId;
+  console.log("myTransactionId: " + myTransactionId);
+  // Use connect method to connect to the server
+  client.connect(async function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Transactions collection
+    const collection = db.collection('Transactions');
+    const collection1 = db.collection('Toys');
+    
+    // Get some documents from the Transactions collection
+    let myObject = new ObjectId(myTransactionId);
+    const response = await collection.findOne({_id: myObject});
+
+    let toy1Id = new ObjectId(response.user1Toy);
+    const subResponse = await collection1.findOne({_id: toy1Id});
+    let toy1Name = subResponse.title;
+
+    let toy2Id = new ObjectId(response.user2Toy);
+    const subResponse1 = await collection1.findOne({_id: toy2Id});
+    let toy2Name = subResponse1.title;
+
+    console.log("Toys: " + toy1Name + " and " + toy2Name);
+
+    response["user1ToyName"] = toy1Name;
+    response["user2ToyName"] = toy2Name;
+
+    console.log(response);
+    res.json([response]);
+  });
+})
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });
