@@ -15,12 +15,6 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col text-right">
-        <app-add-toy-button></app-add-toy-button>
-      </div>
-    </div>
-
     <div class="row justify-content">
       <div *ngFor="let toy of toys" class="col-lg-6 col-md-12 col-sm-12">
         <div class="card" data-toggle="modal" [attr.data-target]="'#toy-' + toy.objectId">
