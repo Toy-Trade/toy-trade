@@ -254,7 +254,7 @@ app.get('/api/v1/notifications/users/:userId', async (req, res) => {
       let myObject = new ObjectId(response[i].toyId);
 
       response[i]["senderUsername"] = subResponse.username;
-      if (response[i].type != "message" && response[i].type != "confirm_transaction") {
+      if (response[i].type != "message" && response[i].type != "confirm_transaction" && response[i].type != "transaction_receipt") {
         const subResponse1 = await collection2.findOne({_id: myObject});
         response[i]["toyName"] = subResponse1.title;
         console.log("subResponse1.title");
@@ -952,6 +952,62 @@ app.put('/api/v1/transactions/deny/:transactionId', (req, res) => {
     )
 
     console.log("Transaction failed");
+  }); 
+});
+
+// Confirm transaction (status: complete), archive original notification, create two new notifications
+app.put('/api/v1/transactions/confirm/:transactionId', (req, res) => {
+  let myTransactionId = req.params.transactionId;
+  console.log("myTransactionId");
+  console.log(myTransactionId);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Transactions collection
+    const collection = db.collection('Transactions');
+    const collection1 = db.collection('Notifications');
+
+    // Update with transaction as status: failed
+    let myObject = new ObjectId(myTransactionId);
+    collection.updateOne (
+      { _id: myObject },
+      { $set: { status: "complete" } }
+    )
+
+    collection1.updateOne (
+      { transactionId: myObject, type: "confirm_transaction" }, 
+      { $set: { archived: true } }
+    )
+
+    let notification1 = {
+      type: "transaction_receipt",
+      senderId: req.body.senderId,
+      receiverId: req.body.receiverId,
+      date: new Date(),
+      archived: false,
+      transactionId: myTransactionId
+    }
+
+    let notification2 = {
+      type: "transaction_receipt",
+      senderId: req.body.receiverId,
+      receiverId: req.body.senderId,
+      date: new Date(),
+      archived: false,
+      transactionId: myTransactionId
+    }
+
+    collection1.insertOne(notification1, function(err, docs) {
+      console.log("inserted notification1");
+    });
+
+    collection1.insertOne(notification2, function(err, docs) {
+      console.log("inserted notification2");
+    });
+
+    res.json([notification1]);
+    console.log("Transaction complete");
   }); 
 });
 

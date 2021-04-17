@@ -10,50 +10,76 @@
         <div class="card" *ngIf="notification.type == 'request'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">You have received a request for your <a class="link" href="">{{notification.toyName}}</a> from <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>.</p>
-            <button type="button" class="btn btn-danger button deny-button" (click)="denyRequest(notification)">Deny</button>
-            <button type="button" class="btn btn-success button accept-button" (click)="acceptRequest(notification)">Accept</button>
-            <button type="button" class="btn btn-primary button" routerLink="/profile/{{notification.senderId}}" skipLocationChange>See Profile</button>
+            <p class="card-text">You have received a request for your <a class="link"
+                href="">{{notification.toyName}}</a> from <a class="link"
+                routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>.
+            </p>
+            <button type="button" class="btn btn-danger button deny-button"
+              (click)="denyRequest(notification)">Deny</button>
+            <button type="button" class="btn btn-success button accept-button"
+              (click)="acceptRequest(notification)">Accept</button>
+            <button type="button" class="btn btn-primary button" routerLink="/profile/{{notification.senderId}}"
+              skipLocationChange>See Profile</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'accept_acceptor'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">You have accepted <a class="link" href="">@{{notification.senderUsername}}</a>'s request for your <a class="link" href="">{{notification.toyName}}</a>.</p>
-            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}" skipLocationChange>See Chat</button>
+            <p class="card-text">You have accepted <a class="link" href="">@{{notification.senderUsername}}</a>'s
+              request for your <a class="link" href="">{{notification.toyName}}</a>.</p>
+            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}"
+              skipLocationChange>See Chat</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'accept_receiver'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">Your request for <a class="link" href="">@{{notification.senderUsername}}</a>'s <a class="link" href="">{{notification.toyName}}</a> has been accepted.</p>
-            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}" skipLocationChange>See Chat</button>
+            <p class="card-text">Your request for <a class="link" href="">@{{notification.senderUsername}}</a>'s <a
+                class="link" href="">{{notification.toyName}}</a> has been accepted.</p>
+            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}"
+              skipLocationChange>See Chat</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'message'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">You have received a message from <a class="link" href="">@{{notification.senderUsername}}</a>.</p>
-            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}" skipLocationChange (click)="archiveNotification(notification.id)">See Chat</button>
+            <p class="card-text">You have received a message from <a class="link"
+                href="">@{{notification.senderUsername}}</a>.</p>
+            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}"
+              skipLocationChange (click)="archiveNotification(notification.id)">See Chat</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'confirm_transaction'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">Please confirm your transaction with <a class="link" href="">@{{notification.senderUsername}}</a>.</p>
-            <button (click)="getTransactionById(notification.transactionId)" type="button" class="btn btn-primary button" data-toggle="modal" data-target="#confirmTransactionModal">See Transaction</button>
+            <p class="card-text">Please confirm your transaction with <a class="link"
+                href="">@{{notification.senderUsername}}</a>.</p>
+            <button (click)="getTransactionById(notification.transactionId)" type="button"
+              class="btn btn-primary button" data-toggle="modal" data-target="#confirmTransactionModal">See
+              Transaction</button>
+          </div>
+        </div>
+        <div class="card" *ngIf="notification.type == 'transaction_receipt'">
+          <div class="card-body">
+            <p>{{notification.timeAgo}}</p>
+            <p class="card-text">Your transaction with <a class="link" href="">@{{notification.senderUsername}}</a> is
+              complete.</p>
+            <button (click)="getTransactionById(notification.transactionId)" type="button" class="btn btn-primary button" data-toggle="modal"
+              data-target="#seeTransactionModal">See Receipt</button>
           </div>
         </div>
 
         <!-- CONFIRM TRANSACTION MODAL -->
-        <div class="modal fade" id="confirmTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="confirmTransactionModal" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
-          <div class="modal-content">
+            <div class="modal-content">
               <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Confirm your Transaction with <a class="link" href="">@{{notification.senderUsername}}</a></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm your Transaction with <a class="link"
+                    href="">@{{notification.senderUsername}}</a></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
-              </button>
+                </button>
               </div>
               <div class="modal-body">
                 <div class="row">
@@ -71,14 +97,59 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="denyTransaction(currentTransaction.id, notification)" data-dismiss="modal">Deny</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Confirm</button>
+                <button type="button" class="btn btn-danger"
+                  (click)="denyTransaction(currentTransaction.id, notification)" data-dismiss="modal">Deny</button>
+                <button type="button" class="btn btn-success"
+                  (click)="confirmTransaction(currentTransaction.id, notification)"
+                  data-dismiss="modal">Confirm</button>
               </div>
-          </div>
+            </div>
           </div>
         </div>
+
+        <!-- SEE TRANSACTION MODAL -->
+        <div class="modal fade" id="seeTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Transaction Receipt</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-5 modal-col">
+                    <h5><a class="link" href="">@{{notification.senderUsername}}</a></h5>
+                    <p>{{currentTransaction.user1Toy}}</p>
+                  </div>
+                  <div class="col-2 modal-col">
+                    <i class="ri-arrow-left-right-line modal-icon"></i>
+                  </div>
+                  <div class="col-5 modal-col">
+                    <h5>Me</h5>
+                    <p>{{currentTransaction.user2Toy}}</p>
+                  </div>
+                </div>
+
+                <div class="row modal-transaction-completed">
+                  <div class="col-12">
+                    <i class="ri-checkbox-circle-line modal-checkmark-icon"></i>
+                    <h5 class="modal-transaction-completed-text">Transaction completed.</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+
 
     <h1 class="header">History</h1>
 
@@ -87,12 +158,15 @@
         <div class="card" *ngIf="notification.type == 'request' && notification.status == 'denied'">
           <div class="card-body">
             <p>{{notification.timeAgo}}</p>
-            <p class="card-text">You denied <a class="link" routerLink="/profile/{{notification.senderId}}" skipLocationChange>@{{notification.senderUsername}}</a>'s request for your <a class="link" href="">{{notification.toyName}}</a>.</p>
+            <p class="card-text">You denied <a class="link" routerLink="/profile/{{notification.senderId}}"
+                skipLocationChange>@{{notification.senderUsername}}</a>'s request for your <a class="link"
+                href="">{{notification.toyName}}</a>.</p>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'transaction'">
           <div class="card-body">
-            <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
+            <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from
+              <a class="link" href="">@toystorytoys</a>.</p>
           </div>
         </div>
       </div>
@@ -158,44 +232,6 @@
           <p class="card-text">Your trade with <a class="link" href="">@boardgames44</a> is completed.</p>
           <button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#seeTransactionModal">See Transaction</button>
         </div>
-      </div>
-    </div> -->
-
-    <!-- SEE TRANSACTION MODAL -->
-    <!-- <div class="modal fade" id="seeTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Transaction Receipt</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-5 modal-col">
-                <h5><a class="link" href="">@boardgames44</a></h5>
-                <p>Hasbro Candy Land Game</p>
-              </div>
-              <div class="col-2 modal-col">
-                <i class="ri-arrow-left-right-line modal-icon"></i>
-              </div>
-              <div class="col-5 modal-col">
-                <h5>Me</h5>
-                <p>Catan Board Game</p>
-              </div>
-            </div>
-
-            <div class="row modal-transaction-completed">
-              <div class="col-12">
-                <i class="ri-checkbox-circle-line modal-checkmark-icon"></i><h5 class="modal-transaction-completed-text">Transaction completed.</h5>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-      </div>
       </div>
     </div> -->
   </div>

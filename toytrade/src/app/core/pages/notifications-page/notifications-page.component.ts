@@ -183,4 +183,38 @@ export class NotificationsPageComponent implements OnInit {
     })
     notification.archived = true;
   }
+
+  public confirmTransaction(transactionId: string, notification: Notification) {
+    let newNotification: Notification = {
+      id: "",
+      type: "",
+      toyId: "",
+      toyName: "",
+      senderId: "",
+      receiverId: "",
+      senderUsername: "",
+      transactionId: "",
+      timeAgo: "",
+      date: new Date(),
+      archived: false,
+      status: "",
+      messageGroupId: ""
+    };
+
+    let users = { senderId: this.uauth.user.uid, receiverId: notification.senderId };
+    this.httpService.confirmTransaction(transactionId, users).subscribe((data) => {
+      console.log(data);
+      newNotification.id = data[0]._id;
+      newNotification.type = data[0].type;
+      newNotification.senderId = data[0].senderId;
+      newNotification.receiverId = data[0].receiverId;
+      newNotification.senderUsername = notification.senderUsername;
+      const timeAgo = new TimeAgo('en-US');
+      newNotification.timeAgo = timeAgo.format(new Date(data[0].date));
+      newNotification.archived = data[0].archived;
+      newNotification.transactionId = data[0].transactionId;
+    })
+    notification.archived = true;
+    this.notifications.push(newNotification);
+  }
 }
