@@ -176,4 +176,11 @@ export class NotificationsPageComponent implements OnInit {
       console.log(this.currentTransaction);
     })
   }
+
+  public denyTransaction(transactionId: string, notification: Notification) {
+    this.httpService.denyTransaction(transactionId).subscribe((data) => {
+      console.log(data);
+    })
+    notification.archived = true;
+  }
 }

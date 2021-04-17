@@ -71,8 +71,8 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Deny</button>
-                <button type="button" class="btn btn-success">Confirm</button>
+                <button type="button" class="btn btn-danger" (click)="denyTransaction(currentTransaction.id, notification)" data-dismiss="modal">Deny</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Confirm</button>
               </div>
           </div>
           </div>

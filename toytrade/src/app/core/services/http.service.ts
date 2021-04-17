@@ -128,4 +128,7 @@ export class HttpService {
     return this.httpClient.get(this.apiserver + "/transactions/" + transactionId);
   }
 
+  public denyTransaction(transactionId: string) {
+    return this.httpClient.put(this.apiserver + "/transactions/deny/" + transactionId, {id: transactionId});
+  }
 }

@@ -926,6 +926,35 @@ app.get('/api/v1/transactions/:transactionId', async (req, res) => {
   });
 })
 
+// Deny transaction and archive the notification
+app.put('/api/v1/transactions/deny/:transactionId', (req, res) => {
+  let myTransactionId = req.params.transactionId;
+  console.log("myTransactionId");
+  console.log(myTransactionId);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Transactions collection
+    const collection = db.collection('Transactions');
+    const collection1 = db.collection('Notifications');
+
+    // Update with transaction as status: failed
+    let myObject = new ObjectId(myTransactionId);
+    collection.updateOne (
+      { _id: myObject },
+      { $set: { status: "failed" } }
+    )
+
+    collection1.updateOne (
+      { transactionId: myObject, type: "confirm_transaction" }, 
+      { $set: { archived: true } }
+    )
+
+    console.log("Transaction failed");
+  }); 
+});
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });
