@@ -52,44 +52,21 @@
   margin-bottom: 2%;
 }
 
-.recent_heading {
-  float: left;
-  width: 40%;
-}
-
-.recent_heading h4 {
-  color: #169cc6;
-  font-size: 21px;
-  margin: auto;
-}
-
-.chat_ib h5 {
-  font-size: 15px;
-  color: black;
-  margin: 0 0 8px 0;
-}
-
-.chat_ib h5 span {
-  font-size: 13px;
-  float: right;
-}
-
-.chat_ib p {
-  font-size: 14px;
-  color: black;
-  margin: auto
-}
-
 .chat_img {
   float: left;
   width: 30px;
   border-radius: 50%;
+  margin-right: 10px;
 }
 
-.chat_ib {
-  float: left;
-  padding: 0 0 0 15px;
-  width: 88%;
+.chat_date {
+  float: right;
+}
+
+@media only screen and (max-width: 600px) {
+  .chat_date {
+    display: none;
+  }
 }
 
 .chat_people {
