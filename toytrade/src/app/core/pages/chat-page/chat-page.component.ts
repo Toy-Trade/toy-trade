@@ -180,6 +180,7 @@ export class ChatPageComponent implements OnInit {
       }
       this.messages.push(messageAdded);
     });
+    this.addMessageForm.controls['text'].setValue("");
   }
 
   public makeTransaction() {
