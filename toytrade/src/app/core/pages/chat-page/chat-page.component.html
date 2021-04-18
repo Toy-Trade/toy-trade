@@ -6,17 +6,24 @@
     <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
-          <div class="inbox_chat">
-            <div *ngFor = "let messageGroup of messageGroups" class="chat_list first" (click) = "getMessages(messageGroup)">
-              <div class="chat_people">
-                <div class="chat_img"><img class="chat_img" src="{{messageGroup.otherProfileUrl}}" alt="@boardgames44">
-                </div>
-
-                <div class="chat_ib">
-                  <h5>{{messageGroup.otherUsername}}<span class="chat_date">{{messageGroup.date}}</span></h5>
-                  <!-- <p>Messaging Thread about some toys for trading!</p> -->
-                </div>
+          <div *ngFor="let messageGroup of messageGroups" id="message-group-{{messageGroup.objectId}}" class="chat_list"
+            (click)="getMessages(messageGroup); changeColor(messageGroup.objectId)">
+            <div class="chat_people row">
+              <div class="col-12 col-sm-6">
+                <div class="chat_img"><img class="chat_img" src="{{messageGroup.otherProfileUrl}}"
+                    alt="@{{messageGroup.otherUsername}}"></div>
+                <p>{{messageGroup.otherUsername}}</p>
               </div>
+              <div class="col-sm-6">
+                <p class="chat_date">{{messageGroup.date.toLocaleTimeString()}}</p>
+              </div>
+
+              <!-- <div class="chat_img"><img class="chat_img" src="{{messageGroup.otherProfileUrl}}"
+                  alt="@{{messageGroup.otherUsername}}"></div>
+              <div class="chat_ib">
+                <h5>{{messageGroup.otherUsername}}<span
+                    class="chat_date">{{messageGroup.date.toLocaleTimeString()}}</span></h5>
+              </div> -->
             </div>
           </div>
         </div>
@@ -24,30 +31,34 @@
           <div class="msg_history">
             <div *ngFor="let message of messages">
               <div *ngIf="message.senderId != this.uauth.user.uid" class="incoming_msg">
-                <div class="incoming_msg_img"><img class="chat_img" src="{{currentMessageGroup.otherProfileUrl}}" alt="sunil"></div>
+                <div><img class="chat_img" src="{{currentMessageGroup.otherProfileUrl}}"
+                    alt="{{currentMessageGroup.otherUsername}}"></div>
                 <div class="received_msg">
-                  <div class="received_withd_msg">
-                    <p>{{message.text}}</p>
-                    <span class="time_date">{{message.date}}</span>
-                  </div>
+                  <p>{{message.text}}</p>
+                  <span class="time_date">{{message.date.toLocaleTimeString()}}</span>
                 </div>
               </div>
               <div *ngIf="message.senderId == this.uauth.user.uid" class="outgoing_msg">
                 <div class="sent_msg">
                   <p>{{message.text}}</p>
-                  <span class="time_date">{{message.date}}</span>
+                  <span class="time_date">{{message.date.toLocaleTimeString()}}</span>
+                </div>
+                <div style="float:right;"><img class="chat_img" src="{{uauth.user.photoURL}}" alt="{{uauth.user.uid}}">
                 </div>
               </div>
             </div>
           </div>
-          <div class="type_msg" [formGroup]="addMessageForm">
+          <div [formGroup]="addMessageForm">
             <input type="text" formControlName="messageGroupId" style="display: none;">
             <input type="text" formControlName="receiverId" style="display: none;">
-            <div class="input_msg_write">
-              <button class="msg_transaction_btn" type="button" data-toggle="modal" data-target="#transactionModal" (click)="getOurToys()"><i class="ri-arrow-left-right-line"></i></button>
-              <input type="text" class="write_msg" placeholder="Type a message" formControlName="text">
-              <button class="msg_send_btn" type="button" (click)="postMessage()"><i class="ri-send-plane-fill"></i></button>
-            </div>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Type a message" aria-label="Search"
+                formControlName="text">
+              <button class="msg_send_btn btn btn-light my-2 my-sm-0" type="button" (click)="postMessage()"><i
+                  class="ri-send-plane-fill"></i></button>
+              <button class="msg_transaction_btn btn btn-light my-2 my-sm-0" type="button" data-toggle="modal"
+                data-target="#transactionModal" (click)="getOurToys()"><i class="ri-arrow-left-right-line"></i></button>
+            </form>
           </div>
         </div>
       </div>
@@ -55,19 +66,21 @@
   </div>
 
   <!-- TRANSACTION MODAL -->
-  <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
-    <div class="modal-content">
+      <div class="modal-content">
         <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Make Transaction</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title" id="exampleModalLabel">Make Transaction</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-        </button>
+          </button>
         </div>
         <div class="modal-body" [formGroup]="transactionForm">
           <div class="form-group">
             <label for="my-toy-select">My Toy</label>
-            <select class="form-control form-select" id="my-toy-select" name="my-toy-select" (change)="changeMyToy($event)">
+            <select class="form-control form-select" id="my-toy-select" name="my-toy-select"
+              (change)="changeMyToy($event)">
               <option value="" selected disabled>Select My Toy</option>
               <option value="{{myToy.id}}" *ngFor="let myToy of myToys">
                 {{myToy.title}}
@@ -77,7 +90,8 @@
 
           <div class="form-group">
             <label for="their-toy-select">{{currentMessageGroup.otherUsername}}'s Toy</label>
-            <select class="form-control form-select" id="their-toy-select" name="their-toy-select" (change)="changeTheirToy($event)">
+            <select class="form-control form-select" id="their-toy-select" name="their-toy-select"
+              (change)="changeTheirToy($event)">
               <option value="" selected disabled>Select Their Toy</option>
               <option value="{{theirToy.id}}" *ngFor="let theirToy of theirToys">
                 {{theirToy.title}}
@@ -86,10 +100,11 @@
           </div>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="makeTransaction()">Confirm</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal"
+            (click)="makeTransaction()">Confirm</button>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </main>

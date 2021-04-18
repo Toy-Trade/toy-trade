@@ -799,7 +799,7 @@ app.post('/api/v1/messages', (req, res) => {
           type: "message",
           senderId: req.body.senderId,
           receiverId: req.body.receiverId,
-          date: req.body.date,
+          date: new Date(req.body.date),
           messageGroupId: req.body.messageGroupId,
           archived: false
         }
@@ -815,7 +815,7 @@ app.post('/api/v1/messages', (req, res) => {
     let myObject = new ObjectId(req.body.messageGroupId);
     collection2.updateOne (
       { _id: myObject },
-      { $set: { date: req.body.date } }
+      { $set: { date: new Date(req.body.date) } }
     );
 
   });
