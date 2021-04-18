@@ -119,6 +119,7 @@ export class NotificationsPageComponent implements OnInit {
 
     request.archived = true;
     request.status = "denied";
+    this.numHistory+=1;
   }
 
   public acceptRequest(request: Notification) {
