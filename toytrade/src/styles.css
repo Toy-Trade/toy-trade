@@ -427,6 +427,11 @@
   float: left;
 }
 
+#notifications-page .qr-code {
+  display: block;
+  margin: 2% auto;
+}
+
 /* DATA VISUALIZATION PAGE */
 #data-visual-page .container {
   margin-top: 5%;
