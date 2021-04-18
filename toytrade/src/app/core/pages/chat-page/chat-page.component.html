@@ -6,18 +6,18 @@
     <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
-          <div class="inbox_chat">
-            <div *ngFor="let messageGroup of messageGroups" class="chat_list first" (click)="getMessages(messageGroup)">
+          <!-- <div class="inbox_chat"> -->
+            <div *ngFor="let messageGroup of messageGroups" id="message-group-{{messageGroup.objectId}}" class="chat_list" (click)="getMessages(messageGroup); changeColor(messageGroup.objectId)">
               <div class="chat_people">
                 <div class="chat_img"><img class="chat_img" src="{{messageGroup.otherProfileUrl}}"
                     alt="@{{messageGroup.otherUsername}}"></div>
                 <div class="chat_ib">
-                  <h5>{{messageGroup.otherUsername}}<span class="chat_date">{{messageGroup.date}}</span></h5>
+                  <h5>{{messageGroup.otherUsername}}<span class="chat_date">{{messageGroup.date.toLocaleTimeString()}}</span></h5>
                   <!-- <p>Messaging Thread about some toys for trading!</p> -->
                 </div>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
         </div>
         <div class="mesgs">
           <div class="msg_history">
@@ -27,13 +27,13 @@
                     alt="{{currentMessageGroup.otherUsername}}"></div>
                 <div class="received_msg">
                   <p>{{message.text}}</p>
-                  <span class="time_date">{{message.date}}</span>
+                  <span class="time_date">{{message.date.toLocaleTimeString()}}</span>
                 </div>
               </div>
               <div *ngIf="message.senderId == this.uauth.user.uid" class="outgoing_msg">
                 <div class="sent_msg">
                   <p>{{message.text}}</p>
-                  <span class="time_date">{{message.date}}</span>
+                  <span class="time_date">{{message.date.toLocaleTimeString()}}</span>
                 </div>
                 <div style="float:right;"><img class="chat_img" src="{{uauth.user.photoURL}}" alt="{{uauth.user.uid}}">
                 </div>

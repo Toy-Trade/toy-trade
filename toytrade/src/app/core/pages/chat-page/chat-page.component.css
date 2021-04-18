@@ -40,7 +40,8 @@
   float: left;
   /* overflow: hidden; */
   width: 40%;
-  border-right: 1px solid #aaaaaa;
+  /* height: 100%; */
+  /* border-right: 2px solid #aaaaaa; */
 }
 
 .inbox_msg {
@@ -97,14 +98,9 @@
 }
 
 .chat_list {
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 2px solid #aaaaaa;
   margin: 0;
   padding: 18px 16px 10px;
-}
-
-.inbox_chat {
-  height: 550px;
-  overflow-y: scroll;
 }
 
 .sent_msg {
@@ -141,6 +137,7 @@
   float: left;
   padding: 25px;
   width: 60%;
+  border-left: solid 2px #aaaaaa;
 }
 
 .sent_msg p {
@@ -183,4 +180,8 @@
 
 .form-control {
   width: 83%;
+}
+
+.highlight {
+  background-color: #ebebeb;
 }

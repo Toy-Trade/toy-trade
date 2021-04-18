@@ -9,7 +9,7 @@ interface MessageGroup {
   otherUsername: string;
   otherProfileUrl: string;
   objectId: string;
-  date: string;
+  date: Date;
 }
 
 interface Message {
@@ -17,7 +17,7 @@ interface Message {
   text: string;
   senderId: string;
   senderUsername: string;
-  date: string;
+  date: Date;
 }
 
 interface Toy {
@@ -39,7 +39,7 @@ export class ChatPageComponent implements OnInit {
     otherUsername: "",
     otherProfileUrl: "",
     objectId: "",
-    date: ""
+    date: new Date()
   };
   messages: Message[] = [];
 
@@ -65,7 +65,7 @@ export class ChatPageComponent implements OnInit {
           otherUsername: entry[1].otherUsername,
           otherProfileUrl: entry[1].otherProfileUrl,
           objectId: entry[1].messageGroupId,
-          date: new Date(entry[1].date).toLocaleTimeString()
+          date: new Date(entry[1].date)
         });
       }
       console.log("message groups")
@@ -91,7 +91,7 @@ export class ChatPageComponent implements OnInit {
               text: entry[1].text,
               senderId: entry[1].senderId,
               senderUsername: entry[1].senderUsername,
-              date: new Date(entry[1].date).toLocaleTimeString()
+              date: new Date(entry[1].date)
             });
           }
           console.log(data);
@@ -136,6 +136,14 @@ export class ChatPageComponent implements OnInit {
     console.log(theirToyId);
   }
 
+  public changeColor(messageGroupId: string) {
+    var elements = document.getElementsByClassName("chat_list");
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("highlight");
+    }
+    document.getElementById("message-group-" + messageGroupId).classList.add("highlight");
+  }
+
   // When you click on a message group
   public getMessages(messageGroup: MessageGroup) {
     this.transactionForm.controls['messageGroupId'].setValue(this.currentMessageGroup.objectId);
@@ -153,7 +161,7 @@ export class ChatPageComponent implements OnInit {
           text: entry[1].text,
           senderId: entry[1].senderId,
           senderUsername: entry[1].senderUsername,
-          date: new Date(entry[1].date).toLocaleTimeString()
+          date: new Date(entry[1].date)
         });
       }
       console.log(data);
@@ -176,7 +184,7 @@ export class ChatPageComponent implements OnInit {
         text: data[0].text,
         senderId: this.uauth.user.uid,
         senderUsername: data[0].senderUsername,
-        date: new Date(data[0].date).toLocaleTimeString()
+        date: new Date(data[0].date)
       }
       this.messages.push(messageAdded);
     });
