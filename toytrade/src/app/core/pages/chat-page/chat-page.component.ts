@@ -73,6 +73,8 @@ export class ChatPageComponent implements OnInit {
 
       if (this.currentMessageGroupId == null) {
         this.getMessages(this.messageGroups[0]);
+        this.currentMessageGroup = this.messageGroups[0];
+        this.currentMessageGroupId = this.currentMessageGroup.objectId;
       } else {
         console.log("currentMessageGroupId:");
         console.log(this.currentMessageGroupId);

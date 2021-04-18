@@ -101,6 +101,7 @@
   border-bottom: 2px solid #aaaaaa;
   margin: 0;
   padding: 18px 16px 10px;
+  cursor: pointer;
 }
 
 .sent_msg {
