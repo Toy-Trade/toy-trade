@@ -362,6 +362,10 @@
   margin-bottom: 2%;
 }
 
+#notifications-page .history-header {
+  margin-top: 40px;
+}
+
 #notifications-page .card {
   width: 50%;
   border: 2px solid #aaaaaa;

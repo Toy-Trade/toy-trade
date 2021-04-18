@@ -44,6 +44,8 @@ interface Transaction {
 export class NotificationsPageComponent implements OnInit {
 
   notifications: Notification[] = [];
+  numNotifications: number = 0;
+  numHistory: number = 0;
 
   currentTransaction: Transaction = {
     id: "",
@@ -81,8 +83,15 @@ export class NotificationsPageComponent implements OnInit {
           status: entry[1].status,
           messageGroupId: entry[1].messageGroupId
         });
-      }
 
+        if (entry[1].archived == false) {
+          this.numNotifications+=1;
+        } else if (entry[1].archived == true && entry[1].type == "request" && entry[1].status == "denied") {
+          this.numHistory+=1;
+        }
+      }
+      console.log("numNotifications: " + this.numNotifications);
+      console.log("numHistory: " + this.numHistory);
       console.log("notifications")
       console.log(this.notifications)
     });

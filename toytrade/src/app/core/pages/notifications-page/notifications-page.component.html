@@ -4,7 +4,7 @@
 
   <div class="container">
     <h1 class="header">Notifications</h1>
-
+    <p *ngIf="numNotifications == 0">Nothing to see here.</p>
     <div *ngFor="let notification of notifications.sort(compare)">
       <div class="row justify-content-center" *ngIf="notification.archived == false">
         <div class="card" *ngIf="notification.type == 'request'">
@@ -27,7 +27,7 @@
             <p>{{notification.timeAgo}}</p>
             <p class="card-text">You have accepted <a class="link" href="">@{{notification.senderUsername}}</a>'s
               request for your <a class="link" href="">{{notification.toyName}}</a>.</p>
-            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}"
+            <button type="button" class="btn btn-primary button" (click)="archiveNotification(notification.id)" routerLink="/chat/{{notification.messageGroupId}}"
               skipLocationChange>See Chat</button>
           </div>
         </div>
@@ -36,7 +36,7 @@
             <p>{{notification.timeAgo}}</p>
             <p class="card-text">Your request for <a class="link" href="">@{{notification.senderUsername}}</a>'s <a
                 class="link" href="">{{notification.toyName}}</a> has been accepted.</p>
-            <button type="button" class="btn btn-primary button" routerLink="/chat/{{notification.messageGroupId}}"
+            <button type="button" class="btn btn-primary button" (click)="archiveNotification(notification.id)" routerLink="/chat/{{notification.messageGroupId}}"
               skipLocationChange>See Chat</button>
           </div>
         </div>
@@ -151,8 +151,8 @@
     </div>
 
 
-    <h1 class="header">History</h1>
-
+    <h1 class="header history-header">History</h1>
+    <p *ngIf="numHistory == 0">Nothing to see here.</p>
     <div *ngFor="let notification of notifications.sort(compare)">
       <div class="row justify-content-center" *ngIf="notification.archived == true && notification.status == 'denied'">
         <div class="card" *ngIf="notification.type == 'request' && notification.status == 'denied'">
