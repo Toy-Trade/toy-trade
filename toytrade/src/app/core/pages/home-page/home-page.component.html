@@ -17,6 +17,7 @@
     <app-dashboard></app-dashboard>
   </div>
 
+  <!-- Refine Button Form -->
   <div class="modal fade" id="refineModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -28,27 +29,16 @@
         </div>
         <div class="modal-body">
 
-          <form class="refine-form">
-            <div class="refine-category">
-              <h5>Brands</h5>
-              <button *ngFor="let brand of brands" class="btn btn-light refine-tag-button">{{brand}}</button>
-            </div>
-
-            <div class="refine-category">
-              <h5>Categories</h5>
-              <button *ngFor="let category of categories" class="btn btn-light refine-tag-button">{{category}}</button>
-            </div>
-
-            <div class="refine-category">
-              <h5>Age Range</h5>
-              <button *ngFor="let ageRange of ageRanges" class="btn btn-light refine-tag-button">{{ageRange}}</button>
-            </div>
-
-            <div class="refine-category">
-              <h5>Conditions</h5>
-              <button *ngFor="let condition of conditions" class="btn btn-light refine-tag-button">{{condition}}</button>
-            </div>
+          <form [formGroup]="form" (ngSubmit)="submit()" class="refine-form">
+            <label formArrayName="filters" *ngFor="let filter of filtersFormArray.controls; let i = title">
+              <input type="checkbox" [formControlName]="t">
+              <!-- add in filter here to only show specific categories -->
+              {{filterData[i].name}}
+            </label>
+            <!-- our form array of checkboxes will go here -->
+            <button>submit</button>
           </form>
+
 
         </div>
         <div class="modal-footer">
@@ -57,5 +47,5 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </main>
