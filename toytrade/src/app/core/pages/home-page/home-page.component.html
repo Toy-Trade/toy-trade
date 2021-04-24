@@ -8,10 +8,11 @@
     <div class="row">
       <div class="col-6 search-col">
         <!-- <app-search-bar></app-search-bar> -->
-        <button class="btn btn-primary refine-area" data-toggle="modal" data-target="#refineModal"><i class="ri-equalizer-line refine-icon"></i>Refine</button>
+        <button class="btn btn-primary refine-area" data-toggle="modal" data-target="#refineModal"><i
+            class="ri-equalizer-line refine-icon"></i>Refine</button>
       </div>
       <div class="col-6">
-          <app-add-toy-button></app-add-toy-button>
+        <app-add-toy-button></app-add-toy-button>
       </div>
     </div>
     <app-dashboard></app-dashboard>
@@ -26,35 +27,84 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+
         <div class="modal-body">
 
-          <form class="refine-form">
-            <div class="refine-category">
-              <h5>Brands</h5>
-              <button *ngFor="let brand of brands" class="btn btn-light refine-tag-button">{{brand}}</button>
+          <!-- <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate> -->
+          <form [formGroup]="form" novalidate>
+
+            <div id="conditions">
+              <h3>Conditions</h3>
+              <div class="row col-8">
+                <div *ngFor="let data of Data; let i=index">
+                  <div *ngIf="data.name == 'conditions'">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
+                      <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"/>
+                        {{data.value}}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="refine-category">
-              <h5>Categories</h5>
-              <button *ngFor="let category of categories" class="btn btn-light refine-tag-button">{{category}}</button>
+            <div id="categories">
+              <h3>Categories</h3>
+              <div class="row col-8">
+                <div *ngFor="let data of Data; let i=index">
+                  <div *ngIf="data.name == 'categories'">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
+                      <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"/>
+                        {{data.value}}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="refine-category">
-              <h5>Age Range</h5>
-              <button *ngFor="let ageRange of ageRanges" class="btn btn-light refine-tag-button">{{ageRange}}</button>
+            <div id="ageRanges">
+              <h3>Age Ranges</h3>
+              <div class="row col-8">
+                <div *ngFor="let data of Data; let i=index">
+                  <div *ngIf="data.name == 'ageRanges'">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
+                      <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"/>
+                        {{data.value}}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="refine-category">
-              <h5>Conditions</h5>
-              <button *ngFor="let condition of conditions" class="btn btn-light refine-tag-button">{{condition}}</button>
+            <div id="brands">
+              <h3>Brands</h3>
+              <div class="row col-8">
+                <div *ngFor="let data of Data; let i=index">
+                  <div *ngIf="data.name == 'brands'">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
+                      <label class="btn btn-secondary active">
+                        <input type="checkbox" checked autocomplete="off"/>
+                        {{data.value}}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </form>
 
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" data-dismiss="modal">Apply</button>
         </div>
+        
       </div>
     </div>
   </div>
