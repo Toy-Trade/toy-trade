@@ -33,6 +33,6 @@ export class NewUserPageComponent implements OnInit {
     this.httpService.addNewUser(userToAdd).subscribe((data) => {
       console.log(data);
     });
-    this.router.navigateByUrl("/profile", { skipLocationChange: true });
+    this.router.navigateByUrl("/profile/" + this.uauth.user.uid, { skipLocationChange: true });
   }
 }
