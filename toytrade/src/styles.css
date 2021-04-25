@@ -39,6 +39,10 @@
   margin-right: 5px;
 }
 
+.login-with-google-button {
+  margin-top: 20px;
+}
+
 /* NEW USER PAGE */
 #new-user-page .header{
   margin-top: 5%;
@@ -64,6 +68,7 @@
 #home-page .header {
   font-size: 24px;
   margin-bottom: 2%;
+  margin-bottom: 30px;
 }
 
 #home-page .search-col {
@@ -198,6 +203,16 @@
   margin-bottom: 10px;
 }
 
+@media only screen and (max-width: 575px) {
+  .dashboard-toy-title {
+    display: none;
+  }
+  #home-page .toy-image {
+    border-right: none;
+    border-radius: 0px 0px 10px 10px;
+  }
+}
+
 /* ADD TOY PAGE */
 #addtoy-page .header{
   margin-top: 5%;
@@ -218,6 +233,7 @@
 #profile-page .header {
     font-size: 24px;
     margin-bottom: 2%;
+    margin-bottom: 30px;
 }
 
 #profile-page .search-col {
@@ -360,6 +376,7 @@
 #notifications-page .header {
   font-size: 24px;
   margin-bottom: 2%;
+  margin-bottom: 30px;
 }
 
 #notifications-page .history-header {
@@ -380,7 +397,7 @@
 
 #notifications-page .row {
   text-align: left;
-  margin: 2% 0;
+  margin: 20px 0;
 }
 
 #notifications-page .button {
@@ -441,6 +458,7 @@
   font-size: 24px;
   margin-bottom: 2%;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 #data-visual-page .title {
