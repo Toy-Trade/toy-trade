@@ -15,13 +15,6 @@
   margin-right: 8px;
 }
 
-.icon {
-  position: relative;
-  top: 4px;
-  font-size: 20px;
-  padding-right: 5px;
-}
-
 .navbar-light .navbar-nav .nav-link {
   color: black;
 }
@@ -79,6 +72,11 @@
   margin: 0;
   padding: 18px 16px 10px;
   cursor: pointer;
+}
+
+.empty_chat_list {
+  margin: 0;
+  padding: 0px 16px 1px;
 }
 
 .sent_msg {

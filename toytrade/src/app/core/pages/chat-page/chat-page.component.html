@@ -6,6 +6,19 @@
     <div class="messaging">
       <div class="inbox_msg">
         <div class="inbox_people">
+
+          <div class="empty_chat_list">
+            <!-- <div class="chat_people row">
+              <div class="col-12 col-sm-6">
+                <div class="chat_img"><img class="chat_img"></div>
+                <p></p>
+              </div>
+              <div class="col-sm-6">
+                <p class="chat_date"></p>
+              </div>
+            </div> -->
+          </div>
+
           <div *ngFor="let messageGroup of messageGroups" id="message-group-{{messageGroup.objectId}}" class="chat_list"
             (click)="getMessages(messageGroup); changeColor(messageGroup.objectId)">
             <div class="chat_people row">
