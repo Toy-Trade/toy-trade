@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@ang
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  
   user: string = this.uauth.user.displayName;
   conditions: string[] = [ "New", "Used: Like New", "Used: Very Good", "Used: Good" ];
   categories: string[] = [ "Action Figures", "Dolls", "Animals", "Cars", "Education", "Electronic Toys", "Games and Puzzles", "Other" ];
@@ -17,50 +18,52 @@ export class HomePageComponent implements OnInit {
   brands: string[] = [ "Lego", "Barbie", "Hot Wheels", "American Girl", "Fisher-Price", "Nerf", "Hasbro", "Other" ];
 
   Data: Array<any> = [
-    // { name: 'Pear', value: 'pear' },
-    // { name: 'Plum', value: 'plum' },
-    // { name: 'Kiwi', value: 'kiwi' },
-    // { name: 'Apple', value: 'apple' },
-    // { name: 'Lime', value: 'lime' }
 
-    { name: 'conditions', value: 'New' },
-    { name: 'conditions', value: 'Used: Like New' },
-    { name: 'conditions', value: 'Used: Very Good' },
-    { name: 'conditions', value: 'Used: Good' },
+    { name: 'Condition', value: 'New' },
+    { name: 'Condition', value: 'Used: Like New' },
+    { name: 'Condition', value: 'Used: Very Good' },
+    { name: 'Condition', value: 'Used: Good' },
 
-    { name: 'categories', value: 'Action Figures'},
-    { name: 'categories', value: 'Dolls'},
-    { name: 'categories', value: 'Animals'},
-    { name: 'categories', value: 'Cars'},
-    { name: 'categories', value: 'Education'},
-    { name: 'categories', value: 'Electronic Toys'},
-    { name: 'categories', value: 'Games and Puzzles'},
-    { name: 'categories', value: 'Other'},
+    { name: 'Category', value: 'Action Figures'},
+    { name: 'Category', value: 'Dolls'},
+    { name: 'Category', value: 'Animals'},
+    { name: 'Category', value: 'Cars'},
+    { name: 'Category', value: 'Education'},
+    { name: 'Category', value: 'Electronic Toys'},
+    { name: 'Category', value: 'Games and Puzzles'},
+    { name: 'Category', value: 'Other'},
 
-    { name: 'ageRanges', value: '1-2'},
-    { name: 'ageRanges', value: '2-3'},
-    { name: 'ageRanges', value: '4-5'},
-    { name: 'ageRanges', value: '6-7'},
-    { name: 'ageRanges', value: '8+'},
+    { name: 'Age Range', value: '1-2'},
+    { name: 'Age Range', value: '2-3'},
+    { name: 'Age Range', value: '4-5'},
+    { name: 'Age Range', value: '6-7'},
+    { name: 'Age Range', value: '8+'},
 
-    { name: 'brands', value: 'Lego'},
-    { name: 'brands', value: 'Barbie'},
-    { name: 'brands', value: 'Hot Wheels'},
-    { name: 'brands', value: 'American Girl'},
-    { name: 'brands', value: 'Fisher-Price'},
-    { name: 'brands', value: 'Nerf'},
-    { name: 'brands', value: 'Hasbro'},
-    { name: 'brands', value: 'Other'},
+    { name: 'Brand', value: 'Lego'},
+    { name: 'Brand', value: 'Barbie'},
+    { name: 'Brand', value: 'Hot Wheels'},
+    { name: 'Brand', value: 'American Girl'},
+    { name: 'Brand', value: 'Fisher-Price'},
+    { name: 'Brand', value: 'Nerf'},
+    { name: 'Brand', value: 'Hasbro'},
+    { name: 'Brand', value: 'Other'},
     
   ];
 
-  form: FormGroup;
+  // Data: Array<any> = [
+  //   { name: 'Pear', value: 'pear' },
+  //   { name: 'Plum', value: 'plum' },
+  //   { name: 'Kiwi', value: 'kiwi' },
+  //   { name: 'Apple', value: 'apple' },
+  //   { name: 'Lime', value: 'lime' }
+  // ];
 
-  // https://www.positronx.io/angular-checkbox-tutorial/
+  form: FormGroup;
 
   constructor(public uauth: AuthService, private fb: FormBuilder) { 
     this.form = this.fb.group({
-      checkArray: this.fb.array([])
+      checkArray: this.fb.array([]),
+      // filtersArray: this.fb.array([])
     })
   }
 
@@ -83,5 +86,31 @@ export class HomePageComponent implements OnInit {
       });
     }
   }
+
+  submitForm() {
+    // console.log("submitted")
+    console.log(this.form.value)
+
+    //for values in array
+      //GET only those from database
+
+    //update/refresh current page?
+
+
+
+  }
+
+
+  // public submitForm(isChecked: boolean) {
+  //   const emailFormArray = <FormArray>this.form.controls.useremail;
+
+  //   if (isChecked) {
+  //     emailFormArray.push(new FormControl(email));
+  //   } else {
+  //     let index = emailFormArray.controls.findIndex(x => x.value == email)
+  //     emailFormArray.removeAt(index);
+  //   }
+  // }
+
 
 }

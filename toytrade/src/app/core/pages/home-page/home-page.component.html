@@ -1,3 +1,7 @@
+<script>
+  window.$ = window.jQuery = require('jquery');
+</script>
+
 <main id="home-page">
   <!-- Header Component -->
   <app-header></app-header>
@@ -30,33 +34,88 @@
 
         <div class="modal-body">
 
-          <!-- <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate> -->
-          <form [formGroup]="form" novalidate>
+          <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+          
+            <h5>Conditions</h5>
+            <div *ngFor="let data of Data; let i=index">
+              <div *ngIf="data.name == 'Condition'">
+                <label class="btn btn-secondary active">
+                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+                  {{data.value}}
+                </label>
+              </div>
+            </div>
+          
+            <h5>Categories</h5>
+            <div *ngFor="let data of Data; let i=index">
+              <div *ngIf="data.name == 'Category'">
+                <label class="btn btn-secondary active">
+                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+                  {{data.value}}
+                </label>
+              </div>
+            </div>
+          
+            <h5>Age Ranges</h5>
+            <div *ngFor="let data of Data; let i=index">
+              <div *ngIf="data.name == 'Age Range'">
+                <label class="btn btn-secondary active">
+                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+                  {{data.value}}
+                </label>
+              </div>
+            </div>
+          
+            <h5>Brands</h5>
+            <div *ngFor="let data of Data; let i=index">
+              <div *ngIf="data.name == 'Brand'">
+                <label class="btn btn-secondary active">
+                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+                  {{data.value}}
+                </label>
+              </div>
+            </div>
+                    
+          
+          
+          
+          
+            <input type="submit" value="Submit">
+          </form>
+
+
+
+
+
+
+
+          <!-- <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+          <!- <form [formGroup]="form" novalidate> ->
 
             <div id="conditions">
-              <h4 class="filterTitle">Conditions</h4>
+              <h4 class="filterTitle">Conditions:</h4>
               <div class="row col-12">
                 <div *ngFor="let data of Data; let i=index">
                   <div *ngIf="data.name == 'conditions'">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
                       <label class="btn btn-secondary active">
-                        <input type="checkbox" checked autocomplete="off"/>
+                        <input type="checkbox" checked autocomplete="off" [value]="data.value" (change)="onCheckboxChange($event)" />
                         {{data.value}}
                       </label>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <div id="categories">
-              <h4 class="filterTitle">Categories</h4>
+            <!-- <div id="categories">
+              <h4 class="filterTitle">Categories:</h4>
               <div class="row col-12">
                 <div *ngFor="let data of Data; let i=index">
                   <div *ngIf="data.name == 'categories'">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
                       <label class="btn btn-secondary active">
-                        <input type="checkbox" checked autocomplete="off"/>
+                        <input type="checkbox" checked autocomplete="off" [value]="data.value" (change)="onCheckboxChange($event)" />
                         {{data.value}}
                       </label>
                     </div>
@@ -66,13 +125,13 @@
             </div>
 
             <div id="ageRanges">
-              <h4 class="filterTitle">Age Ranges</h4>
+              <h4 class="filterTitle">Age Ranges:</h4>
               <div class="row col-12">
                 <div *ngFor="let data of Data; let i=index">
                   <div *ngIf="data.name == 'ageRanges'">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
                       <label class="btn btn-secondary active">
-                        <input type="checkbox" checked autocomplete="off"/>
+                        <input type="checkbox" checked autocomplete="off" [value]="data.value" (change)="onCheckboxChange($event)" />
                         {{data.value}}
                       </label>
                     </div>
@@ -82,27 +141,33 @@
             </div>
 
             <div id="brands">
-              <h4 class="filterTitle">Brands</h4>
+              <h4 class="filterTitle">Brands:</h4>
               <div class="row col-12">
                 <div *ngFor="let data of Data; let i=index">
                   <div *ngIf="data.name == 'brands'">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
                       <label class="btn btn-secondary active">
-                        <input type="checkbox" checked autocomplete="off"/>
+                        <input type="checkbox" checked autocomplete="off" [value]="data.value" (change)="onCheckboxChange($event)" />
                         {{data.value}}
                       </label>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </div> -->
+          
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-secondary" data-dismiss="modal">Apply</button> -->
 
-        </div>
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="submitForm()">Apply</button> -->
+              <!-- <label class="btn btn-primary"> <input type="submit" data-dismiss="modal" /> Apply </label> -->
+            <!-- </div> -->
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Apply</button>
+            <!-- <input type="submit" value="Submit"> -->
+
+          <!-- </form> -->
+
         </div>
 
       </div>
