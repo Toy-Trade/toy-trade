@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AuthService } from '../../services/auth.service';
+import { HttpService } from '../../services/http.service';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 
@@ -50,31 +51,23 @@ export class HomePageComponent implements OnInit {
     
   ];
 
-  // Data: Array<any> = [
-  //   { name: 'Pear', value: 'pear' },
-  //   { name: 'Plum', value: 'plum' },
-  //   { name: 'Kiwi', value: 'kiwi' },
-  //   { name: 'Apple', value: 'apple' },
-  //   { name: 'Lime', value: 'lime' }
-  // ];
-
   form: FormGroup;
 
-  constructor(public uauth: AuthService, private fb: FormBuilder) { 
+  constructor(public uauth: AuthService, private fb: FormBuilder, public httpService : HttpService) { 
     this.form = this.fb.group({
-      checkArray: this.fb.array([]),
-      // filtersArray: this.fb.array([])
+      checkArray: this.fb.array([])
     })
   }
 
   ngOnInit(): void {
   }
 
-  onCheckboxChange(e) {
+  public onCheckboxChange(e) {
     const checkArray: FormArray = this.form.get('checkArray') as FormArray;
   
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
+      console.log(e.target.value)
     } else {
       let i: number = 0;
       checkArray.controls.forEach((item: FormControl) => {
@@ -87,30 +80,28 @@ export class HomePageComponent implements OnInit {
     }
   }
 
-  submitForm() {
-    // console.log("submitted")
-    console.log(this.form.value)
 
-    //for values in array
-      //GET only those from database
+  public submitForm() {
 
-    //update/refresh current page?
+    const checkArray: FormArray = this.form.get('checkArray') as FormArray;
 
+    for(let i = 0; i < checkArray.length; i++) {
 
+      if (this.conditions.indexOf(checkArray.value[i]) > -1 ) {
+        console.log("conditions")
+      }
+      else if (this.categories.indexOf(checkArray.value[i]) > -1 ) {
+        console.log("categories")
+      }
+      else if (this.ageRanges.indexOf(checkArray.value[i]) > -1 ) {
+        console.log("ageRanges")
+      }
+      else if (this.brands.indexOf(checkArray.value[i]) > -1 ) {
+        console.log("brands")
+      }
+
+    }
 
   }
-
-
-  // public submitForm(isChecked: boolean) {
-  //   const emailFormArray = <FormArray>this.form.controls.useremail;
-
-  //   if (isChecked) {
-  //     emailFormArray.push(new FormControl(email));
-  //   } else {
-  //     let index = emailFormArray.controls.findIndex(x => x.value == email)
-  //     emailFormArray.removeAt(index);
-  //   }
-  // }
-
 
 }

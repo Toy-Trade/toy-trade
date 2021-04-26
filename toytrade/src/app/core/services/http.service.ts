@@ -135,4 +135,8 @@ export class HttpService {
   public confirmTransaction(transactionId: string, users: Object) {
     return this.httpClient.put(this.apiserver + "/transactions/confirm/" + transactionId, users);
   }
+
+  public getFilteredToy(filterCategory: string, filter: string) {
+    return this.httpClient.get(this.apiserver + "/toys/" + filterCategory + filter);
+  }
 }

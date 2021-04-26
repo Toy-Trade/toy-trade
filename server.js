@@ -1022,6 +1022,26 @@ app.put('/api/v1/transactions/confirm/:transactionId', (req, res) => {
   }); 
 });
 
+//Get Toy from filter
+app.get('/api/v1/toys/filterCategory/:filter', (req, res) => {
+  let filter = req.params.filter;
+  console.log("filter: " + filter);
+  // Use connect method to connect to the server
+  client.connect(function(err) {
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    // Get the Toys collection
+    const collection = db.collection('Toys');
+    
+    // Get some documents from the Toys collection
+    collection.find({filterCategory: filter}).toArray(function(err, docs) {
+      console.log('Found the following toy');
+      console.log(docs);
+      res.json(docs);
+    });
+  }); 
+});
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });
