@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutPageComponent } from './core/pages/about-page/about-page.component';
 import { AddToyPageComponent } from './core/pages/add-toy-page/add-toy-page.component';
 import { ChatPageComponent } from './core/pages/chat-page/chat-page.component';
 import { DataVisualPageComponent } from './core/pages/data-visual-page/data-visual-page.component';
@@ -13,7 +12,6 @@ import { ProfileViewerPageComponent } from './core/pages/profile-viewer-page/pro
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent},
-  { path: 'about', component: AboutPageComponent },
   { path: 'newuser', component: NewUserPageComponent },
   { path: 'home', component: HomePageComponent },
   { path: 'profile/:userId', component: ProfileViewerPageComponent },
