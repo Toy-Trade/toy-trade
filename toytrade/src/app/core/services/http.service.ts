@@ -136,7 +136,7 @@ export class HttpService {
     return this.httpClient.put(this.apiserver + "/transactions/confirm/" + transactionId, users);
   }
 
-  public getFilteredToy(filterCategory: string, filter: string) {
-    return this.httpClient.get(this.apiserver + "/toys/" + filterCategory + filter);
+  public getFilteredToys(refineForm: Object) {
+    return this.httpClient.put(this.apiserver + "/toys/refine", refineForm);
   }
 }

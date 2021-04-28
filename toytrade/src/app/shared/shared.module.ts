@@ -10,6 +10,7 @@ import { ConfirmTransactionModalComponent } from './confirm-transaction-modal/co
 import { ViewTransactionModalComponent } from './view-transaction-modal/view-transaction-modal.component';
 import { LoginButtonComponent } from './login-button/login-button.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [AddToyButtonComponent, DashboardComponent, ToyCardComponent, ToyInfoModalComponent, SearchBarComponent, NotificationsCardComponent, ConfirmTransactionModalComponent, ViewTransactionModalComponent, LoginButtonComponent],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
