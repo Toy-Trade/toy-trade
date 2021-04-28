@@ -213,9 +213,9 @@
   }
 }
 
-.refine-checkbox {
-  display: inline;
-  margin-right: 10px;
+.refine-header {
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 /* ADD TOY PAGE */

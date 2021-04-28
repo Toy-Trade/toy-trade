@@ -123,7 +123,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  public onCheckboxChange(e: any, arrayName: string) {
+  public onCheckboxChange(e: any, arrayName: string, i: any) {
     // const checkArray: FormArray = this.refineForm.get('checkArray') as FormArray;
 
 
@@ -134,10 +134,12 @@ export class DashboardComponent implements OnInit {
     if(index == -1) {
       (this.refineForm.get(arrayName) as FormArray).push(new FormControl(e.target.value));
       console.log(this.refineForm.getRawValue());
+      document.getElementById(arrayName+"-"+i).classList.add("active");
     }
     else {
       (this.refineForm.get(arrayName) as FormArray).removeAt(index);
       console.log(this.refineForm.getRawValue());
+      document.getElementById(arrayName+"-"+i).classList.remove("active");
     }
 
 
