@@ -1,0 +1,337 @@
+[{
+  "_id": {
+    "$oid": "60669148a71ef36fccd42d9b"
+  },
+  "title": "Teddy bear",
+  "brand": "Barbie",
+  "category": "Dolls",
+  "condition": "Used: Like New",
+  "estimatedValue": "10",
+  "ageRange": "2-3",
+  "description": "Cute bear",
+  "userId": "Tzl4oRsYfXMGrte5Pu3VNnTp4962"
+},{
+  "_id": {
+    "$oid": "60669220a71ef36fccd42d9c"
+  },
+  "title": "Barbie doll house",
+  "brand": "Barbie",
+  "category": "Dolls",
+  "condition": "New",
+  "estimatedValue": "40",
+  "ageRange": "4-5",
+  "description": "Doll house for Barbies",
+  "userId": "Tzl4oRsYfXMGrte5Pu3VNnTp4962"
+},{
+  "_id": {
+    "$oid": "60689d333f31a29428dff634"
+  },
+  "title": "Tesla Cybertruck",
+  "brand": "Hot Wheels",
+  "category": "Cars",
+  "condition": "Used: Very Good",
+  "estimatedValue": "30",
+  "ageRange": "8+",
+  "description": "Really cool Tesla!",
+  "userId": "Tzl4oRsYfXMGrte5Pu3VNnTp4962"
+},{
+  "_id": {
+    "$oid": "6068a89301e69b21c7945776"
+  },
+  "title": "Candy Land",
+  "brand": "Hasbro",
+  "category": "Games and Puzzles",
+  "condition": "Used: Very Good",
+  "estimatedValue": "10",
+  "ageRange": "8+",
+  "description": "This is a Candy Land board game. It is in very good condition and I'm willing to trade it with another board game.",
+  "userId": "y2ZuSK4U36P0vmOv5Csu3cCcdee2"
+},{
+  "_id": {
+    "$oid": "6068c118432952b128bdf24c"
+  },
+  "title": "Mr. Potato Head",
+  "brand": "Hasbro",
+  "category": "Dolls",
+  "condition": "Used: Very Good",
+  "estimatedValue": "5",
+  "ageRange": "4-5",
+  "description": "Mr. Potato Head!",
+  "userId": "LcrK9Wb5wIMTvEyfCQsOmHqVILt1"
+},{
+  "_id": {
+    "$oid": "606dded3b3024f9378f9190e"
+  },
+  "title": "Nerf N Strike Elite Strongarm Toy Blaster with Rotating Barrel",
+  "brand": "Nerf",
+  "category": "Games and Puzzles",
+  "condition": "Used: Like New",
+  "estimatedValue": "12.99",
+  "ageRange": "8+",
+  "description": "Nerf gun that I bought a while back for my older kids, it is basically new. Doesn't come with all of the nerf bullets",
+  "userId": "PZeb0lyJoQUrMvUPcaVvSY3mLmi2"
+},{
+  "_id": {
+    "$oid": "606ddf62f85e5946bd53e1d6"
+  },
+  "title": "Buzz Lightyear",
+  "brand": "Hasbro",
+  "category": "Action Figures",
+  "condition": "Used: Very Good",
+  "estimatedValue": "10",
+  "ageRange": "6-7",
+  "description": "This is a Buzz Lightyear Figure from Toy Story",
+  "userId": "Yns8ECJUbMbdivR2fu5ZaaLM2Pr1"
+},{
+  "_id": {
+    "$oid": "606ddfbef85e5946bd53e1d7"
+  },
+  "title": "Woody from Toy Story",
+  "brand": "Hasbro",
+  "category": "Dolls",
+  "condition": "Used: Like New",
+  "estimatedValue": "10",
+  "ageRange": "6-7",
+  "description": "This is a Woody Doll from Toy Story",
+  "userId": "Yns8ECJUbMbdivR2fu5ZaaLM2Pr1"
+},{
+  "_id": {
+    "$oid": "606de099bc683bf86c6b9a42"
+  },
+  "title": "Rhinoceros Calico Critters",
+  "brand": "Hasbro",
+  "category": "Animals",
+  "condition": "Used: Very Good",
+  "estimatedValue": "10",
+  "ageRange": "4-5",
+  "description": "Cute rhinoceros family Calico Critter set!",
+  "userId": "626u1CxfHSUZJMJQI9Fw8nXtpot1"
+},{
+  "_id": {
+    "$oid": "606de0b7f85e5946bd53e1d8"
+  },
+  "title": "Slinky Dog from Toy Story",
+  "brand": "Hasbro",
+  "category": "Animals",
+  "condition": "New",
+  "estimatedValue": "8",
+  "ageRange": "8+",
+  "description": "This is Disney Pixar Toy Story Slinky Dog. It lights up!",
+  "userId": "Yns8ECJUbMbdivR2fu5ZaaLM2Pr1"
+},{
+  "_id": {
+    "$oid": "606de0dcb3024f9378f9190f"
+  },
+  "title": "Fisher-Price Corn Popper",
+  "brand": "Fisher-Price",
+  "category": "Cars",
+  "condition": "New",
+  "estimatedValue": "7.89",
+  "ageRange": "1-2",
+  "description": "Push corn popper for children!",
+  "userId": "PZeb0lyJoQUrMvUPcaVvSY3mLmi2"
+},{
+  "_id": {
+    "$oid": "606de12dbc683bf86c6b9a43"
+  },
+  "title": "Giant Jenga",
+  "brand": "Hasbro",
+  "category": "Games and Puzzles",
+  "condition": "Used: Good",
+  "estimatedValue": "30",
+  "ageRange": "8+",
+  "description": "Giant Jenga blocks; fun for the whole family!",
+  "userId": "626u1CxfHSUZJMJQI9Fw8nXtpot1"
+},{
+  "_id": {
+    "$oid": "606de132f85e5946bd53e1d9"
+  },
+  "title": "Forky from Toy Story",
+  "brand": "Hasbro",
+  "category": "Action Figures",
+  "condition": "Used: Like New",
+  "estimatedValue": "15",
+  "ageRange": "4-5",
+  "description": "Disney Pixar Toy Story 4 Forky Talking Action Figure 2019",
+  "userId": "Yns8ECJUbMbdivR2fu5ZaaLM2Pr1"
+},{
+  "_id": {
+    "$oid": "606de1b8bc683bf86c6b9a44"
+  },
+  "title": "Baby Yoda Plush",
+  "brand": "Fisher-Price",
+  "category": "Dolls",
+  "condition": "New",
+  "estimatedValue": "20",
+  "ageRange": "6-7",
+  "description": "Cutest toy ever!",
+  "userId": "626u1CxfHSUZJMJQI9Fw8nXtpot1"
+},{
+  "_id": {
+    "$oid": "606de1f8b3024f9378f91910"
+  },
+  "title": "Sharper Image Virtual Ping Pong",
+  "brand": "Other",
+  "category": "Electronic Toys",
+  "condition": "New",
+  "estimatedValue": "80.00",
+  "ageRange": "6-7",
+  "description": "Virtual Pong is the fast-paced, futuristic game that keeps players on their toes with a simulated “ball of light” that bounces off the walls and ceiling. It’s the spaced-out version of tennis you can play in your living room. Use your electronic \"racquet\" to face off against an opponent... or play solo against the game console. The first one to 11 wins! Includes 2 racquets. Ages 6+.",
+  "userId": "PZeb0lyJoQUrMvUPcaVvSY3mLmi2"
+},{
+  "_id": {
+    "$oid": "606de2a5f85e5946bd53e1db"
+  },
+  "title": "The Big Bang Theory Monopoly Board Game",
+  "brand": "Hasbro",
+  "category": "Games and Puzzles",
+  "condition": "New",
+  "estimatedValue": "25",
+  "ageRange": "8+",
+  "description": "The Big Bang Theory Monopoly Board Game. This game has been unopened.",
+  "userId": "rBCWjg8n5NOn4PW9qcURnFy1p7n2"
+},{
+  "_id": {
+    "$oid": "606de31df85e5946bd53e1dc"
+  },
+  "title": "Connect 4 Blast!",
+  "brand": "Hasbro",
+  "category": "Games and Puzzles",
+  "condition": "New",
+  "estimatedValue": "22",
+  "ageRange": "6-7",
+  "description": "Connect 4 Blast! Still brand new and sealed.",
+  "userId": "rBCWjg8n5NOn4PW9qcURnFy1p7n2"
+},{
+  "_id": {
+    "$oid": "606de38ef85e5946bd53e1dd"
+  },
+  "title": "Codenames Pictures Strategy Board Game",
+  "brand": "Other",
+  "category": "Games and Puzzles",
+  "condition": "Used: Good",
+  "estimatedValue": "8",
+  "ageRange": "8+",
+  "description": "Codenames Pictures Strategy Board Game. Still in good condition",
+  "userId": "rBCWjg8n5NOn4PW9qcURnFy1p7n2"
+},{
+  "_id": {
+    "$oid": "606de3e0f85e5946bd53e1de"
+  },
+  "title": "Ticket to Ride Board Game",
+  "brand": "Other",
+  "category": "Games and Puzzles",
+  "condition": "New",
+  "estimatedValue": "30",
+  "ageRange": "8+",
+  "description": "By Days Of Wonder NEW IN BOX FACTORY SEALED! ",
+  "userId": "rBCWjg8n5NOn4PW9qcURnFy1p7n2"
+},{
+  "_id": {
+    "$oid": "606de42bbc683bf86c6b9a49"
+  },
+  "title": "Fisher-Price Little People Figures",
+  "brand": "Fisher-Price",
+  "category": "Dolls",
+  "condition": "Used: Good",
+  "estimatedValue": "20",
+  "ageRange": "2-3",
+  "description": "This is a set of vintage Fisher-Price little people figures, accessories, and fire truck.",
+  "userId": "Tzl4oRsYfXMGrte5Pu3VNnTp4962"
+},{
+  "_id": {
+    "$oid": "606de44a76610a0cf8fd3d1e"
+  },
+  "title": "Red Lightsaber",
+  "brand": "Hasbro",
+  "category": "Electronic Toys",
+  "condition": "Used: Like New",
+  "estimatedValue": "25",
+  "ageRange": "6-7",
+  "description": "Kylo Ren's red lightsaber! Extendable and lights up.",
+  "userId": "t18hT1462yaD9bzLlTRyXSRUk5t2"
+},{
+  "_id": {
+    "$oid": "606de450f85e5946bd53e1df"
+  },
+  "title": "Pandemic Board Game",
+  "brand": "Hasbro",
+  "category": "Games and Puzzles",
+  "condition": "New",
+  "estimatedValue": "30",
+  "ageRange": "8+",
+  "description": "This Pandemic Board Game is brand new and sealed.",
+  "userId": "rBCWjg8n5NOn4PW9qcURnFy1p7n2"
+},{
+  "_id": {
+    "$oid": "606de4b3bc683bf86c6b9a4a"
+  },
+  "title": "Hot Wheels Baby Yoda Car",
+  "brand": "Hot Wheels",
+  "category": "Cars",
+  "condition": "New",
+  "estimatedValue": "40",
+  "ageRange": "6-7",
+  "description": "Baby Yoda car",
+  "userId": "Tzl4oRsYfXMGrte5Pu3VNnTp4962"
+},{
+  "_id": {
+    "$oid": "606e230702da341013e6a2e4"
+  },
+  "title": "Giant Lego Blocks",
+  "brand": "Lego",
+  "category": "Games and Puzzles",
+  "condition": "Used: Like New",
+  "estimatedValue": "20",
+  "ageRange": "2-3",
+  "description": "Large Lego blocks for small children",
+  "userId": "Tzl4oRsYfXMGrte5Pu3VNnTp4962"
+},{
+  "_id": {
+    "$oid": "606e24035c0d9a1331fc8994"
+  },
+  "title": "Polly Pocket Dollhouse",
+  "brand": "Barbie",
+  "category": "Dolls",
+  "condition": "New",
+  "estimatedValue": "40",
+  "ageRange": "4-5",
+  "description": "Polly Pocket Dollhouse set",
+  "userId": "Tzl4oRsYfXMGrte5Pu3VNnTp4962"
+},{
+  "_id": {
+    "$oid": "6070698a756dbf36bcb17425"
+  },
+  "title": "Toy",
+  "brand": "Barbie",
+  "category": "Action Figures",
+  "condition": "New",
+  "estimatedValue": "30",
+  "ageRange": "2-3",
+  "description": "A toy",
+  "userId": "Tzl4oRsYfXMGrte5Pu3VNnTp4962"
+},{
+  "_id": {
+    "$oid": "6071f439327716e5adde2133"
+  },
+  "title": "LEGO Creator Colosseum",
+  "brand": "Lego",
+  "category": "Games and Puzzles",
+  "condition": "Used: Very Good",
+  "estimatedValue": "400",
+  "ageRange": "8+",
+  "description": "This is a Lego Colosseum. It has been used one time!",
+  "userId": "y2ZuSK4U36P0vmOv5Csu3cCcdee2"
+},{
+  "_id": {
+    "$oid": "6077a69a9af53e0edaaa2ccc"
+  },
+  "title": "Toy Story Bullseye Galloping Sound Plush",
+  "brand": "Other",
+  "category": "Animals",
+  "condition": "Used: Very Good",
+  "estimatedValue": "12",
+  "ageRange": "6-7",
+  "description": "This is the Bullseye toy from Toy Story! It makes sounds and is in great condition!",
+  "userId": "Yns8ECJUbMbdivR2fu5ZaaLM2Pr1"
+}]
