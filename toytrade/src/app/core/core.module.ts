@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderLandingComponent } from './universal/header-landing/header-landing.component';
 import { HeaderComponent } from './universal/header/header.component';
-import { FooterComponent } from './universal/footer/footer.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -21,7 +20,6 @@ import { DataVisualPageComponent } from './pages/data-visual-page/data-visual-pa
   declarations: [
     HeaderLandingComponent,
     HeaderComponent,
-    FooterComponent,
     LandingPageComponent,
     AboutPageComponent,
     HomePageComponent,
@@ -43,7 +41,6 @@ import { DataVisualPageComponent } from './pages/data-visual-page/data-visual-pa
     CommonModule,
     HeaderLandingComponent,
     HeaderComponent,
-    FooterComponent,
     LandingPageComponent,
     AboutPageComponent,
     HomePageComponent,
