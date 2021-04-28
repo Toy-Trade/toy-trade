@@ -1,3 +1,14 @@
+<div class="row">
+  <div class="col-6 search-col">
+    <!-- <app-search-bar></app-search-bar> -->
+    <button class="btn btn-primary refine-area" data-toggle="modal" data-target="#refineModal"><i
+        class="ri-equalizer-line refine-icon"></i>Refine</button>
+  </div>
+  <div class="col-6">
+    <app-add-toy-button></app-add-toy-button>
+  </div>
+</div>
+
 <!-- Cards Dashboard -->
 <div class="row justify-content">
   <div *ngFor="let toy of toys" class="col-lg-6 col-md-12 col-sm-12">
@@ -79,6 +90,71 @@
       </div>
     </div>
   </div>
+
+<div class="modal fade" id="refineModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Refine Your Search</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <form [formGroup]="refineForm">
+            
+            <h5>Conditions</h5>
+            <div *ngFor="let data of Data; let i=index">
+              <div *ngIf="data.name == 'Condition'">
+                <label class="btn btn-secondary active">
+                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'conditions')" />
+                  {{data.value}}
+                </label>
+              </div>
+            </div>
+          
+            <h5>Categories</h5>
+            <div *ngFor="let data of Data; let i=index">
+              <div *ngIf="data.name == 'Category'">
+                <label class="btn btn-secondary active">
+                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'categories')" />
+                  {{data.value}}
+                </label>
+              </div>
+            </div>
+          
+            <h5>Age Ranges</h5>
+            <div *ngFor="let data of Data; let i=index">
+              <div *ngIf="data.name == 'Age Range'">
+                <label class="btn btn-secondary active">
+                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'ageRanges')" />
+                  {{data.value}}
+                </label>
+              </div>
+            </div>
+          
+            <h5>Brands</h5>
+            <div *ngFor="let data of Data; let i=index">
+              <div *ngIf="data.name == 'Brand'">
+                <label class="btn btn-secondary active">
+                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'brands')" />
+                  {{data.value}}
+                </label>
+              </div>
+            </div>
+                    
+          
+          
+            
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-secondary" value="Submit" data-dismiss="modal" (click)="submitForm()">
+          </form>
+
+
+
+
 
   <!-- TOY INFO MODAL -->
   <!-- <div class="modal fade" id="toyInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

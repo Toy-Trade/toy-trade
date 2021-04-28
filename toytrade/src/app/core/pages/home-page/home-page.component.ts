@@ -1,6 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
 import { AuthService } from '../../services/auth.service';
+
+interface Toy {
+  objectId: string;
+  title: string;
+  brand: string;
+  category: string;
+  condition: string;
+  estimatedValue: string;
+  ageRange: string;
+  description: string;
+  username: string;
+}
 
 @Component({
   selector: 'app-home-page',
@@ -8,6 +19,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  
   user: string = this.uauth.user.displayName;
   conditions: string[] = [ "New", "Used: Like New", "Used: Very Good", "Used: Good" ];
   categories: string[] = [ "Action Figures", "Dolls", "Animals", "Cars", "Education", "Electronic Toys", "Games and Puzzles", "Other" ];
