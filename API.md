@@ -253,7 +253,13 @@ This updates a particular request notification by setting archived to true.
 
 ```/api/v1/notifications/archives/:notificationId```
 
-This is a `PUT` request that updates the field `archived` as `true` in the `Notifications` collection
+This is a `PUT` request that updates the field `archived` as `true` in the `Notifications` collection.
+
+## Filter Toys
+
+```/api/v1/toys/refine```
+
+This is a `PUT` request that uses an inputted array to find toys in the `Toys` collection that have the selected categories .
 
 # Data Visualization Requests
 
