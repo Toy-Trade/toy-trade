@@ -14,7 +14,6 @@ var storage = multer.diskStorage({
     cb(null, __dirname + '/toytrade/src/assets/uploads') /* <-- must create this folder manually! */
   },
   filename: function(req, file, cb) {
-    // cb(null, file.originalname) /* <-- could make another name too */
     cb(null, req.body.text_value + ".jpg")
   }
 })
@@ -29,8 +28,6 @@ app.use(express.json());
 const url = 'mongodb+srv://dbUser:OrgUser78@cluster0.k5fln.mongodb.net/ToyTrade?retryWrites=true&w=majority';
 const dbName = 'ToyTrade';
 const client = new MongoClient(url);
-
-// app.use(express.static("public"));
 
 app.get('/', (req, res) => {
   res.send();
@@ -134,9 +131,6 @@ app.put('/api/v1/users/:uid', (req, res) => {
     const db = client.db(dbName);
     // Get the Users collection
     const collection = db.collection('Users');
-    collection.find({uid: req.body.uid}).toArray(function(err, docs) {
-      
-    });
 
     collection.updateOne (
       { uid: myUid },
