@@ -109,7 +109,7 @@
             <div class="row col-12">
               <div *ngFor="let data of Data; let i=index">
                 <div *ngIf="data.name == 'Condition'" class="btn-group btn-group-toggle" style="margin: 5px;">
-                  <label id="conditions-{{i}}" class="btn btn-outline-primary">
+                  <label id="conditions-{{i}}" class="btn btn-outline-primary" style="cursor: pointer;">
                     <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'conditions', i)" />
                     {{data.value}}
                   </label>
@@ -121,7 +121,7 @@
             <div class="row col-12">
               <div *ngFor="let data of Data; let i=index">
                 <div *ngIf="data.name == 'Category'" class="btn-group btn-group-toggle" style="margin: 5px;">
-                  <label id="categories-{{i}}" class="btn btn-outline-primary">
+                  <label id="categories-{{i}}" class="btn btn-outline-primary" style="cursor: pointer;">
                     <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'categories', i)" />
                     {{data.value}}
                   </label>
@@ -133,7 +133,7 @@
             <div class="row col-12">
               <div *ngFor="let data of Data; let i=index">
                 <div *ngIf="data.name == 'Age Range'" class="btn-group btn-group-toggle" style="margin: 5px;">
-                  <label id="ageRanges-{{i}}" class="btn btn-outline-primary">
+                  <label id="ageRanges-{{i}}" class="btn btn-outline-primary" style="cursor: pointer;">
                     <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'ageRanges', i)" />
                     {{data.value}}
                   </label>
@@ -145,7 +145,7 @@
             <div class="row col-12">
               <div *ngFor="let data of Data; let i=index">
                 <div *ngIf="data.name == 'Brand'" class="btn-group btn-group-toggle" style="margin: 5px;">
-                  <label id="brands-{{i}}" class="btn btn-outline-primary">
+                  <label id="brands-{{i}}" class="btn btn-outline-primary" style="cursor: pointer;">
                     <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'brands', i)" />
                     {{data.value}}
                   </label>
