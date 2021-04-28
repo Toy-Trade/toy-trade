@@ -106,48 +106,53 @@
           <form [formGroup]="refineForm">
             
             <h5>Conditions</h5>
-            <div *ngFor="let data of Data; let i=index">
-              <div *ngIf="data.name == 'Condition'">
-                <label class="btn btn-secondary active">
-                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'conditions')" />
-                  {{data.value}}
-                </label>
+            <div class="row col-12">
+              <div *ngFor="let data of Data; let i=index">
+                <div *ngIf="data.name == 'Condition'" class="btn-group btn-group-toggle" style="margin: 5px;">
+                  <label class="btn btn-secondary active">
+                    <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'conditions')" />
+                    {{data.value}}
+                  </label>
+                </div>
               </div>
             </div>
           
             <h5>Categories</h5>
-            <div *ngFor="let data of Data; let i=index">
-              <div *ngIf="data.name == 'Category'">
-                <label class="btn btn-secondary active">
-                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'categories')" />
-                  {{data.value}}
-                </label>
+            <div class="row col-12">
+              <div *ngFor="let data of Data; let i=index">
+                <div *ngIf="data.name == 'Category'" class="btn-group btn-group-toggle" style="margin: 5px;">
+                  <label class="btn btn-secondary active">
+                    <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'categories')" />
+                    {{data.value}}
+                  </label>
+                </div>
               </div>
             </div>
           
             <h5>Age Ranges</h5>
-            <div *ngFor="let data of Data; let i=index">
-              <div *ngIf="data.name == 'Age Range'">
-                <label class="btn btn-secondary active">
-                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'ageRanges')" />
-                  {{data.value}}
-                </label>
+            <div class="row col-12">
+              <div *ngFor="let data of Data; let i=index">
+                <div *ngIf="data.name == 'Age Range'" class="btn-group btn-group-toggle" style="margin: 5px;">
+                  <label class="btn btn-secondary active">
+                    <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'ageRanges')" />
+                    {{data.value}}
+                  </label>
+                </div>
               </div>
             </div>
           
             <h5>Brands</h5>
-            <div *ngFor="let data of Data; let i=index">
-              <div *ngIf="data.name == 'Brand'">
-                <label class="btn btn-secondary active">
-                  <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'brands')" />
-                  {{data.value}}
-                </label>
+            <div class="row col-12">
+              <div *ngFor="let data of Data; let i=index">
+                <div *ngIf="data.name == 'Brand'" class="btn-group btn-group-toggle" style="margin: 5px;">
+                  <label class="btn btn-secondary active">
+                    <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event, 'brands')" />
+                    {{data.value}}
+                  </label>
+                </div>
               </div>
             </div>
                     
-          
-          
-            
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <input type="submit" class="btn btn-secondary" value="Submit" data-dismiss="modal" (click)="submitForm()">
           </form>

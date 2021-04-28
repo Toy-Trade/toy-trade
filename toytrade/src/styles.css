@@ -213,6 +213,11 @@
   }
 }
 
+.refine-checkbox {
+  display: inline;
+  margin-right: 10px;
+}
+
 /* ADD TOY PAGE */
 #addtoy-page .header{
   margin-top: 5%;
