@@ -59,29 +59,6 @@ app.get('/api/v1/toys', async (req, res) => {
     console.log(response)
     res.json(response)
   });
-
-  // var myData = {
-  //   name: "Joyce",
-  //   age: 19
-  // }
-  // console.log("hi")
-  // try {
-  //   const parser = new Parser();
-  //   const csv = parser.parse(myData);
-  //   console.log(typeof csv);
-  //   console.log(csv);
-  //   fs.writeFile('toytrade/src/assets/csv/test.csv', csv, (err) => {
-  //     if (err) {
-  //       console.log(err);
-  //     } else {
-  //       console.log("File written successfully\n"); 
-  //       console.log("The written has the following contents:"); 
-  //       console.log(fs.readFileSync("toytrade/src/assets/csv/test.csv", "utf8"));
-  //     }
-  //   });
-  // } catch (err) {
-  //   console.error(err);
-  // }
 });
 
 // Get data from specific user's Toys collection
@@ -119,8 +96,6 @@ app.get('/api/v1/users/:userId', (req, res) => {
     
     // Get some documents from the Users collection
     collection.find({uid:userId}).toArray(function(err, docs) {
-      // console.log('Found the following user');
-      // console.log(docs);
       res.json(docs);
     });
   }); 
@@ -143,8 +118,6 @@ app.post('/api/v1/users/:uid', (req, res) => {
           res.json({inserted: true});
         });
       } else {
-        // console.log("Found the following duplicate");
-        // console.log(docs);
         res.json({inserted: false});
       }
     });
@@ -225,12 +198,6 @@ app.post('/api/v1/notifications', (req, res) => {
         res.json({inserted: false});
       }
     });
-    
-    // // Get some documents from the Notifications collection
-    // collection.insertOne(req.body, function(err, docs) {
-    //   console.log("Inserted one request notification")
-    //   res.json(docs.ops[0]._id);
-    // });
   });
 });
 
@@ -280,8 +247,6 @@ app.get('/api/v1/toys/:toyId', (req, res) => {
     // Get some documents from the Toys collection
     let myObject = new ObjectId(toyId);
     collection.find({_id: myObject}).toArray(function(err, docs) {
-      // console.log('Found the following toy');
-      // console.log(docs);
       res.json(docs);
     });
   }); 
@@ -322,12 +287,6 @@ app.get('/api/v1/csv/brands', (req, res) => {
   });
   res.json({"success":true});
 });
-
-
-
-
-
-
 
 
 // Get Age Ranges CSV: Tyler
@@ -399,14 +358,6 @@ app.get('/api/v1/csv/usertoys', (req, res) => {
   });
   res.json({"success":true});
 });
-
-
-
-
-
-
-
-
 
 // Get CSV for Toy Requests: Joyce
 app.get('/api/v1/csv/toyrequests', (req, res) => {
@@ -627,8 +578,6 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
       date: new Date()
     }
 
-    // let existingMessageGroup = "";
-
     collection1.find({$or: [{userId1: req.body.senderId, userId2: req.body.receiverId}, {userId1: req.body.receiverId, userId2: req.body.senderId}]}).toArray(function(err, docs) {
       if (docs.length == 0) {
         collection1.insertOne(messageGroup, function(err, docs) {
@@ -660,12 +609,10 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
       
           collection.insertOne(notification1, function(err, docs) {
             console.log("Inserted notification1");
-            // res.json({inserted: true});
           });
       
           collection.insertOne(notification2, function(err, docs) {
             console.log("Inserted notification2");
-            // res.json({inserted: true});
           });
       
           // Update with request notification as archived: true
@@ -710,12 +657,10 @@ app.post('/api/v1/notifications/requests/accept/:requestId', (req, res) => {
     
         collection.insertOne(notification1, function(err, docs) {
           console.log("Inserted notification1");
-          // res.json({inserted: true});
         });
     
         collection.insertOne(notification2, function(err, docs) {
           console.log("Inserted notification2");
-          // res.json({inserted: true});
         });
     
         // Update with request notification as archived: true
@@ -745,7 +690,7 @@ app.get("/api/v1/messagegroups/:userId", async (req, res) => {
     const collection1 = db.collection('Users');
     let messageGroups = [];
     const response = await collection.find({$or: [{userId1: userId}, {userId2: userId}]}).sort({date: -1}).toArray();
-    // console.log(response)
+
     for (let i = 0; i < response.length; i++) {
       let otherUser = "";
       if (response[i].userId1 == userId){
@@ -754,7 +699,6 @@ app.get("/api/v1/messagegroups/:userId", async (req, res) => {
         otherUser = response[i].userId1;
       }
       const subResponse = await collection1.findOne({uid: otherUser})
-      //console.log(subResponse)
       let messageGroup = {
         otherUserId: otherUser,
         otherUsername: subResponse.username,
@@ -1036,7 +980,6 @@ app.put('/api/v1/toys/refine', async (req, res) => {
 
     // Get some documents from the Toys collection
     const response = await collection.find({$or: [{brand: {$in: refineForm.brands}}, {category: {$in: refineForm.categories}}, {condition: {$in: refineForm.conditions}}, {ageRange: {$in: refineForm.ageRanges}} ]}).toArray();
-    // console.log(response)
     for (let i = 0; i < response.length; i++) {
       const subResponse = await collection1.findOne({uid: response[i].userId})
       console.log(subResponse)
@@ -1047,11 +990,6 @@ app.put('/api/v1/toys/refine', async (req, res) => {
     
   }); 
 });
-
-    
-
-
-
 
 app.listen(port, () => {
   console.log('Listening on *:3000');
