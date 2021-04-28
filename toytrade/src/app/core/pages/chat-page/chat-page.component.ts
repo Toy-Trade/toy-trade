@@ -33,7 +33,6 @@ interface Toy {
 export class ChatPageComponent implements OnInit {
 
   messageGroups: MessageGroup[] = [];
-  // currentMessageGroupId: string = "";
   currentMessageGroup: MessageGroup = {
     otherUserId: "",
     otherUsername: "",

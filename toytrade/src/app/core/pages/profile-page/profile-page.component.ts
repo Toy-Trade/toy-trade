@@ -50,8 +50,6 @@ export class ProfilePageComponent implements OnInit {
         zipcode: myUserInfo[1].zipcode,
         bio: myUserInfo[1].bio
       }
-      // Record visit to profile page
-    // this.httpService.addProfileViews(this.)
       console.log("User info:");
       console.log(this.userInfo);
     });

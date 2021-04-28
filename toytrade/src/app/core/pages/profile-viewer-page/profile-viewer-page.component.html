@@ -25,7 +25,6 @@
           <div class="card-body">
             <div class="card-row row container">
               <div class="card-col col-sm-8 col-12">
-                <!-- <img class="toy-image" src="assets/uploads/{{toy.objectId}}.jpg" alt="{{toy.title}}"> -->
                 <img class="toy-image" src="../../../assets/uploads/{{toy.objectId}}.jpg" alt="{{toy.title}}">
               </div>
               <div class="card-col col-sm-4 col-12 dashboard-toy-title">
@@ -87,7 +86,8 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="requestToy(toy)" data-dismiss="modal">Request</button>
+                <button type="button" class="btn btn-primary" (click)="requestToy(toy)"
+                  data-dismiss="modal">Request</button>
               </div>
             </div>
           </div>

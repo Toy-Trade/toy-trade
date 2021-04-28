@@ -72,32 +72,6 @@ export class AddToyPageComponent implements OnInit {
   changeImage(event: any): void {
     let toyImage = event.target.files.item(0);
     console.log(toyImage);
-    ///////////////
-    // File Upload
-    ///////////////
-    // this.addToyForm.controls['imageUrl'].setValue(imageUrlSelected);
-    // Node has an fs module
-    // Can write to files
-    // Check if name already exists, reject upload or rename
-    // Make an endpoint for image uploading
-    // 1. Write image to assets folder
-    // 2. Write into mongo the meta data (full path to image)
-    //// Full path an who uploaded it
-    //// Gives user ability to update/edit/delete the image they uploaded
-    // Use toy id for name of image
-    // Have to add to database first
-    // OjectId.str
-    // res.ops
-    //////////////
-    // Locations
-    //////////////
-    // Add the location of the user stored with the toy (lat and long from city/town name)
-    // Geolocate? Google login info? Or make user enter location for toy form, or make user enter location
-    // Redirect to profile if first time logging in with google (fill in approx. location, zip code? which can be converted to lat/long)
-    // Users have ability to update location (if you have active toys, update them)
-    // User id associated with toy so user can edit toy listing, including location, image, other info
-    // Can manually delete listing, or it will get deleted after a transaction has been made
-    // This is another thing they can filter by ("near me")
   }
 
   public validate() {
@@ -108,7 +82,7 @@ export class AddToyPageComponent implements OnInit {
       return false;
     }
     return true;
-    
+
   }
 
   onSubmit(): void {
@@ -122,9 +96,6 @@ export class AddToyPageComponent implements OnInit {
 
       this.displayAddToyForm = false;
       this.displayUploadImageForm = true;
-      // this.router.navigateByUrl("/home", { skipLocationChange: true });
     }
-
-    
   }
 }

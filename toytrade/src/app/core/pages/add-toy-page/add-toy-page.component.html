@@ -3,80 +3,87 @@
   <app-header></app-header>
 
   <div class="container">
-      <h1 class="header">+ Add Toy</h1>
-      <form class="needs-validation" *ngIf="displayAddToyForm" [formGroup]="addToyForm">
-          <div class="form-row form">
-              <div class="form-group col-sm-6 col-12">
-                  <label for="title">Title</label>
-                  <input type="text" class="form-control" id="title" aria-describedby="emailHelp" formControlName="title" placeholder="Title of your listing" required>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-              </div>
-              <div class="form-group col-sm-6 col-12">
-                  <label for="estimated-value">Estimated Value</label>
-                  <input type="text" class="form-control" id="estimated-value" formControlName="estimatedValue" placeholder="Estimated value" required>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-              </div>
-              <div class="form-group col-sm-6 col-12">
-                  <label for="brand-select">Brand</label>
-                  <select class="form-control" id="brand-select" name="brand-select" (change)="changeBrand($event)" required>
-                    <option value="" selected disabled>Select a Brand</option>
-                    <option value="{{brand}}" *ngFor="let brand of brands">
-                      {{brand}}
-                    </option>
-                </select>
-                <div class="invalid-feedback">Please fill out this field.</div>
-              </div>
-              <div class="form-group col-sm-6 col-12">
-                <label for="condition">Category</label>
-                  <select class="form-control" id="category-select" name="category-select" (change)="changeCategory($event)" required>
-                      <option value="" selected disabled>Select a Category</option>
-                      <option value="{{category}}" *ngFor="let category of categories">
-                        {{category}}
-                      </option>
-                  </select>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-              </div>
-              <div class="form-group col-sm-6 col-12">
-                  <label for="age-range-select">Age Range</label>
-                  <select class="form-control form-select" id="age-range-select" name="age-range-select" (change)="changeAgeRange($event)" required>
-                    <option value="" selected disabled>Select a Age Range</option>
-                    <option value="{{ageRange}}" *ngFor="let ageRange of ageRanges">
-                      {{ageRange}}
-                    </option>
-                  </select>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-              </div>
-              <div class="form-group col-sm-6 col-12">
-                  <label for="condition">Condition</label>
-                    <select class="form-control" id="condition-select" name="condition-select" (change)="changeCondition($event)" required>
-                        <option value="" selected disabled>Select a condition</option>
-                        <option value="{{condition}}" *ngFor="let condition of conditions">
-                          {{condition}}
-                        </option>
-                    </select>
-                    <div class="invalid-feedback">Please fill out this field.</div>
-              </div>
-              <div class="form-group col-sm-6 col-12">
-                  <label for="description">Describe the toy</label>
-                  <input type="text" class="form-control" id="description" formControlName="description" placeholder="Describe the toy" required>
-                  <div class="invalid-feedback">Please fill out this field.</div>
-              </div>
-              <div class="col-sm-6 col-12">
-                  <label for="submit" style="visibility: hidden;">Ready to submit?</label>
-                  <button type="submit" class="btn btn-primary button" (click)="onSubmit()">Continue</button>
-              </div>
-          </div>
-      </form>
-
-      <form *ngIf="displayUploadImageForm" action="/upload" method="post" enctype="multipart/form-data">
-        <div class="form-row form justify-content-center">
-          <div class="form-group col-sm-6 col-12">
-            <label for="toy-image-input">Upload Image</label>
-            <input type="text" value="{{toyObjectId}}" name="text_value" style="visibility: hidden;">
-            <input class="form-control" type="file" accept="image/*" name="objectid" originalname="objectid" class="form-control-file" id="toy-image-input">
-            <input class="btn btn-primary button upload-button" type="submit" value="Submit">
-          </div>
+    <h1 class="header">+ Add Toy</h1>
+    <form class="needs-validation" *ngIf="displayAddToyForm" [formGroup]="addToyForm">
+      <div class="form-row form">
+        <div class="form-group col-sm-6 col-12">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" aria-describedby="emailHelp" formControlName="title"
+            placeholder="Title of your listing" required>
+          <div class="invalid-feedback">Please fill out this field.</div>
         </div>
-      </form>
+        <div class="form-group col-sm-6 col-12">
+          <label for="estimated-value">Estimated Value</label>
+          <input type="text" class="form-control" id="estimated-value" formControlName="estimatedValue"
+            placeholder="Estimated value" required>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group col-sm-6 col-12">
+          <label for="brand-select">Brand</label>
+          <select class="form-control" id="brand-select" name="brand-select" (change)="changeBrand($event)" required>
+            <option value="" selected disabled>Select a Brand</option>
+            <option value="{{brand}}" *ngFor="let brand of brands">
+              {{brand}}
+            </option>
+          </select>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group col-sm-6 col-12">
+          <label for="condition">Category</label>
+          <select class="form-control" id="category-select" name="category-select" (change)="changeCategory($event)"
+            required>
+            <option value="" selected disabled>Select a Category</option>
+            <option value="{{category}}" *ngFor="let category of categories">
+              {{category}}
+            </option>
+          </select>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group col-sm-6 col-12">
+          <label for="age-range-select">Age Range</label>
+          <select class="form-control form-select" id="age-range-select" name="age-range-select"
+            (change)="changeAgeRange($event)" required>
+            <option value="" selected disabled>Select a Age Range</option>
+            <option value="{{ageRange}}" *ngFor="let ageRange of ageRanges">
+              {{ageRange}}
+            </option>
+          </select>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group col-sm-6 col-12">
+          <label for="condition">Condition</label>
+          <select class="form-control" id="condition-select" name="condition-select" (change)="changeCondition($event)"
+            required>
+            <option value="" selected disabled>Select a condition</option>
+            <option value="{{condition}}" *ngFor="let condition of conditions">
+              {{condition}}
+            </option>
+          </select>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="form-group col-sm-6 col-12">
+          <label for="description">Describe the toy</label>
+          <input type="text" class="form-control" id="description" formControlName="description"
+            placeholder="Describe the toy" required>
+          <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        <div class="col-sm-6 col-12">
+          <label for="submit" style="visibility: hidden;">Ready to submit?</label>
+          <button type="submit" class="btn btn-primary button" (click)="onSubmit()">Continue</button>
+        </div>
+      </div>
+    </form>
+
+    <form *ngIf="displayUploadImageForm" action="/upload" method="post" enctype="multipart/form-data">
+      <div class="form-row form justify-content-center">
+        <div class="form-group col-sm-6 col-12">
+          <label for="toy-image-input">Upload Image</label>
+          <input type="text" value="{{toyObjectId}}" name="text_value" style="visibility: hidden;">
+          <input class="form-control" type="file" accept="image/*" name="objectid" originalname="objectid"
+            class="form-control-file" id="toy-image-input">
+          <input class="btn btn-primary button upload-button" type="submit" value="Submit">
+        </div>
+      </div>
+    </form>
   </div>
 </main>

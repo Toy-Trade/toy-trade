@@ -27,8 +27,8 @@
             <p>{{notification.timeAgo}}</p>
             <p class="card-text">You have accepted <a class="link" href="">@{{notification.senderUsername}}</a>'s
               request for your <a class="link" href="">{{notification.toyName}}</a>.</p>
-            <button type="button" class="btn btn-primary button" (click)="archiveNotification(notification.id)" routerLink="/chat/{{notification.messageGroupId}}"
-              skipLocationChange>See Chat</button>
+            <button type="button" class="btn btn-primary button" (click)="archiveNotification(notification.id)"
+              routerLink="/chat/{{notification.messageGroupId}}" skipLocationChange>See Chat</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'accept_receiver'">
@@ -36,8 +36,8 @@
             <p>{{notification.timeAgo}}</p>
             <p class="card-text">Your request for <a class="link" href="">@{{notification.senderUsername}}</a>'s <a
                 class="link" href="">{{notification.toyName}}</a> has been accepted.</p>
-            <button type="button" class="btn btn-primary button" (click)="archiveNotification(notification.id)" routerLink="/chat/{{notification.messageGroupId}}"
-              skipLocationChange>See Chat</button>
+            <button type="button" class="btn btn-primary button" (click)="archiveNotification(notification.id)"
+              routerLink="/chat/{{notification.messageGroupId}}" skipLocationChange>See Chat</button>
           </div>
         </div>
         <div class="card" *ngIf="notification.type == 'message'">
@@ -64,8 +64,8 @@
             <p>{{notification.timeAgo}}</p>
             <p class="card-text">Your transaction with <a class="link" href="">@{{notification.senderUsername}}</a> is
               complete.</p>
-            <button (click)="getTransactionById(notification.transactionId)" type="button" class="btn btn-primary button" data-toggle="modal"
-              data-target="#seeTransactionModal">See Receipt</button>
+            <button (click)="getTransactionById(notification.transactionId)" type="button"
+              class="btn btn-primary button" data-toggle="modal" data-target="#seeTransactionModal">See Receipt</button>
           </div>
         </div>
 
@@ -137,7 +137,9 @@
                   <div class="col-12">
                     <i class="ri-checkbox-circle-line modal-checkmark-icon"></i>
                     <h5 class="modal-transaction-completed-text">Transaction completed.</h5>
-                    <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=https://i.giphy.com/media/17qLwxVVxgZzlTYNMF/giphy.webp&amp;size=180x180" alt="QR Code">
+                    <img class="qr-code"
+                      src="https://api.qrserver.com/v1/create-qr-code/?data=https://i.giphy.com/media/17qLwxVVxgZzlTYNMF/giphy.webp&amp;size=180x180"
+                      alt="QR Code">
                   </div>
                 </div>
               </div>
@@ -172,68 +174,5 @@
         </div>
       </div>
     </div>
-
-    <!-- <app-notifications-card></app-notifications-card>
-    <app-notifications-card></app-notifications-card>
-    <app-notifications-card></app-notifications-card>
-    <app-notifications-card></app-notifications-card>
-    <app-notifications-card></app-notifications-card>
-    <app-notifications-card></app-notifications-card> -->
-
-    <!-- Temporary card 1 -->
-    <!-- <div class="row justify-content-center">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@toystorytoys</a>.</p>
-          <button type="button" class="btn btn-primary button">See Profile</button>
-        </div>
-      </div>
-    </div> -->
-    <!-- Temporary card 2 -->
-    <!-- <div class="row justify-content-center">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">You have received a request for your <a class="link" href="">Catan Board Game</a> from <a class="link" href="">@boardgames44</a>.</p>
-          <button type="button" class="btn btn-primary button">See Profile</button>
-        </div>
-      </div>
-    </div> -->
-    <!-- Temporary card 3 -->
-    <!-- <div class="row justify-content-center">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text"><a class="link" href="">@boardgames44</a> has accepted your request for their <a class="link" href="">Connect 4</a>.</p>
-          <button type="button" class="btn btn-primary button">See Chat</button>
-        </div>
-      </div>
-    </div> -->
-    <!-- Temporary card 4 -->
-    <!-- <div class="row justify-content-center">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text"><a class="link" href="">@boardgames44</a> has selected your <a class="link" href="">Monopoly Board Game</a>. Confirm your selection.</p>
-          <button type="button" class="btn btn-primary button">See Profile</button>
-        </div>
-      </div>
-    </div> -->
-    <!-- Temporary card 5 -->
-    <!-- <div class="row justify-content-center">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text"><a class="link" href="">@toytrade123</a> has selected your <a class="link" href="">Monopoly Board Game</a>. Confirm your transaction.</p>
-          <button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#confirmTransactionModal">Confirm Transaction</button>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- Temporary card 6 -->
-    <!-- <div class="row justify-content-center">
-      <div class="card">
-        <div class="card-body">
-          <p class="card-text">Your trade with <a class="link" href="">@boardgames44</a> is completed.</p>
-          <button type="button" class="btn btn-primary button" data-toggle="modal" data-target="#seeTransactionModal">See Transaction</button>
-        </div>
-      </div>
-    </div> -->
   </div>
 </main>
