@@ -18,7 +18,7 @@
 
 1. In MongoDB Compass, create a database called *ToyTrade*
 
-2. In that database, create six collections called *Users* , *Toys*, *MessageGroups*, *Messages*, *Transactions*, and *Notifications*
+2. In that database, create six collections called *Users*, *Toys*, *MessageGroups*, *Messages*, *Transactions*, and *Notifications*
 
 3. In this repository, at `toytrade/src/assets/json` there are two JSON files.
 
