@@ -14,7 +14,7 @@ Toy Trade is an application where users can browse toys that are available and c
 
 ## Contributions
 
-Colleen: 
+Colleen: I focused on frontend development for this project. One of my tasks was to create the profile page. I worked to display the layout, including the bio and cards for the toys. I also worked on the refine button to sort toys. This was a little challenging for me, and I considered multiple ways to implement it before choosing to use an Angular form.
 
 Joyce: 
 
