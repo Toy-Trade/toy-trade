@@ -1,6 +1,6 @@
 /* HEADER COMPONENT */
 .navbar {
-  background-color:#f7f7f7;
+  background-color: #f7f7f7;
 }
 
 #navbar-logo {
@@ -44,7 +44,7 @@
 }
 
 /* NEW USER PAGE */
-#new-user-page .header{
+#new-user-page .header {
   margin-top: 5%;
   text-align: center;
   font-size: 24px;
@@ -59,7 +59,6 @@
 }
 
 /* HOMEPAGE */
-
 #home-page .container {
   margin-top: 5%;
   text-align: center;
@@ -85,11 +84,6 @@
 #home-page .refine-area {
   margin-left: 15px;
 }
-
-/* #home-page #search-icon {
-  position: relative;
-  top: 2px;
-} */
 
 #home-page .profile-icon {
   width: 30px;
@@ -123,7 +117,6 @@
 
 #home-page .toy-image {
   width: 100%;
-  /* height: 100%; */
   height: 300px;
   border-radius: 0px 0px 0px 10px;
   border-right: 2px solid #aaaaaa;
@@ -207,6 +200,7 @@
   .dashboard-toy-title {
     display: none;
   }
+
   #home-page .toy-image {
     border-right: none;
     border-radius: 0px 0px 10px 10px;
@@ -219,7 +213,7 @@
 }
 
 /* ADD TOY PAGE */
-#addtoy-page .header{
+#addtoy-page .header {
   margin-top: 5%;
   text-align: center;
 }
@@ -229,127 +223,118 @@
 }
 
 /* PROFILE PAGE */
-
 #profile-page .container {
-    margin-top: 5%;
-    text-align: center;
+  margin-top: 5%;
+  text-align: center;
 }
 
 #profile-page .header {
-    font-size: 24px;
-    margin-bottom: 2%;
-    margin-bottom: 30px;
+  font-size: 24px;
+  margin-bottom: 2%;
+  margin-bottom: 30px;
 }
 
 #profile-page .search-col {
-    padding: 0px;
+  padding: 0px;
 }
 
 #profile-page .profile-icon {
-    width: 30px;
-    margin-right: 10px;
+  width: 30px;
+  margin-right: 10px;
 }
 
 #profile-page .user-link {
-    position: relative;
-    top: 1px;
+  position: relative;
+  top: 1px;
 }
 
 #profile-page .card {
-    border: 2px solid #aaaaaa;
-    border-radius: 12px;
-    cursor: pointer;
+  border: 2px solid #aaaaaa;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 #profile-page .card-header {
-    border-bottom: 2px solid #aaaaaa;
+  border-bottom: 2px solid #aaaaaa;
 }
 
 #profile-page .row {
-    text-align: left;
-    margin: 2% 0;
+  text-align: left;
+  margin: 2% 0;
 }
 
 #profile-page .link {
-    color: #169cc6;
-    text-decoration: none;
+  color: #169cc6;
+  text-decoration: none;
 }
 
 #profile-page .toy-image {
-    width: 100%;
-    height: 300px;
-    border-radius: 0px 0px 0px 10px;
-    border-right: 2px solid #aaaaaa;
+  width: 100%;
+  height: 300px;
+  border-radius: 0px 0px 0px 10px;
+  border-right: 2px solid #aaaaaa;
 }
 
 #profile-page .card {
-    margin-top: 15px;
-    margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 #profile-page .card-col {
-    padding: 0px;
-    text-align: center;
+  padding: 0px;
+  text-align: center;
 }
 
 #profile-page .card-row {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 #profile-page .card-title {
-    margin: 20px;
-    text-align: left;
+  margin: 20px;
+  text-align: left;
 }
 
 #profile-page .card-body {
-    padding: 0px;
+  padding: 0px;
 }
 
 #profile-page .request-button {
-    border-radius: 10px;
-    margin-top: 55%;
+  border-radius: 10px;
+  margin-top: 55%;
 }
 
 #profile-page .modal-toy-image {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #profile-page .modal-body {
-    padding: 0px;
+  padding: 0px;
 }
 
 #profile-page .modal-toy-description {
-    margin: 20px;
-    margin-left: 50px;
+  margin: 20px;
+  margin-left: 50px;
 }
 
 #profile-page .modal-icon {
-    font-size: 33px;
+  font-size: 33px;
 }
 
 #profile-page .modal-icon-text {
-    position: relative;
-    top: 12px;
-    padding-left: 10px;
+  position: relative;
+  top: 12px;
+  padding-left: 10px;
 }
 
 #profile-page .modal-col {
-    padding: 0px;
+  padding: 0px;
 }
 
 #profile-page .profile-icon {
   border-radius: 50%;
 }
-/*
-#profile-page .profile-photo {
-  text-align: right;
-}
-
-#profile-page .profile-description {
-  text-align: left;
-} */
 
 #profile-page .profile-photo {
   text-align: center;
@@ -376,6 +361,7 @@
   .dashboard-toy-title {
     display: none;
   }
+
   #profile-page .toy-image {
     border-right: none;
     border-radius: 0px 0px 10px 10px;
@@ -383,8 +369,7 @@
 }
 
 /* NOTIFICATIONS PAGE */
-
-#notifications-page .container{
+#notifications-page .container {
   margin-top: 5%;
   text-align: center;
 }
@@ -445,7 +430,6 @@
 
 #notifications-page .modal-transaction-completed-text {
   position: relative;
-  /* top: 12px; */
   bottom: 10px;
   padding-left: 5px;
   display: inline;
@@ -481,7 +465,8 @@
   font-size: 24px;
 }
 
-#data-visual-page .col-md-6, #data-visual-page .col-sm-12 {
+#data-visual-page .col-md-6,
+#data-visual-page .col-sm-12 {
   text-align: center;
   margin-bottom: 40px;
 }
@@ -491,6 +476,6 @@
 }
 
 #data-visual-page .card {
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
   padding: 20px;
 }

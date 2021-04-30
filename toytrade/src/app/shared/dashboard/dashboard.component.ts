@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../core/services/http.service';
 import { AuthService } from '../../core/services/auth.service';
-
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 
 interface Toy {
   objectId: string;
@@ -63,12 +61,12 @@ export class DashboardComponent implements OnInit {
     { name: 'Brand', value: 'Nerf'},
     { name: 'Brand', value: 'Hasbro'},
     { name: 'Brand', value: 'Other'},
-    
+
   ];
 
   refineForm: FormGroup;
 
-  constructor(public httpService : HttpService, public uauth: AuthService, private fb: FormBuilder) {}
+  constructor(public httpService : HttpService, public uauth: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -79,7 +77,6 @@ export class DashboardComponent implements OnInit {
       console.log("Data")
       console.log(data)
       for (let entry of Object.entries(data)) {
-
         this.toys.push({
           objectId: entry[1]._id,
           title: entry[1].title,
@@ -95,7 +92,6 @@ export class DashboardComponent implements OnInit {
         });
       }
     });
-
   }
 
   initializeForm(): void {
@@ -124,9 +120,6 @@ export class DashboardComponent implements OnInit {
   }
 
   public onCheckboxChange(e: any, arrayName: string, i: any) {
-    // const checkArray: FormArray = this.refineForm.get('checkArray') as FormArray;
-
-
     var temp = this.refineForm.getRawValue()[arrayName];
     var index = temp.indexOf(e.target.value);
     console.log(index);
@@ -141,17 +134,13 @@ export class DashboardComponent implements OnInit {
       console.log(this.refineForm.getRawValue());
       document.getElementById(arrayName+"-"+i).classList.remove("active");
     }
-    
   }
 
   public submitForm() {
-    console.log("submitting");
     this.toys = []
-
     this.httpService.getFilteredToys(this.refineForm.getRawValue()).subscribe((data) => {
       console.log(data);
       for (let entry of Object.entries(data)) {
-
         this.toys.push({
           objectId: entry[1]._id,
           title: entry[1].title,
@@ -168,5 +157,4 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
 }
