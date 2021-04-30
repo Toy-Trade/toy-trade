@@ -141,21 +141,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.refineForm.getRawValue());
       document.getElementById(arrayName+"-"+i).classList.remove("active");
     }
-
-
-    // if (e.target.checked) {
-    //   checkArray.push(new FormControl(e.target.value));
-    //   console.log(e.target.value)
-    // } else {
-    //   let i: number = 0;
-    //   checkArray.controls.forEach((item: FormControl) => {
-    //     if (item.value == e.target.value) {
-    //       checkArray.removeAt(i);
-    //       return;
-    //     }
-    //     i++;
-    //   });
-    // }
+    
   }
 
   public submitForm() {
