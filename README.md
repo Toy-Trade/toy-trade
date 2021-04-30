@@ -16,7 +16,7 @@ Toy Trade is an application where users can browse toys that are available and c
 
 Colleen: I focused on frontend development for this project. One of my tasks was to create the profile page. I worked to display the layout, including the bio and cards for the toys. I also worked on the refine button to sort toys. This was a little challenging for me, and I considered multiple ways to implement it before choosing to use an Angular form.
 
-Joyce: 
+Joyce: For this project, I was a full-stack developer and I worked on designing the frontend user interface using Figma, the toy dashboard, and I worked with Jody on the notification and messaging systems. I also worked on implementing Angular Forms so that we can get the user input for the add toy, refine, and the new user forms. Additionally, I helped to organize the database schema and to write API requests. Across our various pages, I implemented interfaces for Toy, Notification, and Transaction, so that items that are grabbed from the database can easily be displayed in an ngFor loop.
 
 Tyler: 
 
