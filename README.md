@@ -4,6 +4,13 @@
 
 Toy Trade is an application where users can browse toys that are available and coordinate exchanges with others. Users are able to set up their own profile along with a dashboard of all of the toys that they are willing to trade in. Our site features filtering, notification, and messaging systems. The exchange takes place at a neutral third party location such as a library or public school, coordinated by the two users involved.
 
+## Contributors
+
+* Colleen Corrigan: collcorr72
+* Joyce Fang: joycexfang
+* Tyler Green: TylerG00
+* Jody Sunray: jssunray34
+
 ## Challenges
 
 * Implementing Google OAuth with Firebase
