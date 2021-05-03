@@ -25,6 +25,9 @@ Colleen: I focused on frontend development for this project. One of my tasks was
 
 Joyce: For this project, I was a full-stack developer and I worked on designing the frontend user interface using Figma, the toy dashboard, and I worked with Jody on the notification and messaging systems. I also worked on implementing Angular Forms so that we can get the user input for the add toy, refine, and the new user forms. Additionally, I helped to organize the database schema and to write API requests. Across our various pages, I implemented interfaces for Toy, Notification, and Transaction, so that items that are grabbed from the database can easily be displayed in an ngFor loop.
 
-Tyler: 
+Tyler: In this project I worked on frontend development. I was tasked with creating the front end for the 
+messages page. With the help of Jody and Joyce this was made possible as a transaction of messges between 
+users who sign in with their Google login as developed by Jody. As well as having the idea of what project 
+to create from the beginning.
 
 Jody: As a full-stack developer of Toy Trade, I contributed to both the frontend and backend components of our application. One of the first tasks we wanted to complete was our login system, and I worked on integrating Google OAuth with Firebase so that users can login with their Google accounts. I then created an auth service in Angular to manage the currently logged in user. I also designed and created the Add Toy form, which allows users to input all of the details related to their toy listing and upload an image of their toy. Additionally, I worked with Joyce to implement our notification system which controls the flow of transactions as well as our messaging system which enables users to communicate with each other and work out the details of a transaction. Furthermore, I contributed heavily to the management of our database and internal API. In particular, I defined API endpoints, made API requests, and made queries and calls to our database.
